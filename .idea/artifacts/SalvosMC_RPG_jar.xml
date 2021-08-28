@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SalvosMC-RPG:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SalvosMC_RPG_jar</output-path>
+    <root id="archive" name="SalvosMC-RPG.jar">
+      <element id="module-output" name="SalvosMC-RPG" />
+      <element id="file-copy" path="$PROJECT_DIR$/plugin.yml" />
+    </root>
+  </artifact>
+</component>
