@@ -1,13 +1,18 @@
 package devep;
 
+import com.github.yannicklamprecht.worldborder.api.IWorldBorder;
+import com.github.yannicklamprecht.worldborder.api.PersistentWorldBorderApi;
+import com.github.yannicklamprecht.worldborder.api.WorldBorderAction;
+import com.github.yannicklamprecht.worldborder.api.WorldBorderData;
 import devep.Actions.GetSpawnLocation;
 import devep.Actions.SummonLightning;
-import org.bukkit.Location;
-import org.bukkit.Material;
+import org.bukkit.Bukkit;
+import org.bukkit.World;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.world.WorldLoadEvent;
 
 public class SwordAbilitySystem implements Listener {
@@ -29,15 +34,17 @@ public class SwordAbilitySystem implements Listener {
     }
 
     @EventHandler
-    public void PlayerMoveEvent(PlayerMoveEvent event) {
+    public void onPlayerJoin(PlayerJoinEvent playerJoinEvent) {
 
-        Location newPosition = event.getTo();
+        if (SalvosMCRPG.worldBorderAPI instanceof PersistentWorldBorderApi) {
 
-        if (newPosition.distance(SalvosMCRPG.spawnLocation) >= 1000) {
-            newPosition.getBlock().setType(Material.ACACIA_LEAVES);
-            event.setTo(event.getFrom());
+            Bukkit.getScheduler().runTaskLater(SalvosMCRPG.plugin, () -> {
+                WorldBorder.sendWorldPacket(playerJoinEvent.getPlayer(), 500);
+            }, 20 * 3);
         }
-
     }
 
+
 }
+
+

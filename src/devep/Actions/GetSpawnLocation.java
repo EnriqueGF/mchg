@@ -18,6 +18,5 @@ public class GetSpawnLocation implements ActionInterface {
         World world = event.getWorld();
 
         SalvosMCRPG.spawnLocation = world.getSpawnLocation();
-        
     }
 }

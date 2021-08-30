@@ -1,0 +1,8 @@
+name: SalvosMCRPG
+version: 0.1
+author: Enrique
+main: devep.SalvosMCRPG
+api-version: 1.16
+depend:
+  - WorldBorderAPI
+load: STARTUP

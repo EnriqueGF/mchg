@@ -9,8 +9,9 @@
         <module name="SalvosMC-RPG" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="15">
-      <module name="SalvosMC-RPG" target="6" />
+    <bytecodeTargetLevel>
+      <module name="SalvosMC-RPG" target="16" />
+      <module name="SalvosMCRPG" target="16" />
     </bytecodeTargetLevel>
   </component>
 </project>
