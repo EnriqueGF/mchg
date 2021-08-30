@@ -16,7 +16,6 @@ public class SummonLightning implements ActionInterface {
 
         World world = entity.getWorld();
         Location location = entity.getLocation();
-        location.setY(100);
 
         world.strikeLightning(location);
     }
