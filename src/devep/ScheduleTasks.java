@@ -29,9 +29,6 @@ public class ScheduleTasks {
                     e.printStackTrace();
                 }
 
-                System.out.println("sendWorldBorderPackets() lanzado");
-                System.out.println("calculo tiempo: " + Math.abs(Instant.now().getEpochSecond() - WorldBorder.lastEdgeCloses));
-
                 int onlinePlayersCount = Bukkit.getOnlinePlayers().size();
                 int edgeCloseLength = 0;
 
@@ -55,7 +52,6 @@ public class ScheduleTasks {
                     }
 
                     if (edgeCloseLength != 0) {
-                        System.out.println("Cerrando el borde por: " + edgeCloseLength);
 
                         for (int i = 0; i < edgeCloseLength; i++) {
                             for (Player player : Bukkit.getOnlinePlayers()) {
