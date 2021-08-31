@@ -1,3 +1,4 @@
+devep\Locale\SpanishLocale.class
 devep\Hooks\EventHooks.class
 devep\SalvosMCRPG.class
 devep\ScheduleTasks.class
@@ -12,6 +13,9 @@ devep\Game\GameCore.class
 devep\Game\GameStatusEnum.class
 devep\Actions\GetSpawnLocation.class
 devep\Hooks\InvulnerabilityHooks.class
+devep\Locale\EnglishLocale.class
+devep\Locale\Locale.class
 devep\ScheduleTasks$1.class
 devep\DB.class
 devep\Game\GameCore$2.class
+devep\Locale\LocaleFactory.class

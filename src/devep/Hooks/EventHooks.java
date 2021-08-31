@@ -7,6 +7,7 @@ import devep.Actions.SummonLightning;
 import devep.Game.GameCore;
 import devep.Game.GameSettings;
 import devep.Game.GameStatusEnum;
+import devep.Locale.LocaleFactory;
 import devep.SalvosMCRPG;
 import devep.ScheduleTasks;
 import devep.WorldBorder;

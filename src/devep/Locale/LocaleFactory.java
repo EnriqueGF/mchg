@@ -2,9 +2,9 @@ package devep.Locale;
 
 public class LocaleFactory {
     public static Locale getLocale(String localeName){
-        if("en".equalsIgnoreCase(localeName)) return new EnglishLocale();
-        else if("es".equalsIgnoreCase(localeName)) return new SpanishLocale();
+        if(localeName.contains("en")) return new EnglishLocale();
+        else if(localeName.contains("es")) return new SpanishLocale();
 
-        return null;
+        return new EnglishLocale(); // Fallback language
     }
 }

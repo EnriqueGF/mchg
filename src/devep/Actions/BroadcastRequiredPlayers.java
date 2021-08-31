@@ -34,7 +34,7 @@ public class BroadcastRequiredPlayers implements ActionInterface {
 
         if (onlinePlayersCount < gameSettings.getRequiredPlayersToStart()) {
             int playersLeft = gameSettings.getRequiredPlayersToStart() - onlinePlayersCount;
-            Bukkit.broadcastMessage(ChatColor.DARK_AQUA + "Faltan " + playersLeft + " jugadores para empezar.");
+            gameCore.sendLocaleMessageToAllPlayers("REMAINING_PLAYERS_TO_START", Integer.toString(playersLeft), ChatColor.DARK_RED);
         }
     }
 }

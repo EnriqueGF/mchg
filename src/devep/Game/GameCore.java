@@ -1,5 +1,6 @@
 package devep.Game;
 
+import devep.Locale.LocaleFactory;
 import devep.SalvosMCRPG;
 import devep.ScheduleTasks;
 import org.bukkit.Bukkit;
@@ -66,6 +67,34 @@ public class GameCore {
         gameSettings.gameStatus = GameStatusEnum.STARTED;
 
         this.scheduleTasks.sendWorldBorderPackets();
-
     }
+
+    public void sendLocaleMessageToAllPlayers(String message, String replaceString, ChatColor textColor) {
+
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            if (player.getTicksLived() >= 105) {
+                sendPlayerMessage(message, replaceString, textColor, player);
+            } else {
+                // Delayed message due to waiting for client language packet on login
+                Bukkit.getScheduler().runTaskLater(SalvosMCRPG.plugin, () -> {
+                    sendPlayerMessage(message, replaceString, textColor, player);
+                }, 105);
+            }
+        }
+    }
+    private void sendPlayerMessage(String message, String replaceString, ChatColor textColor, Player player) {
+
+        String msg = LocaleFactory.getLocale(player.getLocale()).getTranslatedText(message);
+
+        if (replaceString != "") {
+            msg = msg.replace("%s", replaceString);
+        }
+
+        String finalMsg = msg;
+        player.sendMessage(gameSettings.announcementsPrefix + textColor + finalMsg);
+
+    };
+
+
+
 }
