@@ -12,6 +12,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Instant;
 
 public class SalvosMCRPG extends JavaPlugin {
 
@@ -36,7 +37,9 @@ public class SalvosMCRPG extends JavaPlugin {
 
         loadWorldBorderAPI();
 
-        GameSettings gameSettings = new GameSettings(20);
+        WorldBorder.lastEdgeCloses = Instant.now().getEpochSecond();
+
+        GameSettings gameSettings = new GameSettings(1);
         ScheduleTasks scheduleTasks = new ScheduleTasks(this.plugin);
 
         getServer().getPluginManager().registerEvents(new EventHooks(gameSettings, scheduleTasks), SalvosMCRPG.plugin);

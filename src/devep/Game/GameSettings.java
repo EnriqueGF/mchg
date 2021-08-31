@@ -2,7 +2,8 @@ package devep.Game;
 
 public class GameSettings {
     private Integer requiredPlayersToStart;
-    private Integer worldBorderRadius = 500;
+    private Integer worldBorderRadius = 3000;
+    public GameStatusEnum gameStatus = GameStatusEnum.NOT_STARTED;
 
     public GameSettings(Integer requiredPlayersToStart) {
         this.requiredPlayersToStart = requiredPlayersToStart;

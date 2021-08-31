@@ -1,13 +1,16 @@
 package devep;
 
 import com.github.yannicklamprecht.worldborder.api.*;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
+
+import java.time.Instant;
 
 public class WorldBorder {
 
     public static int borderDistance;
+    public static long lastEdgeCloses;
 
     public static void sendWorldPacket(Player player, int borderDistance) {
         WorldBorder.borderDistance = borderDistance;
@@ -27,7 +30,14 @@ public class WorldBorder {
             worldBorderData.applyAll(worldBorder);
             worldBorder.send(player, WorldBorderAction.INITIALIZE);
             if (WorldBorder.isPlayerOutsideBorder(player, worldBorder)) {
-                player.damage(2);
+
+                new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        player.damage(1);
+                    }
+                }.runTaskLater(SalvosMCRPG.plugin, 1);
+
             }
         }
 

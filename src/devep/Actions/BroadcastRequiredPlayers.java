@@ -1,6 +1,7 @@
 package devep.Actions;
 
 import devep.Game.GameSettings;
+import devep.Game.GameStatusEnum;
 import devep.ScheduleTasks;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -18,6 +19,10 @@ public class BroadcastRequiredPlayers implements ActionInterface {
     @Override
     public void executeAction(Event event) {
 
+        if (gameSettings.gameStatus == GameStatusEnum.STARTED) {
+            return;
+        }
+
         int onlinePlayersCount = Bukkit.getOnlinePlayers().size();
 
         if (event.getEventName().equals("PlayerQuitEvent")) {
@@ -26,6 +31,8 @@ public class BroadcastRequiredPlayers implements ActionInterface {
 
         if (onlinePlayersCount >= gameSettings.getRequiredPlayersToStart()) {
             Bukkit.broadcastMessage(ChatColor.GREEN + "[SalvosMC-RPG]  Todos los jugadores se han unido. La partida va a comenzar.");
+            gameSettings.gameStatus = GameStatusEnum.STARTED;
+
             this.scheduleTasks.sendWorldBorderPackets();
         } else {
             int playersLeft = gameSettings.getRequiredPlayersToStart() - onlinePlayersCount;

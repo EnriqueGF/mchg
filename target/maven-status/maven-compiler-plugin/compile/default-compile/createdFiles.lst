@@ -1,5 +1,6 @@
 devep\SalvosMCRPG.class
 devep\ScheduleTasks.class
+devep\WorldBorder$1.class
 devep\SalvosMCRPG$1.class
 devep\Actions\BroadcastRequiredPlayers.class
 devep\WorldBorder.class
@@ -9,5 +10,4 @@ devep\Actions\SummonLightning.class
 devep\Game\GameStatusEnum.class
 devep\Actions\GetSpawnLocation.class
 devep\EventHooks.class
-devep\ScheduleTasks$1.class
 devep\DB.class

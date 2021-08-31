@@ -25,11 +25,10 @@ public class EventHooks implements Listener {
         this.scheduleTasks = scheduleTasks;
 
         this.broadcastRequiredPlayers = new BroadcastRequiredPlayers(this.gameSettings, this.scheduleTasks);
-
     }
 
     @EventHandler
-    public void onEntityDeath(EntityDeathEvent event, ScheduleTasks scheduleTasks) {
+    public void onEntityDeath(EntityDeathEvent event) {
 
         SummonLightning sL = new SummonLightning();
         sL.executeAction(event);
