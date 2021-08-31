@@ -1,6 +1,8 @@
 package devep;
 
 import com.github.yannicklamprecht.worldborder.api.*;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -29,16 +31,6 @@ public class WorldBorder {
             IWorldBorder worldBorder = SalvosMCRPG.worldBorderAPI.getWorldBorder(player);
             worldBorderData.applyAll(worldBorder);
             worldBorder.send(player, WorldBorderAction.INITIALIZE);
-            if (WorldBorder.isPlayerOutsideBorder(player, worldBorder)) {
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.damage(1);
-                    }
-                }.runTaskLater(SalvosMCRPG.plugin, 1);
-
-            }
         }
 
     }

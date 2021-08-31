@@ -1,21 +1,24 @@
 package devep.Game;
 
 import devep.SalvosMCRPG;
+import devep.ScheduleTasks;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 public class GameCore {
     private GameSettings gameSettings;
+    private ScheduleTasks scheduleTasks;
     private int checkForEnoughPlayersScheduleID;
 
-    public GameCore(GameSettings gameSettings) {
+    public GameCore(GameSettings gameSettings, ScheduleTasks scheduleTasks) {
         this.gameSettings = gameSettings;
+        this.scheduleTasks = scheduleTasks;
 
-        checkForInvulnerabilityStage();
+        initCheckingForInvulnerabilityStage();
     }
 
-    private void checkForInvulnerabilityStage() {
+    private void initCheckingForInvulnerabilityStage() {
 
         this.checkForEnoughPlayersScheduleID = Bukkit.getScheduler().scheduleSyncRepeatingTask(SalvosMCRPG.plugin, new Runnable() {
             @Override
@@ -52,5 +55,17 @@ public class GameCore {
         for (Player player : Bukkit.getOnlinePlayers()) {
             player.teleport(SalvosMCRPG.spawnLocation);
         }
+
+        startMatchGame();
+
+    }
+
+    private void startMatchGame() {
+
+        Bukkit.broadcastMessage(ChatColor.GREEN + "[SalvosMC-RPG]  INICIANDO PARTIDA!");
+        gameSettings.gameStatus = GameStatusEnum.STARTED;
+
+        this.scheduleTasks.sendWorldBorderPackets();
+
     }
 }

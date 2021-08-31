@@ -1,7 +1,7 @@
 package devep;
 
+import com.github.yannicklamprecht.worldborder.api.IWorldBorder;
 import org.bukkit.Bukkit;
-import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
@@ -78,5 +78,21 @@ public class ScheduleTasks {
         });
 
         t.start();
+    }
+
+    public void checkPlayersOutsideBorders() {
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(SalvosMCRPG.plugin, new Runnable() {
+            @Override
+            public void run() {
+                for (Player player : Bukkit.getOnlinePlayers()) {
+                    IWorldBorder worldBorder = SalvosMCRPG.worldBorderAPI.getWorldBorder(player);
+                    if (worldBorder != null) {
+                        if (WorldBorder.isPlayerOutsideBorder(player, worldBorder)) {
+                            player.damage(1);
+                        }
+                    }
+                }
+            }
+        }, 0L, 20 * 1); //0 Tick initial delay, 20 Tick (1 Second) between repeats
     }
 }

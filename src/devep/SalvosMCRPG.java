@@ -43,8 +43,11 @@ public class SalvosMCRPG extends JavaPlugin {
         WorldBorder.lastEdgeCloses = Instant.now().getEpochSecond();
 
         GameSettings gameSettings = new GameSettings(1);
-        GameCore gameCore = new GameCore(gameSettings);
         ScheduleTasks scheduleTasks = new ScheduleTasks(plugin);
+        GameCore gameCore = new GameCore(gameSettings, scheduleTasks);
+
+        scheduleTasks.checkPlayersOutsideBorders();
+
         getServer().getPluginManager().registerEvents(new EventHooks(gameSettings, scheduleTasks, gameCore), plugin);
         getServer().getPluginManager().registerEvents(new InvulnerabilityHooks(gameSettings), plugin);
 
