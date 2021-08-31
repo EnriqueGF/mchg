@@ -3,6 +3,7 @@ package devep.Game;
 public class GameSettings {
     private Integer requiredPlayersToStart;
     private Integer worldBorderRadius = 3000;
+    public Integer invulnerabilityStageSeconds = 240;
     public GameStatusEnum gameStatus = GameStatusEnum.NOT_STARTED;
 
     public GameSettings(Integer requiredPlayersToStart) {

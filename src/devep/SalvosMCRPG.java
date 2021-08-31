@@ -1,7 +1,10 @@
 package devep;
 
 import com.github.yannicklamprecht.worldborder.api.WorldBorderApi;
+import devep.Game.GameCore;
 import devep.Game.GameSettings;
+import devep.Hooks.EventHooks;
+import devep.Hooks.InvulnerabilityHooks;
 import org.apache.commons.io.FileUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -40,9 +43,10 @@ public class SalvosMCRPG extends JavaPlugin {
         WorldBorder.lastEdgeCloses = Instant.now().getEpochSecond();
 
         GameSettings gameSettings = new GameSettings(1);
-        ScheduleTasks scheduleTasks = new ScheduleTasks(this.plugin);
-
-        getServer().getPluginManager().registerEvents(new EventHooks(gameSettings, scheduleTasks), SalvosMCRPG.plugin);
+        GameCore gameCore = new GameCore(gameSettings);
+        ScheduleTasks scheduleTasks = new ScheduleTasks(plugin);
+        getServer().getPluginManager().registerEvents(new EventHooks(gameSettings, scheduleTasks, gameCore), plugin);
+        getServer().getPluginManager().registerEvents(new InvulnerabilityHooks(gameSettings), plugin);
 
         getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[SalvosMC-RPG] Carga finalizada");
 
