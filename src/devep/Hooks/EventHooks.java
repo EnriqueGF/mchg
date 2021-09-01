@@ -12,6 +12,7 @@ import devep.SalvosMCRPG;
 import devep.ScheduleTasks;
 import devep.WorldBorder;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -22,6 +23,7 @@ import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.server.ServerListPingEvent;
 import org.bukkit.event.world.WorldLoadEvent;
 
 public class EventHooks implements Listener {
@@ -108,6 +110,29 @@ public class EventHooks implements Listener {
             event.setCancelled(true);
         }
     }
+
+    @EventHandler
+    public void onServerListPingEvent(ServerListPingEvent event)
+    {
+        String motd = "";
+
+        switch(gameSettings.gameStatus) {
+            case BEFORE_START:
+                motd = ChatColor.GREEN + "             Classic HG" + " | " + ChatColor.DARK_PURPLE + "Waiting for players... \n        "+ ChatColor.RED +"   The true Hunger Games Experience";
+            break;
+            case INVULNERABILITY:
+                motd = ChatColor.GREEN + "             Classic HG" + " | " + ChatColor.LIGHT_PURPLE + "Starting game \n        "+ ChatColor.RED +"   The true Hunger Games Experience";
+            break;
+
+            case STARTED:
+                motd = ChatColor.GREEN + "             Classic HG" + " | " + ChatColor.DARK_AQUA + "Game in progress \n        "+ ChatColor.RED +"   The true Hunger Games Experience";
+            break;
+
+            default:
+        }
+        event.setMotd(motd);
+    }
+
 }
 
 
