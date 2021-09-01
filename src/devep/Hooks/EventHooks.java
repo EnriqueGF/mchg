@@ -74,43 +74,6 @@ public class EventHooks implements Listener {
 
     }
 
-    // Invulnerability Hooks
-
-    @EventHandler
-    public void onDamage(EntityDamageEvent event) {
-        if(gameSettings.gameStatus == GameStatusEnum.INVULNERABILITY) {
-            event.setCancelled(true);
-        }
-    }
-
-    @EventHandler
-    public void onPlayerDropItem(PlayerDropItemEvent event){
-        if(gameSettings.gameStatus == GameStatusEnum.INVULNERABILITY) {
-            event.setCancelled(true);
-        }
-    }
-
-    @EventHandler
-    public void onEntityPickupItemEvent(EntityPickupItemEvent event){
-        if(gameSettings.gameStatus == GameStatusEnum.INVULNERABILITY) {
-            event.setCancelled(true);
-            event.getItem().remove();
-        }
-    }
-
-    @EventHandler
-    public void onBlockBreakEvent(BlockBreakEvent event){
-        if(gameSettings.gameStatus == GameStatusEnum.INVULNERABILITY) {
-            event.setCancelled(true);
-        }
-    }
-    @EventHandler
-    public void onBlockPlaceEvent(BlockPlaceEvent event){
-        if(gameSettings.gameStatus == GameStatusEnum.INVULNERABILITY) {
-            event.setCancelled(true);
-        }
-    }
-
     @EventHandler
     public void onServerListPingEvent(ServerListPingEvent event)
     {

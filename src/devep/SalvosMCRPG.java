@@ -3,6 +3,7 @@ package devep;
 import com.github.yannicklamprecht.worldborder.api.WorldBorderApi;
 import devep.Game.GameCore;
 import devep.Game.GameSettings;
+import devep.Game.GameStatusEnum;
 import devep.Hooks.EventHooks;
 import devep.Hooks.InvulnerabilityHooks;
 import org.apache.commons.io.FileUtils;
@@ -29,11 +30,15 @@ public class SalvosMCRPG extends JavaPlugin {
 
         this.plugin = this;
         //db = new DB(this.getLogger());
+        GameSettings gameSettings = new GameSettings(2);
+        gameSettings.gameStatus = GameStatusEnum.BEFORE_START;
 
         try {
-            getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[SalvosMC-RPG] Eliminando world");
-            FileUtils.deleteDirectory(new File("world"));
-            getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[SalvosMC-RPG] Mundo eliminado");
+            if (gameSettings.deleteWorld) {
+                getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[SalvosMC-RPG] Eliminando world");
+                FileUtils.deleteDirectory(new File("world"));
+                getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[SalvosMC-RPG] Mundo eliminado");
+            }
         } catch (IOException e) {
             System.out.println(e.toString());
         }
@@ -42,7 +47,6 @@ public class SalvosMCRPG extends JavaPlugin {
 
         WorldBorder.lastEdgeCloses = Instant.now().getEpochSecond();
 
-        GameSettings gameSettings = new GameSettings(2);
         ScheduleTasks scheduleTasks = new ScheduleTasks(plugin);
         GameCore gameCore = new GameCore(gameSettings, scheduleTasks);
 
