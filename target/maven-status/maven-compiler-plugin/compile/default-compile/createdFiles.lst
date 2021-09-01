@@ -3,10 +3,12 @@ devep\Locale\SpanishLocale.class
 devep\Hooks\EventHooks.class
 devep\SalvosMCRPG.class
 devep\SalvosMCRPG$1.class
+devep\ScheduleTasks$2.class
 devep\Actions\ActionInterface.class
 devep\Game\GameSettings.class
 devep\Game\GameCore.class
 devep\Game\GameStatusEnum.class
+devep\Hooks\GameStartedHooks.class
 devep\Hooks\InvulnerabilityHooks.class
 devep\Locale\Locale.class
 devep\DB.class

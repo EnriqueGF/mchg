@@ -9,6 +9,8 @@ public class EnglishLocale extends Locale {
             {"ALL_PLAYERS_READY", "All the required players are ready"},
             {"INVULNERABILITY_STAGE_SECONDS_LEFT_COUNT", "%s seconds to start the game!"},
             {"PVP_SECONDS_LEFT_COUNT", "%s seconds to start to activate PVP"},
+            {"ERROR_GAME_ALREADY_STARTED", "The game is already started"},
+            {"YOU_DEAD_KILLED", "You have died!"},
     };
 
     public EnglishLocale() {

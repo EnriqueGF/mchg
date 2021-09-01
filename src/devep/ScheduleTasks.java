@@ -1,7 +1,12 @@
 package devep;
 
 import com.github.yannicklamprecht.worldborder.api.IWorldBorder;
+import devep.Game.GameCore;
+import devep.Game.GameSettings;
+import devep.Game.GameStatusEnum;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
@@ -10,6 +15,8 @@ import java.time.Instant;
 public class ScheduleTasks {
 
     private Plugin plugin;
+    private GameCore gameCore;
+    private int lookForGameFinishScheduleID;
 
     public ScheduleTasks(Plugin plugin) {
         this.plugin = plugin;
@@ -99,4 +106,30 @@ public class ScheduleTasks {
             }
         }, 0L, 20 * 1); //0 Tick initial delay, 20 Tick (1 Second) between repeats
     }
+
+    public void lookForGameFinish() {
+        lookForGameFinishScheduleID = Bukkit.getScheduler().scheduleSyncRepeatingTask(SalvosMCRPG.plugin, new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    if (GameSettings.gameStatus == GameStatusEnum.BEFORE_START) {
+                        return;
+                    }
+
+                    if (Bukkit.getOnlinePlayers().size() == 1) {
+                        Player winPlayer = Bukkit.getOnlinePlayers().iterator().next();
+                        Bukkit.getServer().getWorld("world").spawnEntity(winPlayer.getLocation(), EntityType.FIREWORK);
+                        winPlayer.sendMessage(ChatColor.GOLD + "You win!!");
+                        winPlayer.sendMessage(ChatColor.GREEN + "Congrats!!");
+                    }
+
+                    Bukkit.getScheduler().cancelTask(lookForGameFinishScheduleID);
+
+                } catch(Exception ex) {
+                    System.out.println("Excepción producida en lookForGameFinish(): " + ex.toString());
+                }
+            }
+        }, 0L, 20 * 3); //0 Tick initial delay, 20 Tick (1 Second) between repeats
+    }
+
 }

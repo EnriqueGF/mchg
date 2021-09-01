@@ -5,6 +5,7 @@ import devep.Game.GameCore;
 import devep.Game.GameSettings;
 import devep.Game.GameStatusEnum;
 import devep.Hooks.EventHooks;
+import devep.Hooks.GameStartedHooks;
 import devep.Hooks.InvulnerabilityHooks;
 import org.apache.commons.io.FileUtils;
 import org.bukkit.ChatColor;
@@ -51,9 +52,11 @@ public class SalvosMCRPG extends JavaPlugin {
         GameCore gameCore = new GameCore(gameSettings, scheduleTasks);
 
         scheduleTasks.checkPlayersOutsideBorders();
+        scheduleTasks.lookForGameFinish();
 
         getServer().getPluginManager().registerEvents(new EventHooks(gameSettings, scheduleTasks, gameCore), plugin);
         getServer().getPluginManager().registerEvents(new InvulnerabilityHooks(gameSettings), plugin);
+        getServer().getPluginManager().registerEvents(new GameStartedHooks(gameSettings), plugin);
 
         getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[SalvosMC-RPG] Carga finalizada");
 

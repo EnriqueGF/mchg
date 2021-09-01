@@ -9,6 +9,8 @@ public class SpanishLocale extends Locale {
             {"ALL_PLAYERS_READY", "Todos los jugadores necesarios están listos"},
             {"INVULNERABILITY_STAGE_SECONDS_LEFT_COUNT", "%s segundos para empezar la partida!"},
             {"PVP_SECONDS_LEFT_COUNT", "%s segundos restantes para activar el PVP"},
+            {"ERROR_GAME_ALREADY_STARTED", "La partida ya ha empezado."},
+            {"YOU_DEAD_KILLED", "¡Has muerto!"},
     };
 
     public SpanishLocale() {
