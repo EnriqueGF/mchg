@@ -1,23 +1,24 @@
 package devep;
 
 import com.github.yannicklamprecht.worldborder.api.*;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.time.Instant;
 
 public class WorldBorder {
 
-    public static int borderDistance;
-    public static long lastEdgeCloses;
+    public static double borderRadius;
+    public static long lastEdgeCloses = Instant.now().getEpochSecond();
 
-    public static void sendWorldPacket(Player player, int borderDistance) {
-        WorldBorder.borderDistance = borderDistance;
+    public static void sendWorldPacket(Player player, double borderRadius) {
 
-        SalvosMCRPG.worldBorderAPI.setBorder(player, borderDistance, SalvosMCRPG.spawnLocation);
+        WorldBorder.borderRadius = borderRadius;
+
+        SalvosMCRPG.worldBorderAPI.setBorder(player, borderRadius, SalvosMCRPG.spawnLocation);
 
         PersistentWorldBorderApi persistentWorldBorderApi = ((PersistentWorldBorderApi) SalvosMCRPG.worldBorderAPI);
         WorldBorderData worldBorderData = persistentWorldBorderApi.getWorldBorderData(player);
@@ -45,5 +46,30 @@ public class WorldBorder {
 
         return ((x > size || (-x) > size) || (z > size || (-z) > size));
     }
+
+    public static void loadWorldBorderAPI() {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+
+                RegisteredServiceProvider<WorldBorderApi> worldBorderApiRegisteredServiceProvider = SalvosMCRPG.plugin.getServer().getServicesManager().getRegistration(WorldBorderApi.class);
+
+                if (worldBorderApiRegisteredServiceProvider == null) {
+                    SalvosMCRPG.plugin.getServer().getConsoleSender().sendMessage(ChatColor.RED + "[SalvosMC-RPG] No se encuentra la API de WorldBorder");
+                    SalvosMCRPG.plugin.getServer().getPluginManager().disablePlugin(SalvosMCRPG.plugin);
+                    return;
+                }
+
+                WorldBorderApi worldBorderAPI = worldBorderApiRegisteredServiceProvider.getProvider();
+                if (worldBorderAPI != null) {
+                    SalvosMCRPG.plugin.getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[SalvosMC-RPG] API de WorldBorder Cargada");
+                }
+
+                SalvosMCRPG.worldBorderAPI = worldBorderAPI;
+            }
+
+        }.runTaskLater(SalvosMCRPG.plugin, 30);
+    }
+
 
 }

@@ -3,15 +3,13 @@ package devep.Game;
 import org.bukkit.ChatColor;
 
 public class GameSettings {
-    public Integer requiredPlayersToStart;
+    public Integer requiredPlayersToStart = 2;
     public Integer worldBorderRadius = 3000;
     public Integer invulnerabilityStageSeconds = 20;
     public static GameStatusEnum gameStatus = GameStatusEnum.BEFORE_START;
     public String announcementsPrefix = ChatColor.GREEN + "[Classic HG] ";
-    public boolean deleteWorld = false;
 
-    public GameSettings(Integer requiredPlayersToStart) {
-        this.requiredPlayersToStart = requiredPlayersToStart;
+    public GameSettings() {
     }
 
     public Integer getRequiredPlayersToStart() {
