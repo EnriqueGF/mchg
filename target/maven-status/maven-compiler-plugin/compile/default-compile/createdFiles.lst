@@ -11,6 +11,7 @@ devep\Game\GameStatusEnum.class
 devep\Hooks\GameStartedHooks.class
 devep\Hooks\InvulnerabilityHooks.class
 devep\Locale\Locale.class
+devep\Actions\GiveKitItem.class
 devep\DB.class
 devep\Game\GameCore$2.class
 devep\ScheduleTasks.class
@@ -19,6 +20,7 @@ devep\WorldBorder.class
 devep\Game\GameCore$3.class
 devep\ScheduleTasks$3.class
 devep\Actions\SummonLightning.class
+devep\Game\Gui\KitGui.class
 devep\Game\GameCore$1.class
 devep\Actions\GetSpawnLocation.class
 devep\Locale\EnglishLocale.class

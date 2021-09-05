@@ -5,8 +5,12 @@ import devep.SalvosMCRPG;
 import devep.ScheduleTasks;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class GameCore {
     private GameSettings gameSettings;
@@ -130,5 +134,12 @@ public class GameCore {
 
     };
 
+    private void giveKitItemToPlayer(PlayerJoinEvent playerJoinEvent) {
+        ItemStack item = new ItemStack(Material.DIAMOND_SWORD, 1);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName("Kits");
+        item.setItemMeta(meta);
+        playerJoinEvent.getPlayer().getInventory().addItem(item);
+    }
 
 }

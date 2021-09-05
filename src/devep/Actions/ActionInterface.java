@@ -2,6 +2,6 @@ package devep.Actions;
 
 import org.bukkit.event.Event;
 
-public interface ActionInterface {
-    public void executeAction(Event event);
+interface ActionInterface {
+    void executeAction(Event event);
 }

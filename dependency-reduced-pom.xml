@@ -18,10 +18,14 @@
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.0</version>
+        <configuration>
+          <release>16</release>
+        </configuration>
       </plugin>
       <plugin>
         <artifactId>maven-shade-plugin</artifactId>
-        <version>3.2.4</version>
+        <version>3.3.0-SNAPSHOT</version>
         <executions>
           <execution>
             <phase>package</phase>
@@ -30,7 +34,18 @@
             </goals>
           </execution>
         </executions>
-        <configuration />
+        <configuration>
+          <relocations>
+            <relocation>
+              <pattern>dev.triumphteam.gui</pattern>
+              <shadedPattern>devep.SalvosMCRPG.gui</shadedPattern>
+            </relocation>
+            <relocation>
+              <pattern>me.mattstudios.mfmsg</pattern>
+              <shadedPattern>devep.SalvosMCRPG.mfmsg</shadedPattern>
+            </relocation>
+          </relocations>
+        </configuration>
       </plugin>
     </plugins>
   </build>
@@ -43,7 +58,21 @@
       <id>eldonexus</id>
       <url>https://eldonexus.de/repository/maven-releases/</url>
     </repository>
+    <repository>
+      <id>repo</id>
+      <url>https://repo.mattstudios.me/artifactory/public/</url>
+    </repository>
+    <repository>
+      <id>sonatype-oss-snapshots</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    </repository>
   </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>maven-snapshots</id>
+      <url>https://repository.apache.org/content/repositories/snapshots/</url>
+    </pluginRepository>
+  </pluginRepositories>
   <dependencies>
     <dependency>
       <groupId>org.spigotmc</groupId>

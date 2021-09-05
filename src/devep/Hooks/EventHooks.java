@@ -3,28 +3,27 @@ package devep.Hooks;
 import com.github.yannicklamprecht.worldborder.api.PersistentWorldBorderApi;
 import devep.Actions.BroadcastRequiredPlayers;
 import devep.Actions.GetSpawnLocation;
+import devep.Actions.GiveKitItem;
 import devep.Actions.SummonLightning;
 import devep.Game.GameCore;
 import devep.Game.GameSettings;
-import devep.Game.GameStatusEnum;
-import devep.Locale.LocaleFactory;
+import devep.Game.Gui.KitGui;
 import devep.SalvosMCRPG;
 import devep.ScheduleTasks;
 import devep.WorldBorder;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.event.entity.EntityPickupItemEvent;
-import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.server.ServerListPingEvent;
 import org.bukkit.event.world.WorldLoadEvent;
+import org.bukkit.inventory.EquipmentSlot;
 
 public class EventHooks implements Listener {
 
@@ -32,12 +31,14 @@ public class EventHooks implements Listener {
     private ScheduleTasks scheduleTasks;
     private BroadcastRequiredPlayers broadcastRequiredPlayers;
     private GameCore gameCore;
+    private KitGui kitGui;
 
-    public EventHooks(GameSettings gameSettings, ScheduleTasks scheduleTasks, GameCore gameCore) {
+    public EventHooks(GameSettings gameSettings, ScheduleTasks scheduleTasks, GameCore gameCore, KitGui kitGui) {
         this.gameSettings = gameSettings;
         this.scheduleTasks = scheduleTasks;
         this.gameCore = gameCore;
         this.broadcastRequiredPlayers = new BroadcastRequiredPlayers(this.gameSettings, this.scheduleTasks, this.gameCore);
+        this.kitGui = kitGui;
     }
 
     @EventHandler
@@ -59,6 +60,9 @@ public class EventHooks implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent playerJoinEvent) {
 
+        GiveKitItem gKI = new GiveKitItem();
+        gKI.executeAction(playerJoinEvent);
+
         if (SalvosMCRPG.worldBorderAPI instanceof PersistentWorldBorderApi) {
             Bukkit.getScheduler().runTaskLater(SalvosMCRPG.plugin, () -> {
                 WorldBorder.sendWorldPacket(playerJoinEvent.getPlayer(), gameSettings.getWorldBorderRadius());
@@ -67,6 +71,19 @@ public class EventHooks implements Listener {
 
         this.broadcastRequiredPlayers.executeAction(playerJoinEvent);
     }
+
+    @EventHandler
+    public void onPlayerInteractItemClickEvent(PlayerInteractEvent event) {
+
+        Player player = event.getPlayer();
+
+        if(player.getItemInHand().getItemMeta().getDisplayName() != null && player.getItemInHand().getItemMeta().getDisplayName().equals("Kits")) {
+            if (event.getHand() == EquipmentSlot.HAND && (event.getAction() == Action.RIGHT_CLICK_AIR ||event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
+                kitGui.openGUIForPlayer(event.getPlayer());
+            }
+        }
+    }
+
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent playerQuitEvent) {
 

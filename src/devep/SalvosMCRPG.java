@@ -3,6 +3,7 @@ package devep;
 import com.github.yannicklamprecht.worldborder.api.WorldBorderApi;
 import devep.Game.GameCore;
 import devep.Game.GameSettings;
+import devep.Game.Gui.KitGui;
 import devep.Hooks.EventHooks;
 import devep.Hooks.GameStartedHooks;
 import devep.Hooks.InvulnerabilityHooks;
@@ -21,6 +22,7 @@ public class SalvosMCRPG extends JavaPlugin {
     public void onEnable(){
 
         this.plugin = this;
+
         GameSettings gameSettings = new GameSettings();
 
         loadExternalPluginAPIS();
@@ -35,7 +37,7 @@ public class SalvosMCRPG extends JavaPlugin {
     }
 
     private void registerEvents(GameSettings gameSettings, ScheduleTasks scheduleTasks, GameCore gameCore) {
-        getServer().getPluginManager().registerEvents(new EventHooks(gameSettings, scheduleTasks, gameCore), plugin);
+        getServer().getPluginManager().registerEvents(new EventHooks(gameSettings, scheduleTasks, gameCore, new KitGui()), plugin);
         getServer().getPluginManager().registerEvents(new InvulnerabilityHooks(gameSettings), plugin);
         getServer().getPluginManager().registerEvents(new GameStartedHooks(gameSettings), plugin);
     }
