@@ -132,9 +132,13 @@ public class ScheduleTasks {
                         Bukkit.getServer().getWorld("world").spawnEntity(winPlayer.getLocation(), EntityType.FIREWORK);
                         winPlayer.sendMessage(ChatColor.GOLD + "You win!!");
                         winPlayer.sendMessage(ChatColor.GREEN + "Congrats!!");
+
+                        Bukkit.getScheduler().cancelTask(lookForGameFinishScheduleID);
                     }
 
-                    Bukkit.getScheduler().cancelTask(lookForGameFinishScheduleID);
+                    if (Bukkit.getOnlinePlayers().size() == 0) {
+                        System.out.println("game finish");
+                    }
 
                 } catch(Exception ex) {
                     System.out.println("Excepción producida en lookForGameFinish(): " + ex.toString());

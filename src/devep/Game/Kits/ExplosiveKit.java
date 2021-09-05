@@ -21,6 +21,8 @@ public class ExplosiveKit implements KitsInterface {
         ArrayList<ItemStack> items = new ArrayList<ItemStack>();
         items.add(new ItemStack(Material.TNT, 4));
         items.add(new ItemStack(Material.FLINT_AND_STEEL, 1));
+        items.add(new ItemStack(Material.LEATHER_LEGGINGS, 1));
+        items.add(new ItemStack(Material.APPLE, 4));
 
         return items;
     }

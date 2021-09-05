@@ -4,6 +4,7 @@ devep\Locale\SpanishLocale.class
 devep\Hooks\EventHooks.class
 devep\SalvosMCRPG.class
 devep\WorldBorder$1.class
+devep\Game\Kits\HorseRiderKit.class
 devep\ScheduleTasks$2.class
 devep\Actions\ActionInterface.class
 devep\Game\GameSettings.class
@@ -19,6 +20,7 @@ devep\DB.class
 devep\Game\GameCore$2.class
 devep\Game\Kits\FarmerKit.class
 devep\Game\Kits\HunterKit.class
+devep\Game\Kits\EnderKit.class
 devep\ScheduleTasks.class
 devep\Actions\BroadcastRequiredPlayers.class
 devep\Game\Kits\ExplosiveKit.class

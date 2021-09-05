@@ -8,11 +8,13 @@ import io.github.classgraph.ClassGraph;
 import io.github.classgraph.ScanResult;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class KitGui {
@@ -21,6 +23,7 @@ public class KitGui {
     public KitGui() {
         createGUI();
     }
+    public static HashMap<Player, KitsInterface> playersKits = new HashMap<>();
 
     private void createGUI() {
         Gui gui = Gui.gui()
@@ -35,23 +38,31 @@ public class KitGui {
                 Player player = Bukkit.getPlayer(event.getWhoClicked().getUniqueId());
                 player.closeInventory();
 
-                kit.setPlayer(player);
-
-                for(ItemStack item : kit.getItems()) {
-                    player.getInventory().addItem(item);
+                if (playersKits.containsKey(player)) {
+                    playersKits.remove(player);
                 }
 
-                player.sendMessage("You have choose the " + kit.getName() + " kit!");
+                playersKits.put(player, kit);
 
-                kit.executePlayerAction();
+                player.sendMessage(ChatColor.GREEN + "You have choose the " + kit.getName() + " kit! You will have it when game starts.");
                 player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10, 1);
+                // applyKitToPlayer(player, kit);
             });
 
             gui.setItem(index++, guiItem);
         }
 
-
         this.gui = gui;
+    }
+
+    public static void applyKitToPlayer(Player player, KitsInterface kit) {
+        kit.setPlayer(player);
+
+        for(ItemStack item : kit.getItems()) {
+            player.getInventory().addItem(item);
+        }
+
+        kit.executePlayerAction();
     }
 
     private ArrayList<KitsInterface> getKits() {

@@ -30,8 +30,9 @@ public class FishermanKit implements KitsInterface {
         fishRoad.setItemMeta(meta);
 
         items.add(fishRoad);
-        items.add(new ItemStack(Material.AXOLOTL_BUCKET, 1));
         items.add(new ItemStack(Material.COOKED_SALMON, 5));
+        items.add(new ItemStack(Material.LEATHER_LEGGINGS, 1));
+        items.add(new ItemStack(Material.LEATHER_BOOTS, 1));
 
         return items;
     }

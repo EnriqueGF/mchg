@@ -1,5 +1,7 @@
 package devep.Game;
 
+import devep.Game.Gui.KitGui;
+import devep.Game.Kits.KitsInterface;
 import devep.Locale.LocaleFactory;
 import devep.SalvosMCRPG;
 import devep.ScheduleTasks;
@@ -7,10 +9,13 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.Map;
 
 public class GameCore {
     private GameSettings gameSettings;
@@ -73,8 +78,21 @@ public class GameCore {
 
         sendLocaleMessageToAllPlayers("INVULNERABILITY_STARTING_1", "", ChatColor.GOLD);
 
-        for (Player player : Bukkit.getOnlinePlayers()) {
-            player.teleport(SalvosMCRPG.spawnLocation);
+        try {
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                player.getInventory().clear();
+                player.setHealth(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue());
+                player.setFoodLevel(20);
+                player.teleport(SalvosMCRPG.spawnLocation);
+            }
+        } catch (Exception ex) {
+            System.out.println("Excepcion teletransportando players al spawn: " + ex);
+        }
+
+        try {
+            applyPlayersKits();
+        } catch (Exception ex) {
+            System.out.println("Excepcion en ApplyPlayersKit: " + ex);
         }
 
         SalvosMCRPG.plugin.getServer().getScheduler().scheduleSyncDelayedTask(SalvosMCRPG.plugin, new Runnable() {
@@ -82,7 +100,6 @@ public class GameCore {
                 startMatchGame();
             }
         }, 20 * gameSettings.invulnerabilityStageSeconds);
-
 
         countPVPEnabledScheduleID = SalvosMCRPG.plugin.getServer().getScheduler().scheduleSyncRepeatingTask(SalvosMCRPG.plugin, new Runnable() {
             public void run() {
@@ -98,6 +115,18 @@ public class GameCore {
             }
         }, 20 * (gameSettings.invulnerabilityStageSeconds - 5), 20);
 
+    }
+
+    private void applyPlayersKits() {
+        for (Map.Entry<Player, KitsInterface> entry : KitGui.playersKits.entrySet()) {
+            Player player = entry.getKey();
+            KitsInterface kit = entry.getValue();
+
+            if (player.isOnline() && player.isValid() && player.getHealth() > 0) {
+                KitGui.applyKitToPlayer(player, kit);
+            }
+
+        }
     }
 
     private void startMatchGame() {
