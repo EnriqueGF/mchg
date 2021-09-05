@@ -14,6 +14,7 @@ devep\Locale\Locale.class
 devep\Actions\GiveKitItem.class
 devep\DB.class
 devep\Game\GameCore$2.class
+devep\Game\Kits\FarmerKit.class
 devep\ScheduleTasks.class
 devep\Actions\BroadcastRequiredPlayers.class
 devep\WorldBorder.class
@@ -21,6 +22,7 @@ devep\Game\GameCore$3.class
 devep\ScheduleTasks$3.class
 devep\Actions\SummonLightning.class
 devep\Game\Gui\KitGui.class
+devep\Game\Kits\KitsInterface.class
 devep\Game\GameCore$1.class
 devep\Actions\GetSpawnLocation.class
 devep\Locale\EnglishLocale.class

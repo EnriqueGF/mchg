@@ -3,6 +3,7 @@ C:\Users\Enrique\Desktop\SalvosMC-RPG-main\src\devep\DB.java
 C:\Users\Enrique\Desktop\SalvosMC-RPG-main\src\devep\Game\GameCore.java
 C:\Users\Enrique\Desktop\SalvosMC-RPG-main\src\devep\Hooks\InvulnerabilityHooks.java
 C:\Users\Enrique\Desktop\SalvosMC-RPG-main\src\devep\Locale\Locale.java
+C:\Users\Enrique\Desktop\SalvosMC-RPG-main\src\devep\Game\Kits\FarmerKit.java
 C:\Users\Enrique\Desktop\SalvosMC-RPG-main\src\devep\Hooks\GameStartedHooks.java
 C:\Users\Enrique\Desktop\SalvosMC-RPG-main\src\devep\Actions\SummonLightning.java
 C:\Users\Enrique\Desktop\SalvosMC-RPG-main\src\devep\Game\GameSettings.java
@@ -17,4 +18,5 @@ C:\Users\Enrique\Desktop\SalvosMC-RPG-main\src\devep\Locale\LocaleFactory.java
 C:\Users\Enrique\Desktop\SalvosMC-RPG-main\src\devep\Locale\EnglishLocale.java
 C:\Users\Enrique\Desktop\SalvosMC-RPG-main\src\devep\WorldBorder.java
 C:\Users\Enrique\Desktop\SalvosMC-RPG-main\src\devep\Locale\SpanishLocale.java
+C:\Users\Enrique\Desktop\SalvosMC-RPG-main\src\devep\Game\Kits\KitsInterface.java
 C:\Users\Enrique\Desktop\SalvosMC-RPG-main\src\devep\Actions\BroadcastRequiredPlayers.java
