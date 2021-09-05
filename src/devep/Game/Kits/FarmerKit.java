@@ -46,9 +46,7 @@ public class FarmerKit implements KitsInterface {
     }
 
     @Override
-    public void executePlayerAction() {
-
-    }
+    public void executePlayerAction() {}
 
 
 }

@@ -59,9 +59,5 @@ public class AquaticKit implements KitsInterface {
     }
 
     @Override
-    public void executePlayerAction() {
-
-    }
-
-
+    public void executePlayerAction() {}
 }

@@ -1,3 +1,4 @@
+devep\Game\Kits\FishermanKit.class
 devep\Hooks\EventHooks$1.class
 devep\Locale\SpanishLocale.class
 devep\Hooks\EventHooks.class
@@ -16,6 +17,7 @@ devep\Actions\GiveKitItem.class
 devep\DB.class
 devep\Game\GameCore$2.class
 devep\Game\Kits\FarmerKit.class
+devep\Game\Kits\HunterKit.class
 devep\ScheduleTasks.class
 devep\Actions\BroadcastRequiredPlayers.class
 devep\WorldBorder.class
