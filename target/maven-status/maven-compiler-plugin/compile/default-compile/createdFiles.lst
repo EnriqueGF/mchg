@@ -10,6 +10,7 @@ devep\Game\GameSettings.class
 devep\Game\Kits\MinerKit.class
 devep\Game\GameCore.class
 devep\Game\GameStatusEnum.class
+devep\Game\Kits\ArmerKit.class
 devep\Hooks\GameStartedHooks.class
 devep\Hooks\InvulnerabilityHooks.class
 devep\Locale\Locale.class
@@ -20,13 +21,16 @@ devep\Game\Kits\FarmerKit.class
 devep\Game\Kits\HunterKit.class
 devep\ScheduleTasks.class
 devep\Actions\BroadcastRequiredPlayers.class
+devep\Game\Kits\ExplosiveKit.class
 devep\WorldBorder.class
 devep\Game\GameCore$3.class
+devep\Game\Kits\BlacksmithKit.class
 devep\ScheduleTasks$3.class
 devep\Actions\SummonLightning.class
 devep\Game\Gui\KitGui.class
 devep\Game\Kits\AquaticKit.class
 devep\Game\Kits\KitsInterface.class
+devep\Game\Kits\ArcherKit.class
 devep\Game\GameCore$1.class
 devep\Actions\GetSpawnLocation.class
 devep\Locale\EnglishLocale.class

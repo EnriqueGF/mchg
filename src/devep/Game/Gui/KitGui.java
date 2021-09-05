@@ -8,6 +8,7 @@ import io.github.classgraph.ClassGraph;
 import io.github.classgraph.ScanResult;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -24,7 +25,7 @@ public class KitGui {
     private void createGUI() {
         Gui gui = Gui.gui()
                 .title(Component.text("Kits"))
-                .rows(6)
+                .rows(2)
                 .create();
 
 
@@ -43,6 +44,7 @@ public class KitGui {
                 player.sendMessage("You have choose the " + kit.getName() + " kit!");
 
                 kit.executePlayerAction();
+                player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10, 1);
             });
 
             gui.setItem(index++, guiItem);
