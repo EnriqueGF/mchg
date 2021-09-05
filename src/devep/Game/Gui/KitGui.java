@@ -28,19 +28,24 @@ public class KitGui {
                 .create();
 
 
+        int index = 0;
         for (KitsInterface kit : getKits() ) {
             GuiItem guiItem = ItemBuilder.from(kit.getDisplayMaterial()).asGuiItem(event -> {
                 Player player = Bukkit.getPlayer(event.getWhoClicked().getUniqueId());
                 player.closeInventory();
+
+                kit.setPlayer(player);
 
                 for(ItemStack item : kit.getItems()) {
                     player.getInventory().addItem(item);
                 }
 
                 player.sendMessage("You have choose the " + kit.getName() + " kit!");
+
+                kit.executePlayerAction();
             });
 
-            gui.setItem(0, guiItem);
+            gui.setItem(index++, guiItem);
         }
 
 

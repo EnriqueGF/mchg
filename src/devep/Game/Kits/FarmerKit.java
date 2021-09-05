@@ -1,6 +1,7 @@
 package devep.Game.Kits;
 
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 public class FarmerKit implements KitsInterface {
 
     private String name;
+    private Player player;
 
     public FarmerKit() {
         this.name = "Farmer";
@@ -36,6 +38,16 @@ public class FarmerKit implements KitsInterface {
         displayIcon.setItemMeta(meta);
 
         return displayIcon;
+    }
+
+    @Override
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    @Override
+    public void executePlayerAction() {
+
     }
 
 

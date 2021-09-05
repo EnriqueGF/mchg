@@ -6,6 +6,7 @@ devep\WorldBorder$1.class
 devep\ScheduleTasks$2.class
 devep\Actions\ActionInterface.class
 devep\Game\GameSettings.class
+devep\Game\Kits\MinerKit.class
 devep\Game\GameCore.class
 devep\Game\GameStatusEnum.class
 devep\Hooks\GameStartedHooks.class
@@ -22,6 +23,7 @@ devep\Game\GameCore$3.class
 devep\ScheduleTasks$3.class
 devep\Actions\SummonLightning.class
 devep\Game\Gui\KitGui.class
+devep\Game\Kits\AquaticKit.class
 devep\Game\Kits\KitsInterface.class
 devep\Game\GameCore$1.class
 devep\Actions\GetSpawnLocation.class
