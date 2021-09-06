@@ -66,7 +66,9 @@ public class AquaticKit implements KitsInterface {
         List<String> lore = Arrays.asList(
                 LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_AQUATIC_1"),
                 LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_AQUATIC_2"),
-                LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_AQUATIC_3")
+                LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_AQUATIC_3"),
+                "",
+                LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_AQUATIC_4")
         );
         meta.setLore(lore);
 

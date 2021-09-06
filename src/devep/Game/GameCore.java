@@ -77,6 +77,8 @@ public class GameCore {
 
     private void teleportPlayersToSpawn() {
 
+        SalvosMCRPG.plugin.getServer().getWorld("world").setTime(0);
+
         sendLocaleMessageToAllPlayers("INVULNERABILITY_STARTING_1", "", ChatColor.GOLD);
 
         try {

@@ -5,6 +5,7 @@ import devep.Locale.LocaleFactory;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -47,10 +48,13 @@ public class ArcherKit implements KitsInterface {
 
         ItemMeta meta = displayIcon.getItemMeta();
         meta.setDisplayName(this.name);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         List<String> lore = Arrays.asList(
                 LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_ARCHER_1"),
                 LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_ARCHER_2"),
-                LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_ARCHER_3")
+                LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_ARCHER_3"),
+                "",
+                LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_ARCHER_4")
         );
         meta.setLore(lore);
         displayIcon.setItemMeta(meta);

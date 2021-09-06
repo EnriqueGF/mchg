@@ -34,7 +34,7 @@ public class BroadcastRequiredPlayers implements ActionInterface {
 
         if (onlinePlayersCount < gameSettings.getRequiredPlayersToStart()) {
             int playersLeft = gameSettings.getRequiredPlayersToStart() - onlinePlayersCount;
-            gameCore.sendLocaleMessageToAllPlayers("REMAINING_PLAYERS_TO_START", Integer.toString(playersLeft), ChatColor.DARK_RED);
+            gameCore.sendLocaleMessageToAllPlayers("REMAINING_PLAYERS_TO_START", Integer.toString(playersLeft), ChatColor.GOLD);
         }
     }
 }
