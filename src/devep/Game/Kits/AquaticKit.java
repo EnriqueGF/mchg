@@ -7,6 +7,7 @@ import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -60,6 +61,8 @@ public class AquaticKit implements KitsInterface {
 
         ItemMeta meta = displayIcon.getItemMeta();
         meta.setDisplayName(this.name);
+        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+
         List<String> lore = Arrays.asList(
                 LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_AQUATIC_1"),
                 LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_AQUATIC_2"),
