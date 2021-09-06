@@ -4,6 +4,7 @@ import dev.triumphteam.gui.builder.item.ItemBuilder;
 import dev.triumphteam.gui.guis.Gui;
 import dev.triumphteam.gui.guis.GuiItem;
 import devep.Game.Kits.KitsInterface;
+import devep.Locale.LocaleFactory;
 import io.github.classgraph.ClassGraph;
 import io.github.classgraph.ScanResult;
 import net.kyori.adventure.text.Component;
@@ -51,7 +52,7 @@ public class KitGui {
 
                 playersKits.put(player, kit);
 
-                player.sendMessage(ChatColor.GREEN + "You have choose the " + kit.getName() + " kit! You will have it when game starts.");
+                player.sendMessage(LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_SELECTED_MESSAGE").replace("%s", kit.getName()));
                 player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10, 1);
             });
 

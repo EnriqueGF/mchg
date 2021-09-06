@@ -140,7 +140,7 @@ public class GameCore {
         this.scheduleTasks.sendWorldBorderPackets();
     }
 
-    public void sendLocaleMessageToAllPlayers(String message, String replaceString, ChatColor textColor) {
+    public static void sendLocaleMessageToAllPlayers(String message, String replaceString, ChatColor textColor) {
 
         for (Player player : Bukkit.getOnlinePlayers()) {
             if (player.getTicksLived() >= 105) {
@@ -153,7 +153,7 @@ public class GameCore {
             }
         }
     }
-    private void sendPlayerMessage(String message, String replaceString, ChatColor textColor, Player player) {
+    public static void sendPlayerMessage(String message, String replaceString, ChatColor textColor, Player player) {
 
         String msg = LocaleFactory.getLocale(player.getLocale()).getTranslatedText(message);
 
@@ -162,7 +162,7 @@ public class GameCore {
         }
 
         String finalMsg = msg;
-        player.sendMessage(gameSettings.announcementsPrefix + textColor + finalMsg);
+        player.sendMessage(GameSettings.announcementsPrefix + textColor + finalMsg);
 
     };
 

@@ -17,7 +17,11 @@ public class SpanishLocale extends Locale {
             {"YOU_DEAD_KILLED", "¡Has muerto!"},
             {"CANT_DROP_KIT_ITEM", "¡No puedes soltar un item de tu kit!"},
 
+            {"BORDER_IS_CLOSING_ALERT", "¡El borde del mundo se está cerrando!"},
+
             // Kits
+            {"KIT_SELECTED_MESSAGE", ChatColor.YELLOW + "¡Has seleccionado el kit "+ChatColor.GOLD+"%s"+ChatColor.YELLOW+"!"},
+
             {"KIT_AQUATIC_1", ChatColor.BLUE + "Te permite moverte por el agua con facilidad"},
             {"KIT_AQUATIC_2", ChatColor.GRAY + "Tridente con Riptide I"},
             {"KIT_AQUATIC_3", ChatColor.GRAY + "Casco de hierro con Oxígeno I"},

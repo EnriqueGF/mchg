@@ -1,6 +1,7 @@
 package devep;
 
 import com.github.yannicklamprecht.worldborder.api.IWorldBorder;
+import devep.Game.GameCore;
 import devep.Game.GameSettings;
 import devep.Game.GameStatusEnum;
 import org.bukkit.Bukkit;
@@ -29,8 +30,7 @@ public class ScheduleTasks {
 
     public void sendWorldBorderPackets() {
 
-        //int waitBetweenEdgeClosesSeconds = 900;
-        int waitBetweenEdgeClosesSeconds = 50;
+        int waitBetweenEdgeClosesSeconds = GameSettings.timeBetweenBorderCloses;
 
         Thread t = new Thread(() -> {
             try {
@@ -65,6 +65,9 @@ public class ScheduleTasks {
                         }
 
                         if (edgeCloseLength != 0) {
+                            // Close border
+
+                            GameCore.sendLocaleMessageToAllPlayers("BORDER_IS_CLOSING_ALERT", "", ChatColor.RED);
 
                             for (int i = 0; i < edgeCloseLength; i++) {
                                 for (Player player : Bukkit.getOnlinePlayers()) {
@@ -72,7 +75,7 @@ public class ScheduleTasks {
                                         Bukkit.getScheduler().runTask(plugin, new Runnable() {
                                             @Override
                                             public void run() {
-                                                WorldBorder.sendWorldPacket(player, WorldBorder.borderRadius - 0.050);
+                                                WorldBorder.sendWorldPacket(player, WorldBorder.borderRadius - 0.065);
                                             }
                                         });
 
@@ -81,7 +84,7 @@ public class ScheduleTasks {
                                     }
 
                                     try {
-                                        Thread.sleep(60);
+                                        Thread.sleep(40);
                                     } catch (InterruptedException e) {
                                         e.printStackTrace();
                                     }

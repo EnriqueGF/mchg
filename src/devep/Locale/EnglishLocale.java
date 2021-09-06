@@ -17,7 +17,11 @@ public class EnglishLocale extends Locale {
             {"YOU_DEAD_KILLED", "You have died!"},
             {"CANT_DROP_KIT_ITEM", "You can't drop a kit item!"},
 
+            {"BORDER_IS_CLOSING_ALERT", "The world border is closing!"},
+
             // Kits
+            {"KIT_SELECTED_MESSAGE", ChatColor.YELLOW + "You have selected the "+ChatColor.GOLD+"%s"+ChatColor.YELLOW+" kit!"},
+
             {"KIT_AQUATIC_1", ChatColor.BLUE + "Allows you to move through the water with ease"},
             {"KIT_AQUATIC_2", ChatColor.GRAY + "Trident with Riptide I"},
             {"KIT_AQUATIC_3", ChatColor.GRAY + "Iron Helmet with Oxygen I"},
