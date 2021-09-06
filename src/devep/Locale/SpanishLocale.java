@@ -11,6 +11,7 @@ public class SpanishLocale extends Locale {
             {"PVP_SECONDS_LEFT_COUNT", "%s segundos restantes para activar el PVP"},
             {"ERROR_GAME_ALREADY_STARTED", "La partida ya ha empezado."},
             {"YOU_DEAD_KILLED", "¡Has muerto!"},
+            {"CANT_DROP_KIT_ITEM", "¡No puedes soltar un item de tu kit!"},
     };
 
     public SpanishLocale() {

@@ -22,7 +22,8 @@ public class AquaticKit implements KitsInterface {
         ArrayList<ItemStack> items = new ArrayList<ItemStack>();
         ItemStack trident = new ItemStack(Material.TRIDENT, 1);
         ItemMeta meta = trident.getItemMeta();
-        meta.addEnchant(Enchantment.RIPTIDE, 2, false);
+        meta.addEnchant(Enchantment.RIPTIDE, 1, false);
+        meta.addEnchant(Enchantment.BINDING_CURSE, 1, false);
 
         trident.setItemMeta(meta);
 

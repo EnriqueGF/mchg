@@ -1,6 +1,8 @@
 package devep.Game.Kits;
 
+import devep.Game.GameCore;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -19,8 +21,11 @@ public class BlacksmithKit implements KitsInterface {
     public ArrayList<ItemStack> getItems() {
 
         ArrayList<ItemStack> items = new ArrayList<ItemStack>();
-        items.add(new ItemStack(Material.IRON_HELMET, 1));
-        items.add(new ItemStack(Material.IRON_BOOTS, 1));
+        ItemStack ironHelmet = GameCore.addEnchantToItem(new ItemStack(Material.IRON_HELMET, 1), Enchantment.BINDING_CURSE,1);
+        ItemStack ironBoots = GameCore.addEnchantToItem(new ItemStack(Material.IRON_BOOTS, 1), Enchantment.BINDING_CURSE,1);
+
+        items.add(ironHelmet);
+        items.add(ironBoots);
 
         return items;
     }

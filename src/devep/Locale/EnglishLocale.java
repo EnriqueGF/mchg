@@ -11,6 +11,7 @@ public class EnglishLocale extends Locale {
             {"PVP_SECONDS_LEFT_COUNT", "%s seconds to start to activate PVP"},
             {"ERROR_GAME_ALREADY_STARTED", "The game is already started"},
             {"YOU_DEAD_KILLED", "You have died!"},
+            {"CANT_DROP_KIT_ITEM", "You can't drop a kit item!"},
     };
 
     public EnglishLocale() {

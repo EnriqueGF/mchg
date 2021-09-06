@@ -1,6 +1,8 @@
 package devep.Game.Kits;
 
+import devep.Game.GameCore;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -19,8 +21,12 @@ public class EnderKit implements KitsInterface {
     public ArrayList<ItemStack> getItems() {
 
         ArrayList<ItemStack> items = new ArrayList<ItemStack>();
-        items.add(new ItemStack(Material.ENDER_PEARL, 5));
-        items.add(new ItemStack(Material.SHULKER_BOX, 1));
+
+        ItemStack enderPearls = GameCore.addEnchantToItem(new ItemStack(Material.ENDER_PEARL, 5), Enchantment.BINDING_CURSE,1);
+        ItemStack shulkerBox = GameCore.addEnchantToItem(new ItemStack(Material.SHULKER_BOX, 1), Enchantment.BINDING_CURSE,1);
+
+        items.add(enderPearls);
+        items.add(shulkerBox);
 
         return items;
     }

@@ -24,6 +24,7 @@ public class ArcherKit implements KitsInterface {
         ItemStack bow = new ItemStack(Material.BOW, 1);
         ItemMeta meta = bow.getItemMeta();
         meta.addEnchant(Enchantment.ARROW_DAMAGE, 1, false);
+        meta.addEnchant(Enchantment.VANISHING_CURSE, 1, false);
 
         bow.setItemMeta(meta);
 

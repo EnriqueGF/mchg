@@ -7,23 +7,31 @@ import devep.Actions.GiveKitItem;
 import devep.Actions.SummonLightning;
 import devep.Game.GameCore;
 import devep.Game.GameSettings;
+import devep.Game.GameStatusEnum;
 import devep.Game.Gui.KitGui;
+import devep.Locale.LocaleFactory;
 import devep.SalvosMCRPG;
 import devep.ScheduleTasks;
 import devep.WorldBorder;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDeathEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.server.ServerListPingEvent;
 import org.bukkit.event.world.WorldLoadEvent;
 import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemStack;
+
+import java.util.Iterator;
 
 public class EventHooks implements Listener {
 
@@ -115,6 +123,38 @@ public class EventHooks implements Listener {
             default:
         }
         event.setMotd(motd);
+    }
+
+    @EventHandler
+    public void onPlayerDeathDrop(PlayerDeathEvent e) {
+
+        if (e.getDrops() == null) {
+            return;
+        }
+
+        Iterator<ItemStack> i = e.getDrops().iterator();
+        while (i.hasNext()) {
+            ItemStack item = i.next();
+            if (item.getEnchantments().containsKey(Enchantment.BINDING_CURSE)) {
+                i.remove();
+            }
+        }
+
+    }
+
+    @EventHandler
+    public void onPlayerDropItem(PlayerDropItemEvent event){
+
+        if (event.getItemDrop() == null || event.getItemDrop().getItemStack() == null || event.getItemDrop().getItemStack().getEnchantments() == null) {
+            return;
+        }
+
+        if (event.getItemDrop().getItemStack().getEnchantments().containsKey(Enchantment.BINDING_CURSE)) {
+            event.setCancelled(true);
+            event.getPlayer().sendMessage(
+                    LocaleFactory.getLocale(event.getPlayer().getLocale()).getTranslatedText("CANT_DROP_KIT_ITEM")
+            );
+        }
     }
 
 }

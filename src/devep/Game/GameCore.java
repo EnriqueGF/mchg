@@ -10,6 +10,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
@@ -169,6 +170,15 @@ public class GameCore {
         meta.setDisplayName("Kits");
         item.setItemMeta(meta);
         playerJoinEvent.getPlayer().getInventory().addItem(item);
+    }
+
+    public static ItemStack addEnchantToItem(ItemStack item, Enchantment enchantment, int enchantmentLevel) {
+        ItemMeta meta = item.getItemMeta();
+        meta.addEnchant(enchantment, 1, false);
+
+        item.setItemMeta(meta);
+
+        return item;
     }
 
 }
