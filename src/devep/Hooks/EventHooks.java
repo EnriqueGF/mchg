@@ -39,14 +39,12 @@ public class EventHooks implements Listener {
     private ScheduleTasks scheduleTasks;
     private BroadcastRequiredPlayers broadcastRequiredPlayers;
     private GameCore gameCore;
-    private KitGui kitGui;
 
-    public EventHooks(GameSettings gameSettings, ScheduleTasks scheduleTasks, GameCore gameCore, KitGui kitGui) {
+    public EventHooks(GameSettings gameSettings, ScheduleTasks scheduleTasks, GameCore gameCore) {
         this.gameSettings = gameSettings;
         this.scheduleTasks = scheduleTasks;
         this.gameCore = gameCore;
         this.broadcastRequiredPlayers = new BroadcastRequiredPlayers(this.gameSettings, this.scheduleTasks, this.gameCore);
-        this.kitGui = kitGui;
     }
 
     @EventHandler
@@ -91,6 +89,16 @@ public class EventHooks implements Listener {
             && player.getItemInHand().getItemMeta().getDisplayName().equals("Kits")) {
 
             if (event.getHand() == EquipmentSlot.HAND && (event.getAction() == Action.RIGHT_CLICK_AIR ||event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
+                KitGui kitGui;
+
+                if (KitGui.playersGuis.containsKey(player)) {
+                    kitGui = KitGui.playersGuis.get(player);
+                } else {
+                    KitGui newKitGui = new KitGui(player);
+                    KitGui.playersGuis.put(player, newKitGui);
+                    kitGui = newKitGui;
+                }
+
                 kitGui.openGUIForPlayer(event.getPlayer());
             }
         }

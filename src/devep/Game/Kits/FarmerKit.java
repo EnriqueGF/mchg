@@ -1,6 +1,8 @@
 package devep.Game.Kits;
 
+import devep.Game.GameCore;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -19,8 +21,11 @@ public class FarmerKit implements KitsInterface {
     public ArrayList<ItemStack> getItems() {
 
         ArrayList<ItemStack> items = new ArrayList<ItemStack>();
-        items.add(new ItemStack(Material.GOLDEN_APPLE, 1));
-        items.add(new ItemStack(Material.PUMPKIN_PIE, 10));
+        ItemStack goldenApple = GameCore.addEnchantToItem(new ItemStack(Material.GOLDEN_APPLE, 1), Enchantment.BINDING_CURSE,1);
+        ItemStack pumpkinPies = GameCore.addEnchantToItem(new ItemStack(Material.PUMPKIN_PIE, 10), Enchantment.BINDING_CURSE,1);
+
+        items.add(goldenApple);
+        items.add(pumpkinPies);
 
         return items;
     }

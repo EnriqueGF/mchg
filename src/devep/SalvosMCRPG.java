@@ -37,7 +37,7 @@ public class SalvosMCRPG extends JavaPlugin {
     }
 
     private void registerEvents(GameSettings gameSettings, ScheduleTasks scheduleTasks, GameCore gameCore) {
-        getServer().getPluginManager().registerEvents(new EventHooks(gameSettings, scheduleTasks, gameCore, new KitGui()), plugin);
+        getServer().getPluginManager().registerEvents(new EventHooks(gameSettings, scheduleTasks, gameCore), plugin);
         getServer().getPluginManager().registerEvents(new InvulnerabilityHooks(gameSettings), plugin);
         getServer().getPluginManager().registerEvents(new GameStartedHooks(gameSettings), plugin);
     }

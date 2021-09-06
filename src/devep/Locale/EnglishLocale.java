@@ -1,8 +1,12 @@
 package devep.Locale;
 
+import org.bukkit.ChatColor;
+
 public class EnglishLocale extends Locale {
 
     private String[][] translationsArr = {
+            // General
+
             {"REMAINING_PLAYERS_TO_START", "%s players left to start"},
             {"INVULNERABILITY_STARTING_1", "All players are teleported to spawn area. Invulnerability for 4 minutes starts!"},
             {"GAME_STARTS_MESSAGE", "PVP is activated!"},
@@ -12,6 +16,11 @@ public class EnglishLocale extends Locale {
             {"ERROR_GAME_ALREADY_STARTED", "The game is already started"},
             {"YOU_DEAD_KILLED", "You have died!"},
             {"CANT_DROP_KIT_ITEM", "You can't drop a kit item!"},
+
+            // Kits
+            {"KIT_AQUATIC_1", ChatColor.BLUE + "Allows you to move through the water with ease"},
+            {"KIT_AQUATIC_2", ChatColor.BLUE + "- Trident with Riptide I"},
+            {"KIT_AQUATIC_3", ChatColor.BLUE + "- Iron Helmet with Oxygen I"},
     };
 
     public EnglishLocale() {

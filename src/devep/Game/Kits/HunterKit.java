@@ -1,6 +1,8 @@
 package devep.Game.Kits;
 
+import devep.Game.GameCore;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Wolf;
@@ -21,7 +23,9 @@ public class HunterKit implements KitsInterface {
     public ArrayList<ItemStack> getItems() {
 
         ArrayList<ItemStack> items = new ArrayList<ItemStack>();
-        items.add(new ItemStack(Material.IRON_SWORD, 1));
+        ItemStack ironSword = GameCore.addEnchantToItem(new ItemStack(Material.IRON_SWORD, 1), Enchantment.BINDING_CURSE,1);
+
+        items.add(ironSword);
 
         return items;
     }

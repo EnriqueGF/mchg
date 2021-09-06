@@ -1,12 +1,19 @@
 package devep.Game.Kits;
 
+import devep.Locale.LocaleFactory;
 import org.bukkit.Material;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.UUID;
 
 public class AquaticKit implements KitsInterface {
 
@@ -22,6 +29,11 @@ public class AquaticKit implements KitsInterface {
         ArrayList<ItemStack> items = new ArrayList<ItemStack>();
         ItemStack trident = new ItemStack(Material.TRIDENT, 1);
         ItemMeta meta = trident.getItemMeta();
+
+        AttributeModifier attackSpeedModifier = new AttributeModifier(UUID.randomUUID(), "generic.attackSpeed", -3, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        AttributeModifier damageModifier = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", 4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, damageModifier);
+        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackSpeedModifier);
         meta.addEnchant(Enchantment.RIPTIDE, 1, false);
         meta.addEnchant(Enchantment.BINDING_CURSE, 1, false);
 
@@ -48,6 +60,12 @@ public class AquaticKit implements KitsInterface {
 
         ItemMeta meta = displayIcon.getItemMeta();
         meta.setDisplayName(this.name);
+        List<String> lore = Arrays.asList(
+                LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_AQUATIC_1"),
+                LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_AQUATIC_2"),
+                LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_AQUATIC_3")
+        );
+        meta.setLore(lore);
 
         displayIcon.setItemMeta(meta);
 

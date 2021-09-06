@@ -1,6 +1,8 @@
 package devep.Game.Kits;
 
+import devep.Game.GameCore;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -19,10 +21,15 @@ public class ExplosiveKit implements KitsInterface {
     public ArrayList<ItemStack> getItems() {
 
         ArrayList<ItemStack> items = new ArrayList<ItemStack>();
-        items.add(new ItemStack(Material.TNT, 4));
-        items.add(new ItemStack(Material.FLINT_AND_STEEL, 1));
-        items.add(new ItemStack(Material.LEATHER_LEGGINGS, 1));
-        items.add(new ItemStack(Material.APPLE, 4));
+        ItemStack tnt = GameCore.addEnchantToItem(new ItemStack(Material.TNT, 4), Enchantment.BINDING_CURSE,1);
+        ItemStack flintAndSteel = GameCore.addEnchantToItem(new ItemStack(Material.FLINT_AND_STEEL, 1), Enchantment.BINDING_CURSE,1);
+        ItemStack leatherLeggings = GameCore.addEnchantToItem(new ItemStack(Material.LEATHER_LEGGINGS, 1), Enchantment.BINDING_CURSE,1);
+        ItemStack apples = GameCore.addEnchantToItem(new ItemStack(Material.APPLE, 4), Enchantment.BINDING_CURSE,1);
+
+        items.add(tnt);
+        items.add(flintAndSteel);
+        items.add(leatherLeggings);
+        items.add(apples);
 
         return items;
     }

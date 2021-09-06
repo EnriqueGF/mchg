@@ -19,10 +19,14 @@ import java.util.List;
 
 public class KitGui {
     private Gui gui;
+    private Player player;
 
-    public KitGui() {
+    public KitGui(Player player) {
+        this.player = player;
         createGUI();
     }
+
+    public static HashMap<Player, KitGui> playersGuis = new HashMap<>();
     public static HashMap<Player, KitsInterface> playersKits = new HashMap<>();
 
     private void createGUI() {
@@ -34,6 +38,9 @@ public class KitGui {
 
         int index = 0;
         for (KitsInterface kit : getKits() ) {
+
+            kit.setPlayer(this.player);
+
             GuiItem guiItem = ItemBuilder.from(kit.getDisplayMaterial()).asGuiItem(event -> {
                 Player player = Bukkit.getPlayer(event.getWhoClicked().getUniqueId());
                 player.closeInventory();
@@ -46,7 +53,6 @@ public class KitGui {
 
                 player.sendMessage(ChatColor.GREEN + "You have choose the " + kit.getName() + " kit! You will have it when game starts.");
                 player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 10, 1);
-                // applyKitToPlayer(player, kit);
             });
 
             gui.setItem(index++, guiItem);
