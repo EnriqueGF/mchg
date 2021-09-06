@@ -19,8 +19,12 @@ public class EnglishLocale extends Locale {
 
             // Kits
             {"KIT_AQUATIC_1", ChatColor.BLUE + "Allows you to move through the water with ease"},
-            {"KIT_AQUATIC_2", ChatColor.BLUE + "- Trident with Riptide I"},
-            {"KIT_AQUATIC_3", ChatColor.BLUE + "- Iron Helmet with Oxygen I"},
+            {"KIT_AQUATIC_2", ChatColor.GRAY + "Trident with Riptide I"},
+            {"KIT_AQUATIC_3", ChatColor.GRAY + "Iron Helmet with Oxygen I"},
+
+            {"KIT_ARCHER_1", ChatColor.BLUE + "Weak but strong in medium-large distances"},
+            {"KIT_ARCHER_2", ChatColor.GRAY + "Bow with Power I"},
+            {"KIT_ARCHER_3", ChatColor.GRAY + "10 arrows"},
     };
 
     public EnglishLocale() {

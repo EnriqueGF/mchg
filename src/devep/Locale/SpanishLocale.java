@@ -19,8 +19,12 @@ public class SpanishLocale extends Locale {
 
             // Kits
             {"KIT_AQUATIC_1", ChatColor.BLUE + "Te permite moverte por el agua con facilidad"},
-            {"KIT_AQUATIC_2", ChatColor.AQUA + "- Tridente con Riptide I"},
-            {"KIT_AQUATIC_3", ChatColor.BLUE + "- Casco de hierro con Oxígeno I"},
+            {"KIT_AQUATIC_2", ChatColor.GRAY + "Tridente con Riptide I"},
+            {"KIT_AQUATIC_3", ChatColor.GRAY + "Casco de hierro con Oxígeno I"},
+
+            {"KIT_ARCHER_1", ChatColor.BLUE + "Débil pero fuerte en medias y largas distancias"},
+            {"KIT_ARCHER_2", ChatColor.GRAY + "Arco con Poder I"},
+            {"KIT_ARCHER_3", ChatColor.GRAY + "10 flechas"},
 
     };
 
