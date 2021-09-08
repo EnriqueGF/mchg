@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>000001</groupId>
-    <artifactId>SalvosMC-RPG</artifactId>
+    <artifactId>Classic-HC</artifactId>
     <version>1.0-SNAPSHOT</version>
     <pluginRepositories>
         <pluginRepository>
@@ -41,11 +41,11 @@
                     <relocations>
                         <relocation>
                             <pattern>dev.triumphteam.gui</pattern>
-                            <shadedPattern>devep.SalvosMCRPG.gui</shadedPattern>
+                            <shadedPattern>devep.ClassicHC.gui</shadedPattern>
                         </relocation>
                         <relocation>
                             <pattern>me.mattstudios.mfmsg</pattern>
-                            <shadedPattern>devep.SalvosMCRPG.mfmsg</shadedPattern>
+                            <shadedPattern>devep.ClassicHC.mfmsg</shadedPattern>
                         </relocation>
                     </relocations>
                 </configuration>

@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>000001</groupId>
-  <artifactId>SalvosMC-RPG</artifactId>
+  <artifactId>Classic-HC</artifactId>
   <version>1.0-SNAPSHOT</version>
   <build>
     <sourceDirectory>src</sourceDirectory>
@@ -38,11 +38,11 @@
           <relocations>
             <relocation>
               <pattern>dev.triumphteam.gui</pattern>
-              <shadedPattern>devep.SalvosMCRPG.gui</shadedPattern>
+              <shadedPattern>devep.ClassicHC.gui</shadedPattern>
             </relocation>
             <relocation>
               <pattern>me.mattstudios.mfmsg</pattern>
-              <shadedPattern>devep.SalvosMCRPG.mfmsg</shadedPattern>
+              <shadedPattern>devep.ClassicHC.mfmsg</shadedPattern>
             </relocation>
           </relocations>
         </configuration>

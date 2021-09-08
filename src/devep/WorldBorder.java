@@ -18,9 +18,9 @@ public class WorldBorder {
 
         WorldBorder.borderRadius = borderRadius;
 
-        SalvosMCRPG.worldBorderAPI.setBorder(player, borderRadius, SalvosMCRPG.spawnLocation);
+        ClassicHC.worldBorderAPI.setBorder(player, borderRadius, ClassicHC.spawnLocation);
 
-        PersistentWorldBorderApi persistentWorldBorderApi = ((PersistentWorldBorderApi) SalvosMCRPG.worldBorderAPI);
+        PersistentWorldBorderApi persistentWorldBorderApi = ((PersistentWorldBorderApi) ClassicHC.worldBorderAPI);
         WorldBorderData worldBorderData = persistentWorldBorderApi.getWorldBorderData(player);
 
         worldBorderData.setWarningTimeSeconds(1);
@@ -29,7 +29,7 @@ public class WorldBorder {
         worldBorderData.setWarningDistance(5);
 
         if (worldBorderData != null) {
-            IWorldBorder worldBorder = SalvosMCRPG.worldBorderAPI.getWorldBorder(player);
+            IWorldBorder worldBorder = ClassicHC.worldBorderAPI.getWorldBorder(player);
             worldBorderData.applyAll(worldBorder);
             worldBorder.send(player, WorldBorderAction.INITIALIZE);
         }
@@ -52,23 +52,23 @@ public class WorldBorder {
             @Override
             public void run() {
 
-                RegisteredServiceProvider<WorldBorderApi> worldBorderApiRegisteredServiceProvider = SalvosMCRPG.plugin.getServer().getServicesManager().getRegistration(WorldBorderApi.class);
+                RegisteredServiceProvider<WorldBorderApi> worldBorderApiRegisteredServiceProvider = ClassicHC.plugin.getServer().getServicesManager().getRegistration(WorldBorderApi.class);
 
                 if (worldBorderApiRegisteredServiceProvider == null) {
-                    SalvosMCRPG.plugin.getServer().getConsoleSender().sendMessage(ChatColor.RED + "[SalvosMC-RPG] No se encuentra la API de WorldBorder");
-                    SalvosMCRPG.plugin.getServer().getPluginManager().disablePlugin(SalvosMCRPG.plugin);
+                    ClassicHC.plugin.getServer().getConsoleSender().sendMessage(ChatColor.RED + "[Classic-HC] No se encuentra la API de WorldBorder");
+                    ClassicHC.plugin.getServer().getPluginManager().disablePlugin(ClassicHC.plugin);
                     return;
                 }
 
                 WorldBorderApi worldBorderAPI = worldBorderApiRegisteredServiceProvider.getProvider();
                 if (worldBorderAPI != null) {
-                    SalvosMCRPG.plugin.getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[SalvosMC-RPG] API de WorldBorder Cargada");
+                    ClassicHC.plugin.getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[Classic-HC] API de WorldBorder Cargada");
                 }
 
-                SalvosMCRPG.worldBorderAPI = worldBorderAPI;
+                ClassicHC.worldBorderAPI = worldBorderAPI;
             }
 
-        }.runTaskLater(SalvosMCRPG.plugin, 30);
+        }.runTaskLater(ClassicHC.plugin, 30);
     }
 
 

@@ -7,10 +7,9 @@ import devep.Actions.GiveKitItem;
 import devep.Actions.SummonLightning;
 import devep.Game.GameCore;
 import devep.Game.GameSettings;
-import devep.Game.GameStatusEnum;
 import devep.Game.Gui.KitGui;
 import devep.Locale.LocaleFactory;
-import devep.SalvosMCRPG;
+import devep.ClassicHC;
 import devep.ScheduleTasks;
 import devep.WorldBorder;
 import org.bukkit.Bukkit;
@@ -69,13 +68,14 @@ public class EventHooks implements Listener {
         GiveKitItem gKI = new GiveKitItem();
         gKI.executeAction(playerJoinEvent);
 
-        if (SalvosMCRPG.worldBorderAPI instanceof PersistentWorldBorderApi) {
-            Bukkit.getScheduler().runTaskLater(SalvosMCRPG.plugin, () -> {
+        if (ClassicHC.worldBorderAPI instanceof PersistentWorldBorderApi) {
+            Bukkit.getScheduler().runTaskLater(ClassicHC.plugin, () -> {
                 WorldBorder.sendWorldPacket(playerJoinEvent.getPlayer(), gameSettings.getWorldBorderRadius());
             }, 20 * 5);
         }
 
         this.broadcastRequiredPlayers.executeAction(playerJoinEvent);
+        playerJoinEvent.getPlayer().setCollidable(false);
     }
 
     @EventHandler
@@ -118,14 +118,14 @@ public class EventHooks implements Listener {
 
         switch(gameSettings.gameStatus) {
             case BEFORE_START:
-                motd = ChatColor.GREEN + "             Classic HG" + " | " + ChatColor.DARK_PURPLE + "Waiting for players... \n        "+ ChatColor.RED +"   The true Hunger Games Experience";
+                motd = "0";
             break;
             case INVULNERABILITY:
-                motd = ChatColor.GREEN + "             Classic HG" + " | " + ChatColor.LIGHT_PURPLE + "Starting game \n        "+ ChatColor.RED +"   The true Hunger Games Experience";
+                motd = "1";
             break;
 
             case STARTED:
-                motd = ChatColor.GREEN + "             Classic HG" + " | " + ChatColor.DARK_AQUA + "Game in progress \n        "+ ChatColor.RED +"   The true Hunger Games Experience";
+                motd = "2";
             break;
 
             default:

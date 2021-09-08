@@ -1,6 +1,6 @@
 package devep.Actions;
 
-import devep.SalvosMCRPG;
+import devep.ClassicHC;
 import org.bukkit.World;
 import org.bukkit.event.Event;
 import org.bukkit.event.world.WorldLoadEvent;
@@ -17,6 +17,6 @@ public class GetSpawnLocation implements ActionInterface {
 
         World world = event.getWorld();
 
-        SalvosMCRPG.spawnLocation = world.getSpawnLocation();
+        ClassicHC.spawnLocation = world.getSpawnLocation();
     }
 }

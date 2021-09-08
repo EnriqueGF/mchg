@@ -43,6 +43,7 @@ public class AquaticKit implements KitsInterface {
         ItemStack helmet = new ItemStack(Material.IRON_HELMET, 1);
         ItemMeta helmetMeta = helmet.getItemMeta();
         helmetMeta.addEnchant(Enchantment.OXYGEN, 1, false);
+        helmetMeta.addEnchant(Enchantment.BINDING_CURSE, 1, false);
 
         helmet.setItemMeta(helmetMeta);
 

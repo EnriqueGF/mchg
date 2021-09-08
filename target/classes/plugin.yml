@@ -1,7 +1,7 @@
-name: SalvosMCRPG
+name: Classic-HC
 version: 0.1
 author: Enrique
-main: devep.SalvosMCRPG
+main: devep.ClassicHC
 api-version: 1.16
 depend:
   - WorldBorderAPI

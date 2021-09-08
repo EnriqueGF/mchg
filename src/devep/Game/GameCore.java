@@ -3,7 +3,7 @@ package devep.Game;
 import devep.Game.Gui.KitGui;
 import devep.Game.Kits.KitsInterface;
 import devep.Locale.LocaleFactory;
-import devep.SalvosMCRPG;
+import devep.ClassicHC;
 import devep.ScheduleTasks;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -36,7 +36,7 @@ public class GameCore {
 
     private void initCheckingForInvulnerabilityStage() {
 
-        this.checkForEnoughPlayersScheduleID = Bukkit.getScheduler().scheduleSyncRepeatingTask(SalvosMCRPG.plugin, new Runnable() {
+        this.checkForEnoughPlayersScheduleID = Bukkit.getScheduler().scheduleSyncRepeatingTask(ClassicHC.plugin, new Runnable() {
             @Override
             public void run() {
                     if (Bukkit.getOnlinePlayers().size() < gameSettings.getRequiredPlayersToStart()) {
@@ -45,7 +45,7 @@ public class GameCore {
 
                     sendLocaleMessageToAllPlayers("ALL_PLAYERS_READY", "", ChatColor.LIGHT_PURPLE);
 
-                    countInvulnerabilityScheduleID = SalvosMCRPG.plugin.getServer().getScheduler().scheduleSyncRepeatingTask(SalvosMCRPG.plugin, new Runnable() {
+                    countInvulnerabilityScheduleID = ClassicHC.plugin.getServer().getScheduler().scheduleSyncRepeatingTask(ClassicHC.plugin, new Runnable() {
                         public void run() {
                             for (Player p : Bukkit.getOnlinePlayers()){
                                 p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 10, 1);
@@ -70,23 +70,24 @@ public class GameCore {
 
         this.gameSettings.gameStatus = GameStatusEnum.INVULNERABILITY;
 
-        SalvosMCRPG.plugin.getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[SalvosMC-RPG] Iniciando invulnerabilidad por 4 minutos");
+        ClassicHC.plugin.getServer().getConsoleSender().sendMessage(ChatColor.GREEN + "[Classic-HC] Iniciando invulnerabilidad por 4 minutos");
 
         teleportPlayersToSpawn();
     }
 
     private void teleportPlayersToSpawn() {
 
-        SalvosMCRPG.plugin.getServer().getWorld("world").setTime(0);
+        ClassicHC.plugin.getServer().getWorld("world").setTime(0);
 
         sendLocaleMessageToAllPlayers("INVULNERABILITY_STARTING_1", "", ChatColor.GOLD);
 
         try {
             for (Player player : Bukkit.getOnlinePlayers()) {
+                player.setCollidable(true);
                 player.getInventory().clear();
                 player.setHealth(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue());
                 player.setFoodLevel(20);
-                player.teleport(SalvosMCRPG.spawnLocation);
+                player.teleport(ClassicHC.spawnLocation);
             }
         } catch (Exception ex) {
             System.out.println("Excepcion teletransportando players al spawn: " + ex);
@@ -98,13 +99,13 @@ public class GameCore {
             System.out.println("Excepcion en ApplyPlayersKit: " + ex);
         }
 
-        SalvosMCRPG.plugin.getServer().getScheduler().scheduleSyncDelayedTask(SalvosMCRPG.plugin, new Runnable() {
+        ClassicHC.plugin.getServer().getScheduler().scheduleSyncDelayedTask(ClassicHC.plugin, new Runnable() {
             public void run() {
                 startMatchGame();
             }
         }, 20 * gameSettings.invulnerabilityStageSeconds);
 
-        countPVPEnabledScheduleID = SalvosMCRPG.plugin.getServer().getScheduler().scheduleSyncRepeatingTask(SalvosMCRPG.plugin, new Runnable() {
+        countPVPEnabledScheduleID = ClassicHC.plugin.getServer().getScheduler().scheduleSyncRepeatingTask(ClassicHC.plugin, new Runnable() {
             public void run() {
                 for (Player p : Bukkit.getOnlinePlayers()){
                     p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 10, 1);
@@ -147,7 +148,7 @@ public class GameCore {
                 sendPlayerMessage(message, replaceString, textColor, player);
             } else {
                 // Delayed message due to waiting for client language packet on login
-                Bukkit.getScheduler().runTaskLater(SalvosMCRPG.plugin, () -> {
+                Bukkit.getScheduler().runTaskLater(ClassicHC.plugin, () -> {
                     sendPlayerMessage(message, replaceString, textColor, player);
                 }, 105);
             }

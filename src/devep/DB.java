@@ -46,7 +46,7 @@ public class DB {
 
             Class.forName("com.mysql.jdbc.Driver"); // De esta forma cargamos la clase Driver de MySQL.
             this.conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/salvosmc", "root", "");
-            Bukkit.getLogger().info("[SalvosMC-RPG] Conexión exitosa a la BD");
+            Bukkit.getLogger().info("[Classic-HC] Conexión exitosa a la BD");
 
         } catch(SQLException ex){
             Bukkit.getLogger().warning("Error al abrir Conexión BD: " + ex.getMessage());

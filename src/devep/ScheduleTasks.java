@@ -102,12 +102,12 @@ public class ScheduleTasks {
     }
 
     public void checkPlayersOutsideBorders() {
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(SalvosMCRPG.plugin, new Runnable() {
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(ClassicHC.plugin, new Runnable() {
             @Override
             public void run() {
                 try {
                     for (Player player : Bukkit.getOnlinePlayers()) {
-                        IWorldBorder worldBorder = SalvosMCRPG.worldBorderAPI.getWorldBorder(player);
+                        IWorldBorder worldBorder = ClassicHC.worldBorderAPI.getWorldBorder(player);
                         if (worldBorder != null) {
                             if (WorldBorder.isPlayerOutsideBorder(player, worldBorder)) {
                                 player.damage(1);
@@ -122,7 +122,7 @@ public class ScheduleTasks {
     }
 
     public void lookForGameFinish() {
-        lookForGameFinishScheduleID = Bukkit.getScheduler().scheduleSyncRepeatingTask(SalvosMCRPG.plugin, new Runnable() {
+        lookForGameFinishScheduleID = Bukkit.getScheduler().scheduleSyncRepeatingTask(ClassicHC.plugin, new Runnable() {
             @Override
             public void run() {
                 try {
