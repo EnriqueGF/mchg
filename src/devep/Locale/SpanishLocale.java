@@ -18,6 +18,7 @@ public class SpanishLocale extends Locale {
             {"CANT_DROP_KIT_ITEM", "¡No puedes soltar un item de tu kit!"},
 
             {"BORDER_IS_CLOSING_ALERT", "¡El borde del mundo se está cerrando!"},
+            {"COMPASS_LOCATED_PLAYER", "Jugador localizado: "+ChatColor.LIGHT_PURPLE+" %s"},
 
             // Kits
             {"KIT_SELECTED_MESSAGE", ChatColor.YELLOW + "¡Has seleccionado el kit "+ChatColor.GOLD+"%s"+ChatColor.YELLOW+"!"},

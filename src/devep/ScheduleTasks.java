@@ -6,6 +6,7 @@ import devep.Game.GameSettings;
 import devep.Game.GameStatusEnum;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -75,7 +76,7 @@ public class ScheduleTasks {
                                         Bukkit.getScheduler().runTask(plugin, new Runnable() {
                                             @Override
                                             public void run() {
-                                                WorldBorder.sendWorldPacket(player, WorldBorder.borderRadius - 0.065);
+                                                WorldBorder.sendWorldPacket(player, WorldBorder.borderRadius - 0.125);
                                             }
                                         });
 
@@ -137,10 +138,16 @@ public class ScheduleTasks {
                         winPlayer.sendMessage(ChatColor.GREEN + "Congrats!!");
 
                         Bukkit.getScheduler().cancelTask(lookForGameFinishScheduleID);
+
+                        ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
+                        String command = "restart";
+                        Bukkit.dispatchCommand(console, command);
                     }
 
                     if (Bukkit.getOnlinePlayers().size() == 0) {
-                        System.out.println("game finish");
+                        ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
+                        String command = "restart";
+                        Bukkit.dispatchCommand(console, command);
                     }
 
                 } catch(Exception ex) {

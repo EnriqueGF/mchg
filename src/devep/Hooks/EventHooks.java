@@ -14,6 +14,7 @@ import devep.ScheduleTasks;
 import devep.WorldBorder;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -83,6 +84,15 @@ public class EventHooks implements Listener {
 
         Player player = event.getPlayer();
 
+        // Compass functionality
+        Player target = gameCore.getNearestPlayer(player, 300.0);
+
+        if((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) && player.getItemInHand().getType() == Material.COMPASS && target != null) {
+            GameCore.sendPlayerMessage("COMPASS_LOCATED_PLAYER", target.getName(), ChatColor.YELLOW, player);
+            player.setCompassTarget(target.getLocation());
+        }
+
+        // Nether Start kit item
         if(player.getItemInHand() != null &&
            player.getItemInHand().getItemMeta() != null &&
            player.getItemInHand().getItemMeta().getDisplayName() != null

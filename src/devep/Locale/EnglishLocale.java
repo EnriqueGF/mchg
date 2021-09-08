@@ -18,6 +18,7 @@ public class EnglishLocale extends Locale {
             {"CANT_DROP_KIT_ITEM", "You can't drop a kit item!"},
 
             {"BORDER_IS_CLOSING_ALERT", "The world border is closing!"},
+            {"COMPASS_LOCATED_PLAYER", "Located player: "+ChatColor.LIGHT_PURPLE+" %s"},
 
             // Kits
             {"KIT_SELECTED_MESSAGE", ChatColor.YELLOW + "You have selected the "+ChatColor.GOLD+"%s"+ChatColor.YELLOW+" kit!"},

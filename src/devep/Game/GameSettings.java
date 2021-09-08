@@ -5,10 +5,8 @@ import org.bukkit.ChatColor;
 public class GameSettings {
     public Integer requiredPlayersToStart = 2;
     public Integer worldBorderRadius = 3500;
-    //public static Integer timeBetweenBorderCloses = 300;
-    public static Integer timeBetweenBorderCloses = 20;
-    //public Integer invulnerabilityStageSeconds = 300;
-    public Integer invulnerabilityStageSeconds = 20;
+    public static Integer timeBetweenBorderCloses = 300;
+    public Integer invulnerabilityStageSeconds = 300;
     public static GameStatusEnum gameStatus = GameStatusEnum.BEFORE_START;
     public static String announcementsPrefix = ChatColor.GREEN + "[Classic HG] ";
 

@@ -11,6 +11,7 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
@@ -183,5 +184,23 @@ public class GameCore {
 
         return item;
     }
+
+    public Player getNearestPlayer(Player player, Double range) {
+        double distance = Double.POSITIVE_INFINITY; // To make sure the first
+        // player checked is closest
+        Player target = null;
+        for (Entity entity : player.getNearbyEntities(range, range, range)) {
+            if (!(entity instanceof Player))
+                continue;
+            if(entity == player) continue; //Added this check so you don't target yourself.
+            double distanceto = player.getLocation().distance(entity.getLocation());
+            if (distanceto > distance)
+                continue;
+            distance = distanceto;
+            target = (Player) entity;
+        }
+        return target;
+    }
+
 
 }
