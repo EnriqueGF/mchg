@@ -1,6 +1,5 @@
 package devep;
 
-import com.github.yannicklamprecht.worldborder.api.IWorldBorder;
 import devep.Game.GameCore;
 import devep.Game.GameSettings;
 import devep.Game.GameStatusEnum;
@@ -25,11 +24,12 @@ public class ScheduleTasks {
     }
 
     private void InitializeScheduling() {
-        checkPlayersOutsideBorders();
+        //checkPlayersOutsideBorders();
         lookForGameFinish();
     }
 
-    public void sendWorldBorderPackets() {
+
+    public void initWorldBorderClosingCheck() {
 
         int waitBetweenEdgeClosesSeconds = GameSettings.timeBetweenBorderCloses;
 
@@ -38,59 +38,48 @@ public class ScheduleTasks {
                 while (true) {
 
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep(3000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
 
                     int onlinePlayersCount = Bukkit.getOnlinePlayers().size();
-                    int edgeCloseLength = 0;
+                    double edgeClosePercent = 1;
 
 
-                    if (Math.abs(Instant.now().getEpochSecond() - WorldBorder.lastEdgeCloses) >= waitBetweenEdgeClosesSeconds) {
+                    if (Math.abs(Instant.now().getEpochSecond() - GameSettings.lastEdgeCloses) >= waitBetweenEdgeClosesSeconds) {
 
-                        WorldBorder.lastEdgeCloses = Instant.now().getEpochSecond();
+                        GameSettings.lastEdgeCloses = Instant.now().getEpochSecond();
 
-                        if (onlinePlayersCount <= 5 && WorldBorder.borderRadius > 800) {
-                            edgeCloseLength = 600;
-                        } else if (onlinePlayersCount <= 10 && WorldBorder.borderRadius > 1500) {
-                            edgeCloseLength = 1000;
-                        } else if (onlinePlayersCount <= 20 && WorldBorder.borderRadius > 2000) {
-                            edgeCloseLength = 600;
-                        } else if (onlinePlayersCount <= 30 && WorldBorder.borderRadius > 2500) {
-                            edgeCloseLength = 800;
-                        } else if (onlinePlayersCount <= 50 && WorldBorder.borderRadius > 2900) {
-                            edgeCloseLength = 1000;
+                        // Radio entre 2 para obtener el tamaño deseado
+                        if (onlinePlayersCount <= 5 && ClassicHC.worldBorder.getSize() > 200) {
+                            edgeClosePercent = 0.50;
+                        } else if (onlinePlayersCount <= 10 && ClassicHC.worldBorder.getSize() > 500) {
+                            edgeClosePercent = 0.40;
+                        } else if (onlinePlayersCount <= 20 && ClassicHC.worldBorder.getSize() > 1000) {
+                            edgeClosePercent = 0.20;
+                        } else if (onlinePlayersCount <= 30 && ClassicHC.worldBorder.getSize() > 1350) {
+                            edgeClosePercent = 0.20;
+                        } else if (onlinePlayersCount <= 50 && ClassicHC.worldBorder.getSize() > 1700) {
+                            edgeClosePercent = 0.15;
                         } else {
-                            edgeCloseLength = 0;
+                            edgeClosePercent = 1;
                         }
 
-                        if (edgeCloseLength != 0) {
-                            // Close border
-
+                        if (edgeClosePercent != 1) {
                             GameCore.sendLocaleMessageToAllPlayers("BORDER_IS_CLOSING_ALERT", "", ChatColor.RED);
+                            double closepercent = edgeClosePercent;
 
-                            for (int i = 0; i < edgeCloseLength; i++) {
-                                for (Player player : Bukkit.getOnlinePlayers()) {
-                                    try {
-                                        Bukkit.getScheduler().runTask(plugin, new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                WorldBorder.sendWorldPacket(player, WorldBorder.borderRadius - 0.125);
-                                            }
-                                        });
+                            Bukkit.getScheduler().runTask(plugin, new Runnable() {
+                                @Override
+                                public void run() {
+                                    System.out.println("Tamaño actual borde: " + ClassicHC.worldBorder.getSize());
+                                    System.out.println("Cerrando borde por porcentaje: " + closepercent);
+                                    System.out.println("Cerrando a: " + ClassicHC.worldBorder.getSize() * closepercent);
 
-                                    } catch (Exception ex) {
-                                        System.out.println("sendWorldBorderPackets() : " + ex.toString());
-                                    }
-
-                                    try {
-                                        Thread.sleep(40);
-                                    } catch (InterruptedException e) {
-                                        e.printStackTrace();
-                                    }
+                                    ClassicHC.worldBorder.setSize(ClassicHC.worldBorder.getSize() - (ClassicHC.worldBorder.getSize() * closepercent), 140);
                                 }
-                            }
+                            });
                         }
                     }
                 }
@@ -102,6 +91,7 @@ public class ScheduleTasks {
         t.start();
     }
 
+    /*
     public void checkPlayersOutsideBorders() {
         Bukkit.getScheduler().scheduleSyncRepeatingTask(ClassicHC.plugin, new Runnable() {
             @Override
@@ -121,6 +111,8 @@ public class ScheduleTasks {
             }
         }, 0L, 20 * 1);
     }
+
+     */
 
     public void lookForGameFinish() {
         lookForGameFinishScheduleID = Bukkit.getScheduler().scheduleSyncRepeatingTask(ClassicHC.plugin, new Runnable() {

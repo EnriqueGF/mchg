@@ -2,13 +2,20 @@ package devep.Game;
 
 import org.bukkit.ChatColor;
 
+import java.time.Instant;
+
 public class GameSettings {
+    // General
     public Integer requiredPlayersToStart = 2;
-    public Integer worldBorderRadius = 3500;
-    public static Integer timeBetweenBorderCloses = 300;
     public Integer invulnerabilityStageSeconds = 300;
     public static GameStatusEnum gameStatus = GameStatusEnum.BEFORE_START;
     public static String announcementsPrefix = ChatColor.GREEN + "[Classic HG] ";
+
+    // World Border
+    public Integer worldBorderSize = 2000; // Radio entre 2 para obtener el tamaño deseado
+    public static Integer timeBetweenBorderCloses = 300;
+    public static double borderRadius;
+    public static long lastEdgeCloses = Instant.now().getEpochSecond();
 
     public GameSettings() {
     }
@@ -17,11 +24,11 @@ public class GameSettings {
         return requiredPlayersToStart;
     }
 
-    public Integer getWorldBorderRadius() {
-        return worldBorderRadius;
+    public Integer getWorldBorderSize() {
+        return worldBorderSize;
     }
 
-    public void setWorldBorderRadius(Integer worldBorderRadius) {
-        this.worldBorderRadius = worldBorderRadius;
+    public void setWorldBorderSize(Integer worldBorderSize) {
+        this.worldBorderSize = worldBorderSize;
     }
 }

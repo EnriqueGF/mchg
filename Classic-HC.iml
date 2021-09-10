@@ -28,7 +28,6 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.yaml:snakeyaml:1.28" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.25" level="project" />
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.11.4" level="project" />
-    <orderEntry type="library" scope="PROVIDED" name="Maven: com.github.yannicklamprecht.worldborderapi:api:1.170.0" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.11.0" level="project" />
     <orderEntry type="library" name="Maven: dev.triumphteam:triumph-gui:3.0.3" level="project" />
     <orderEntry type="library" name="Maven: net.kyori:adventure-platform-bukkit:4.0.0-SNAPSHOT" level="project" />

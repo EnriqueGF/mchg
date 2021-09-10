@@ -139,7 +139,7 @@ public class GameCore {
         sendLocaleMessageToAllPlayers("GAME_STARTS_MESSAGE", "", ChatColor.RED);
         gameSettings.gameStatus = GameStatusEnum.STARTED;
 
-        this.scheduleTasks.sendWorldBorderPackets();
+        this.scheduleTasks.initWorldBorderClosingCheck();
     }
 
     public static void sendLocaleMessageToAllPlayers(String message, String replaceString, ChatColor textColor) {
@@ -201,6 +201,5 @@ public class GameCore {
         }
         return target;
     }
-
 
 }

@@ -1,17 +1,15 @@
 package devep.Hooks;
 
-import com.github.yannicklamprecht.worldborder.api.PersistentWorldBorderApi;
 import devep.Actions.BroadcastRequiredPlayers;
 import devep.Actions.GetSpawnLocation;
 import devep.Actions.GiveKitItem;
 import devep.Actions.SummonLightning;
+import devep.ClassicHC;
 import devep.Game.GameCore;
 import devep.Game.GameSettings;
 import devep.Game.Gui.KitGui;
 import devep.Locale.LocaleFactory;
-import devep.ClassicHC;
 import devep.ScheduleTasks;
-import devep.WorldBorder;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -58,6 +56,11 @@ public class EventHooks implements Listener {
     @EventHandler
     public void WorldLoadEvent(WorldLoadEvent event) {
 
+        ClassicHC.worldBorder = ClassicHC.plugin.getServer().getWorld("world").getWorldBorder();
+        ClassicHC.worldBorder.setSize(gameSettings.worldBorderSize);
+        ClassicHC.worldBorder.setDamageAmount(1);
+        ClassicHC.worldBorder.setWarningDistance(5);
+
         GetSpawnLocation gSL = new GetSpawnLocation();
         gSL.executeAction(event);
 
@@ -68,12 +71,6 @@ public class EventHooks implements Listener {
 
         GiveKitItem gKI = new GiveKitItem();
         gKI.executeAction(playerJoinEvent);
-
-        if (ClassicHC.worldBorderAPI instanceof PersistentWorldBorderApi) {
-            Bukkit.getScheduler().runTaskLater(ClassicHC.plugin, () -> {
-                WorldBorder.sendWorldPacket(playerJoinEvent.getPlayer(), gameSettings.getWorldBorderRadius());
-            }, 20 * 5);
-        }
 
         this.broadcastRequiredPlayers.executeAction(playerJoinEvent);
         playerJoinEvent.getPlayer().setCollidable(false);

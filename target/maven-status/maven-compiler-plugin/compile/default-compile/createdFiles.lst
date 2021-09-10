@@ -2,7 +2,6 @@ devep\Game\Kits\FishermanKit.class
 devep\Hooks\EventHooks$1.class
 devep\Locale\SpanishLocale.class
 devep\Hooks\EventHooks.class
-devep\WorldBorder$1.class
 devep\Game\Kits\HorseRiderKit.class
 devep\ScheduleTasks$2.class
 devep\Actions\ActionInterface.class
@@ -23,10 +22,8 @@ devep\Game\Kits\EnderKit.class
 devep\ScheduleTasks.class
 devep\Actions\BroadcastRequiredPlayers.class
 devep\Game\Kits\ExplosiveKit.class
-devep\WorldBorder.class
 devep\Game\GameCore$3.class
 devep\Game\Kits\BlacksmithKit.class
-devep\ScheduleTasks$3.class
 devep\Hooks\EventHooks$2.class
 devep\Actions\SummonLightning.class
 devep\Game\Gui\KitGui.class
