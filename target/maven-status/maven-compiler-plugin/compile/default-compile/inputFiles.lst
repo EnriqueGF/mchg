@@ -1,32 +1,32 @@
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Game\GameCore.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Game\Gui\KitGui.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Locale\SpanishLocale.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Hooks\EventHooks.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Game\Kits\EnderKit.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Actions\SummonLightning.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\WorldBorder.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Game\Kits\FishermanKit.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Game\Kits\BlacksmithKit.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Game\Kits\AquaticKit.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Game\Kits\ArcherKit.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Game\Kits\HunterKit.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Game\Kits\KitsInterface.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Game\GameStatusEnum.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Game\Kits\ArmerKit.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\ScheduleTasks.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Locale\EnglishLocale.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Game\Kits\ExplosiveKit.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Locale\LocaleFactory.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Game\Kits\MinerKit.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Locale\Locale.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Actions\GetSpawnLocation.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\ClassicHC.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Hooks\GameStartedHooks.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Actions\ActionInterface.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Hooks\InvulnerabilityHooks.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\DB.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Actions\GiveKitItem.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Game\Kits\FarmerKit.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Game\Kits\HorseRiderKit.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Game\GameSettings.java
-C:\Users\Enrique\Desktop\Classic-HC\src\devep\Actions\BroadcastRequiredPlayers.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\DB.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Game\GameStatusEnum.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Game\Kits\FarmerKit.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Actions\BroadcastRequiredPlayers.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Hooks\GameStartedHooks.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Game\GameSettings.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Actions\GetSpawnLocation.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Game\Kits\AquaticKit.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Game\Kits\HorseRiderKit.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Locale\SpanishLocale.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Actions\ActionInterface.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Actions\GiveKitItem.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\WorldBorder.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Game\Kits\HunterKit.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Game\Kits\MinerKit.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Game\GameCore.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Game\Kits\EnderKit.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Game\Kits\FishermanKit.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Game\Kits\ArmerKit.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Actions\SummonLightning.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\ClassicHC.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Game\Kits\ArcherKit.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\ScheduleTasks.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Locale\LocaleFactory.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Game\Kits\ExplosiveKit.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Game\Kits\KitsInterface.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Game\Kits\BlacksmithKit.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Locale\EnglishLocale.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Locale\Locale.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Hooks\EventHooks.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Hooks\InvulnerabilityHooks.java
+C:\Users\Enrique\Desktop\Minecraft SV\DEV\Sources\Classic-HC\src\devep\Game\Gui\KitGui.java

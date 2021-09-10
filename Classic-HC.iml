@@ -46,5 +46,14 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: net.kyori:adventure-platform-facet:4.0.0-SNAPSHOT" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: net.kyori:adventure-platform-viaversion:4.0.0-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Maven: io.github.classgraph:classgraph:4.8.115" level="project" />
+    <orderEntry type="module-library">
+      <library name="Maven: io.puharesource.mc:TitleManager:2.3.4">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/TitleManager-2.3.4-api.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

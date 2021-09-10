@@ -7,6 +7,8 @@ import devep.Game.Gui.KitGui;
 import devep.Hooks.EventHooks;
 import devep.Hooks.GameStartedHooks;
 import devep.Hooks.InvulnerabilityHooks;
+import io.puharesource.mc.titlemanager.api.v2.TitleManagerAPI;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -20,11 +22,14 @@ public class ClassicHC extends JavaPlugin implements PluginMessageListener {
     public static Plugin plugin;
     public static Location spawnLocation;
     public static WorldBorderApi worldBorderAPI;
+    public static TitleManagerAPI titleManagerAPI;
 
     @Override
     public void onEnable(){
 
         this.plugin = this;
+
+        titleManagerAPI = (TitleManagerAPI) Bukkit.getServer().getPluginManager().getPlugin("TitleManager");
 
         this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);

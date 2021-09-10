@@ -5,4 +5,5 @@ main: devep.ClassicHC
 api-version: 1.16
 depend:
   - WorldBorderAPI
+softdepend: [TitleManager]
 load: STARTUP

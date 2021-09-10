@@ -52,15 +52,15 @@ public class ScheduleTasks {
                         WorldBorder.lastEdgeCloses = Instant.now().getEpochSecond();
 
                         if (onlinePlayersCount <= 5 && WorldBorder.borderRadius > 800) {
-                            edgeCloseLength = 350;
+                            edgeCloseLength = 600;
                         } else if (onlinePlayersCount <= 10 && WorldBorder.borderRadius > 1500) {
-                            edgeCloseLength = 500;
+                            edgeCloseLength = 1000;
                         } else if (onlinePlayersCount <= 20 && WorldBorder.borderRadius > 2000) {
                             edgeCloseLength = 600;
                         } else if (onlinePlayersCount <= 30 && WorldBorder.borderRadius > 2500) {
                             edgeCloseLength = 800;
                         } else if (onlinePlayersCount <= 50 && WorldBorder.borderRadius > 2900) {
-                            edgeCloseLength = 500;
+                            edgeCloseLength = 1000;
                         } else {
                             edgeCloseLength = 0;
                         }
