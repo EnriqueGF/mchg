@@ -185,6 +185,7 @@ public class ScheduleTasks {
                         for (Player player : Bukkit.getOnlinePlayers()) {
                           double result;
                           String bossBarText = "";
+                          BarColor barColor;
 
                           Location playerLocation = player.getLocation();
                           double borderSize = Bukkit.getWorld("world").getWorldBorder().getSize() / 2;
@@ -205,12 +206,14 @@ public class ScheduleTasks {
 
                           if (percentage >= 0.25) {
                             bossBarText = "You are safe from World Border";
+                            barColor = BarColor.GREEN;
                           } else {
                             bossBarText = "Take care! You are near the World Border!";
+                            barColor = BarColor.RED;
                           }
 
                           BossBar bossBar =
-                                  Bukkit.createBossBar(bossBarText, BarColor.BLUE, BarStyle.SOLID);
+                                  Bukkit.createBossBar(bossBarText, barColor, BarStyle.SOLID);
 
                           bossBar.setProgress(percentage);
                           bossBar.addPlayer(player);
