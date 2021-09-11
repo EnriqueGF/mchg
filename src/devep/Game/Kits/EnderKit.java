@@ -26,8 +26,8 @@ public class EnderKit implements KitsInterface {
 
         ArrayList<ItemStack> items = new ArrayList<ItemStack>();
 
-        ItemStack enderPearls = GameCore.addEnchantToItem(new ItemStack(Material.ENDER_PEARL, 5), Enchantment.BINDING_CURSE,1);
-        ItemStack shulkerBox = GameCore.addEnchantToItem(new ItemStack(Material.SHULKER_BOX, 1), Enchantment.BINDING_CURSE,1);
+        ItemStack enderPearls = GameCore.addEnchantToItem(new ItemStack(Material.ENDER_PEARL, 5), Enchantment.VANISHING_CURSE,1);
+        ItemStack shulkerBox = GameCore.addEnchantToItem(new ItemStack(Material.SHULKER_BOX, 1), Enchantment.VANISHING_CURSE,1);
 
         items.add(enderPearls);
         items.add(shulkerBox);

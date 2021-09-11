@@ -5,6 +5,7 @@ import devep.Game.GameSettings;
 import devep.Game.GameStatusEnum;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -21,11 +22,39 @@ public class ScheduleTasks {
         this.plugin = plugin;
 
         InitializeScheduling();
+
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(ClassicHC.plugin, new Runnable() {
+            @Override
+            public void run() {
+                for (Player player : Bukkit.getOnlinePlayers()) {
+                    double result;
+
+                    Location playerLocationABS = player.getLocation();
+                    playerLocationABS.setX(Math.abs(player.getLocation().getX()));
+                    playerLocationABS.setZ(Math.abs(player.getLocation().getZ()));
+
+                    double borderSize = Bukkit.getWorld("world").getWorldBorder().getSize()/2;
+
+                    if (playerLocationABS.getX() > playerLocationABS.getZ()) {
+                         result = playerLocationABS.getX() - borderSize;
+                    } else {
+                         result = playerLocationABS.getZ() - borderSize;
+                    }
+
+                    player.sendMessage(
+                            "You are "+
+                            Math.abs(result) +
+                            "  Blocks away from the border!");
+                }
+            }
+        }, 0L, 20 * 1);
     }
 
     private void InitializeScheduling() {
         //checkPlayersOutsideBorders();
         lookForGameFinish();
+
+
     }
 
 
@@ -52,15 +81,15 @@ public class ScheduleTasks {
                         GameSettings.lastEdgeCloses = Instant.now().getEpochSecond();
 
                         // Radio entre 2 para obtener el tamaño deseado
-                        if (onlinePlayersCount <= 5 && ClassicHC.worldBorder.getSize() > 200) {
-                            edgeClosePercent = 0.50;
-                        } else if (onlinePlayersCount <= 10 && ClassicHC.worldBorder.getSize() > 500) {
-                            edgeClosePercent = 0.40;
-                        } else if (onlinePlayersCount <= 20 && ClassicHC.worldBorder.getSize() > 1000) {
-                            edgeClosePercent = 0.20;
-                        } else if (onlinePlayersCount <= 30 && ClassicHC.worldBorder.getSize() > 1350) {
-                            edgeClosePercent = 0.20;
-                        } else if (onlinePlayersCount <= 50 && ClassicHC.worldBorder.getSize() > 1700) {
+                        if (onlinePlayersCount <= 5 && ClassicHC.worldBorder.getSize() > 700) {
+                            edgeClosePercent = 0.15;
+                        } else if (onlinePlayersCount <= 10 && ClassicHC.worldBorder.getSize() > 1300) {
+                            edgeClosePercent = 0.15;
+                        } else if (onlinePlayersCount <= 20 && ClassicHC.worldBorder.getSize() > 1800) {
+                            edgeClosePercent = 0.15;
+                        } else if (onlinePlayersCount <= 30 && ClassicHC.worldBorder.getSize() > 1800) {
+                            edgeClosePercent = 0.15;
+                        } else if (onlinePlayersCount <= 50 && ClassicHC.worldBorder.getSize() > 2000) {
                             edgeClosePercent = 0.15;
                         } else {
                             edgeClosePercent = 1;
@@ -75,7 +104,6 @@ public class ScheduleTasks {
                                 public void run() {
                                     System.out.println("Tamaño actual borde: " + ClassicHC.worldBorder.getSize());
                                     System.out.println("Cerrando borde por porcentaje: " + closepercent);
-                                    System.out.println("Cerrando a: " + ClassicHC.worldBorder.getSize() * closepercent);
 
                                     ClassicHC.worldBorder.setSize(ClassicHC.worldBorder.getSize() - (ClassicHC.worldBorder.getSize() * closepercent), 140);
                                 }

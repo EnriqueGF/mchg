@@ -24,7 +24,7 @@ devep\Actions\BroadcastRequiredPlayers.class
 devep\Game\Kits\ExplosiveKit.class
 devep\Game\GameCore$3.class
 devep\Game\Kits\BlacksmithKit.class
-devep\Hooks\EventHooks$2.class
+devep\ScheduleTasks$3.class
 devep\Actions\SummonLightning.class
 devep\Game\Gui\KitGui.class
 devep\Game\Kits\AquaticKit.class

@@ -26,8 +26,8 @@ public class ArmerKit implements KitsInterface {
 
         ArrayList<ItemStack> items = new ArrayList<ItemStack>();
 
-        ItemStack ironSword = GameCore.addEnchantToItem(new ItemStack(Material.IRON_SWORD, 1), Enchantment.BINDING_CURSE,1);
-        ItemStack shield = GameCore.addEnchantToItem(new ItemStack(Material.SHIELD, 1), Enchantment.BINDING_CURSE,1);
+        ItemStack ironSword = GameCore.addEnchantToItem(new ItemStack(Material.IRON_SWORD, 1), Enchantment.VANISHING_CURSE,1);
+        ItemStack shield = GameCore.addEnchantToItem(new ItemStack(Material.SHIELD, 1), Enchantment.VANISHING_CURSE,1);
 
         items.add(ironSword);
         items.add(shield);

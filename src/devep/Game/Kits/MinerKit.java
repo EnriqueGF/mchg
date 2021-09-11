@@ -26,13 +26,13 @@ public class MinerKit implements KitsInterface {
 
         ArrayList<ItemStack> items = new ArrayList<ItemStack>();
 
-        ItemStack ironPickaxe = GameCore.addEnchantToItem(new ItemStack(Material.IRON_PICKAXE, 1), Enchantment.BINDING_CURSE,1);
+        ItemStack ironPickaxe = GameCore.addEnchantToItem(new ItemStack(Material.IRON_PICKAXE, 1), Enchantment.VANISHING_CURSE,1);
         ironPickaxe.addEnchantment(Enchantment.DIG_SPEED, 1);
 
-        ItemStack ironShovel = GameCore.addEnchantToItem(new ItemStack(Material.IRON_SHOVEL, 1), Enchantment.BINDING_CURSE,1);
+        ItemStack ironShovel = GameCore.addEnchantToItem(new ItemStack(Material.IRON_SHOVEL, 1), Enchantment.VANISHING_CURSE,1);
         ironShovel.addEnchantment(Enchantment.DIG_SPEED, 1);
 
-        ItemStack torches = GameCore.addEnchantToItem(new ItemStack(Material.TORCH, 10), Enchantment.BINDING_CURSE,1);
+        ItemStack torches = GameCore.addEnchantToItem(new ItemStack(Material.TORCH, 10), Enchantment.VANISHING_CURSE,1);
 
         items.add(ironPickaxe);
         items.add(ironShovel);

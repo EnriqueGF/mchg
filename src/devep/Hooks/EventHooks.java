@@ -75,19 +75,20 @@ public class EventHooks implements Listener {
         this.broadcastRequiredPlayers.executeAction(playerJoinEvent);
         playerJoinEvent.getPlayer().setCollidable(false);
 
+        /*
         Bukkit.getScheduler().scheduleSyncDelayedTask(ClassicHC.plugin, new Runnable() {
             @Override
             public void run() {
                 ClassicHC.titleManagerAPI.giveScoreboard(playerJoinEvent.getPlayer());
-                ClassicHC.titleManagerAPI.setScoreboardTitle(playerJoinEvent.getPlayer(), "${shine:[fade-in,stay,fade-out][primary-color,secondary-color]Classic Hunger Games}");
-                ClassicHC.titleManagerAPI.setScoreboardValueWithPlaceholders(playerJoinEvent.getPlayer(), 1, "Players remaining: %{online} %{ping}");
+                ClassicHC.titleManagerAPI.setScoreboardTitle(playerJoinEvent.getPlayer(), "Classic Hunger Games");
+                ClassicHC.titleManagerAPI.setScoreboardValueWithPlaceholders(playerJoinEvent.getPlayer(), 1, "%{player} %{online}");
 
 
                 //ClassicHC.titleManagerAPI.sendTitle(playerJoinEvent.getPlayer(), "TITLE 1");
                 //ClassicHC.titleManagerAPI.sendSubtitle(playerJoinEvent.getPlayer(), "TITLE 2");
             }
         }, 20*5);
-
+        */
     }
 
     @EventHandler
@@ -164,7 +165,7 @@ public class EventHooks implements Listener {
         Iterator<ItemStack> i = e.getDrops().iterator();
         while (i.hasNext()) {
             ItemStack item = i.next();
-            if (item.getEnchantments().containsKey(Enchantment.BINDING_CURSE)) {
+            if (item.getEnchantments().containsKey(Enchantment.VANISHING_CURSE)) {
                 i.remove();
             }
         }
@@ -178,7 +179,7 @@ public class EventHooks implements Listener {
             return;
         }
 
-        if (event.getItemDrop().getItemStack().getEnchantments().containsKey(Enchantment.BINDING_CURSE)) {
+        if (event.getItemDrop().getItemStack().getEnchantments().containsKey(Enchantment.VANISHING_CURSE)) {
             event.setCancelled(true);
             event.getPlayer().sendMessage(
                     LocaleFactory.getLocale(event.getPlayer().getLocale()).getTranslatedText("CANT_DROP_KIT_ITEM")

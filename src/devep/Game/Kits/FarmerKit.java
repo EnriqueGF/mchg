@@ -25,10 +25,10 @@ public class FarmerKit implements KitsInterface {
     public ArrayList<ItemStack> getItems() {
 
         ArrayList<ItemStack> items = new ArrayList<ItemStack>();
-        ItemStack ironHoe = GameCore.addEnchantToItem(new ItemStack(Material.IRON_HOE, 1), Enchantment.BINDING_CURSE,1);
-        ItemStack seeds = GameCore.addEnchantToItem(new ItemStack(Material.WHEAT_SEEDS, 10), Enchantment.BINDING_CURSE,1);
-        ItemStack goldenApple = GameCore.addEnchantToItem(new ItemStack(Material.GOLDEN_APPLE, 1), Enchantment.BINDING_CURSE,1);
-        ItemStack pumpkinPies = GameCore.addEnchantToItem(new ItemStack(Material.PUMPKIN_PIE, 5), Enchantment.BINDING_CURSE,1);
+        ItemStack ironHoe = GameCore.addEnchantToItem(new ItemStack(Material.IRON_HOE, 1), Enchantment.VANISHING_CURSE,1);
+        ItemStack seeds = GameCore.addEnchantToItem(new ItemStack(Material.WHEAT_SEEDS, 10), Enchantment.VANISHING_CURSE,1);
+        ItemStack goldenApple = GameCore.addEnchantToItem(new ItemStack(Material.GOLDEN_APPLE, 1), Enchantment.VANISHING_CURSE,1);
+        ItemStack pumpkinPies = GameCore.addEnchantToItem(new ItemStack(Material.PUMPKIN_PIE, 5), Enchantment.VANISHING_CURSE,1);
 
         items.add(seeds);
         items.add(ironHoe);

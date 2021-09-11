@@ -12,7 +12,7 @@ public class GameSettings {
     public static String announcementsPrefix = ChatColor.GREEN + "[Classic HG] ";
 
     // World Border
-    public Integer worldBorderSize = 2000; // Radio entre 2 para obtener el tamaño deseado
+    public Integer worldBorderSize = 2200; // Radio entre 2 para obtener el tamaño deseado
     public static Integer timeBetweenBorderCloses = 300;
     public static double borderRadius;
     public static long lastEdgeCloses = Instant.now().getEpochSecond();

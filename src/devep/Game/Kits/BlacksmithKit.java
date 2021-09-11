@@ -25,8 +25,8 @@ public class BlacksmithKit implements KitsInterface {
     public ArrayList<ItemStack> getItems() {
 
         ArrayList<ItemStack> items = new ArrayList<ItemStack>();
-        ItemStack ironHelmet = GameCore.addEnchantToItem(new ItemStack(Material.IRON_LEGGINGS, 1), Enchantment.BINDING_CURSE,1);
-        ItemStack ironBoots = GameCore.addEnchantToItem(new ItemStack(Material.IRON_BOOTS, 1), Enchantment.BINDING_CURSE,1);
+        ItemStack ironHelmet = GameCore.addEnchantToItem(new ItemStack(Material.IRON_LEGGINGS, 1), Enchantment.VANISHING_CURSE,1);
+        ItemStack ironBoots = GameCore.addEnchantToItem(new ItemStack(Material.IRON_BOOTS, 1), Enchantment.VANISHING_CURSE,1);
 
         items.add(ironHelmet);
         items.add(ironBoots);

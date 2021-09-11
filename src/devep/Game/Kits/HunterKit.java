@@ -27,7 +27,7 @@ public class HunterKit implements KitsInterface {
     public ArrayList<ItemStack> getItems() {
 
         ArrayList<ItemStack> items = new ArrayList<ItemStack>();
-        ItemStack ironSword = GameCore.addEnchantToItem(new ItemStack(Material.IRON_SWORD, 1), Enchantment.BINDING_CURSE,1);
+        ItemStack ironSword = GameCore.addEnchantToItem(new ItemStack(Material.IRON_SWORD, 1), Enchantment.VANISHING_CURSE,1);
 
         items.add(ironSword);
 

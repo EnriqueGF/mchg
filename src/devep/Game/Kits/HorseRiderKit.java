@@ -25,9 +25,9 @@ public class HorseRiderKit implements KitsInterface {
     public ArrayList<ItemStack> getItems() {
         ArrayList<ItemStack> items = new ArrayList<ItemStack>();
 
-        ItemStack horseSpawnEgg = GameCore.addEnchantToItem(new ItemStack(Material.HORSE_SPAWN_EGG, 1), Enchantment.BINDING_CURSE,1);
-        ItemStack saddle = GameCore.addEnchantToItem(new ItemStack(Material.SADDLE, 1), Enchantment.BINDING_CURSE,1);
-        ItemStack diamondHorseArmor = GameCore.addEnchantToItem(new ItemStack(Material.DIAMOND_HORSE_ARMOR, 1), Enchantment.BINDING_CURSE,1);
+        ItemStack horseSpawnEgg = GameCore.addEnchantToItem(new ItemStack(Material.HORSE_SPAWN_EGG, 1), Enchantment.VANISHING_CURSE,1);
+        ItemStack saddle = GameCore.addEnchantToItem(new ItemStack(Material.SADDLE, 1), Enchantment.VANISHING_CURSE,1);
+        ItemStack diamondHorseArmor = GameCore.addEnchantToItem(new ItemStack(Material.DIAMOND_HORSE_ARMOR, 1), Enchantment.VANISHING_CURSE,1);
 
         items.add(horseSpawnEgg);
         items.add(saddle);

@@ -25,10 +25,10 @@ public class ExplosiveKit implements KitsInterface {
     public ArrayList<ItemStack> getItems() {
 
         ArrayList<ItemStack> items = new ArrayList<ItemStack>();
-        ItemStack tnt = GameCore.addEnchantToItem(new ItemStack(Material.TNT, 4), Enchantment.BINDING_CURSE,1);
-        ItemStack flintAndSteel = GameCore.addEnchantToItem(new ItemStack(Material.FLINT_AND_STEEL, 1), Enchantment.BINDING_CURSE,1);
-        ItemStack leatherLeggings = GameCore.addEnchantToItem(new ItemStack(Material.LEATHER_LEGGINGS, 1), Enchantment.BINDING_CURSE,1);
-        ItemStack apples = GameCore.addEnchantToItem(new ItemStack(Material.APPLE, 4), Enchantment.BINDING_CURSE,1);
+        ItemStack tnt = GameCore.addEnchantToItem(new ItemStack(Material.TNT, 4), Enchantment.VANISHING_CURSE,1);
+        ItemStack flintAndSteel = GameCore.addEnchantToItem(new ItemStack(Material.FLINT_AND_STEEL, 1), Enchantment.VANISHING_CURSE,1);
+        ItemStack leatherLeggings = GameCore.addEnchantToItem(new ItemStack(Material.LEATHER_LEGGINGS, 1), Enchantment.VANISHING_CURSE,1);
+        ItemStack apples = GameCore.addEnchantToItem(new ItemStack(Material.APPLE, 4), Enchantment.VANISHING_CURSE,1);
 
         items.add(tnt);
         items.add(flintAndSteel);

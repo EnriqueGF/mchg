@@ -26,7 +26,7 @@ public class FishermanKit implements KitsInterface {
 
         ArrayList<ItemStack> items = new ArrayList<ItemStack>();
 
-        ItemStack fishRoad = GameCore.addEnchantToItem(new ItemStack(Material.FISHING_ROD, 1), Enchantment.BINDING_CURSE,1);
+        ItemStack fishRoad = GameCore.addEnchantToItem(new ItemStack(Material.FISHING_ROD, 1), Enchantment.VANISHING_CURSE,1);
 
         ItemMeta meta = fishRoad.getItemMeta();
         meta.addEnchant(Enchantment.LUCK, 3, false);
@@ -35,9 +35,9 @@ public class FishermanKit implements KitsInterface {
 
         fishRoad.setItemMeta(meta);
 
-        ItemStack cookedSalmons = GameCore.addEnchantToItem(new ItemStack(Material.COOKED_SALMON, 5), Enchantment.BINDING_CURSE,1);
-        ItemStack leatherLeggings = GameCore.addEnchantToItem(new ItemStack(Material.LEATHER_LEGGINGS, 1), Enchantment.BINDING_CURSE,1);
-        ItemStack leatherBoots = GameCore.addEnchantToItem(new ItemStack(Material.LEATHER_BOOTS, 1), Enchantment.BINDING_CURSE,1);
+        ItemStack cookedSalmons = GameCore.addEnchantToItem(new ItemStack(Material.COOKED_SALMON, 5), Enchantment.VANISHING_CURSE,1);
+        ItemStack leatherLeggings = GameCore.addEnchantToItem(new ItemStack(Material.LEATHER_LEGGINGS, 1), Enchantment.VANISHING_CURSE,1);
+        ItemStack leatherBoots = GameCore.addEnchantToItem(new ItemStack(Material.LEATHER_BOOTS, 1), Enchantment.VANISHING_CURSE,1);
 
         items.add(fishRoad);
         items.add(cookedSalmons);

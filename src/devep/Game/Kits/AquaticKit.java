@@ -36,14 +36,14 @@ public class AquaticKit implements KitsInterface {
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, damageModifier);
         meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackSpeedModifier);
         meta.addEnchant(Enchantment.RIPTIDE, 1, false);
-        meta.addEnchant(Enchantment.BINDING_CURSE, 1, false);
+        meta.addEnchant(Enchantment.VANISHING_CURSE, 1, false);
 
         trident.setItemMeta(meta);
 
         ItemStack helmet = new ItemStack(Material.IRON_HELMET, 1);
         ItemMeta helmetMeta = helmet.getItemMeta();
         helmetMeta.addEnchant(Enchantment.OXYGEN, 1, false);
-        helmetMeta.addEnchant(Enchantment.BINDING_CURSE, 1, false);
+        helmetMeta.addEnchant(Enchantment.VANISHING_CURSE, 1, false);
 
         helmet.setItemMeta(helmetMeta);
 

@@ -26,7 +26,7 @@ public class ArcherKit implements KitsInterface {
 
         ArrayList<ItemStack> items = new ArrayList<ItemStack>();
 
-        ItemStack bow = GameCore.addEnchantToItem(new ItemStack(Material.BOW, 1), Enchantment.BINDING_CURSE,1);
+        ItemStack bow = GameCore.addEnchantToItem(new ItemStack(Material.BOW, 1), Enchantment.VANISHING_CURSE,1);
         ItemMeta meta = bow.getItemMeta();
         meta.addEnchant(Enchantment.ARROW_DAMAGE, 1, false);
         meta.addEnchant(Enchantment.VANISHING_CURSE, 1, false);
