@@ -1,6 +1,7 @@
 package devep.Actions;
 
 import devep.ClassicHC;
+import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.event.Event;
 import org.bukkit.event.world.WorldLoadEvent;
@@ -17,6 +18,8 @@ public class GetSpawnLocation implements ActionInterface {
 
     World world = event.getWorld();
 
-    ClassicHC.spawnLocation = world.getHighestBlockAt(world.getSpawnLocation()).getLocation();
+    Location location = world.getHighestBlockAt(world.getSpawnLocation()).getLocation();
+    location.setY(location.getY() + 2);
+    ClassicHC.spawnLocation = location;
   }
 }
