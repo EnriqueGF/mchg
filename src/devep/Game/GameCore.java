@@ -17,24 +17,25 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.HashMap;
+import java.time.Instant;
+import java.util.Map;
 
 public class GameCore {
-  private GameSettings gameSettings;
-  private ScheduleTasks scheduleTasks;
-  private int checkForEnoughPlayersScheduleID;
-  private int countInvulnerabilityScheduleID;
-  private int countPVPEnabledScheduleID;
-  public static int secondsCountInvulnerabilityStart = 10;
-  public static int secondsCountPVPEnable = 5;
+    private GameSettings gameSettings;
+    private ScheduleTasks scheduleTasks;
+    private int checkForEnoughPlayersScheduleID;
+    private int countInvulnerabilityScheduleID;
+    private int countPVPEnabledScheduleID;
+    public static int secondsCountInvulnerabilityStart = 10;
+    public static int secondsCountPVPEnable = 5;
+    public static long invulnerabilityStartTimestamp = 0;
 
-  public GameCore(GameSettings gameSettings, ScheduleTasks scheduleTasks) {
-    this.gameSettings = gameSettings;
-    this.scheduleTasks = scheduleTasks;
+    public GameCore(GameSettings gameSettings, ScheduleTasks scheduleTasks) {
+        this.gameSettings = gameSettings;
+        this.scheduleTasks = scheduleTasks;
 
-    initCheckingForInvulnerabilityStage();
-  }
+        initCheckingForInvulnerabilityStage();
+    }
 
   private void initCheckingForInvulnerabilityStage() {
 
@@ -126,6 +127,9 @@ public class GameCore {
     } catch (Exception ex) {
       System.out.println("Excepcion en ApplyPlayersKit: " + ex);
     }
+
+
+   invulnerabilityStartTimestamp = Instant.now().getEpochSecond() + gameSettings.invulnerabilityStageSeconds;
 
     ClassicHC.plugin
         .getServer()

@@ -69,9 +69,9 @@ public class ScheduleTasks {
                       edgeClosePercent = 0.15;
                     } else if (onlinePlayersCount <= 20 && ClassicHC.worldBorder.getSize() > 1800) {
                       edgeClosePercent = 0.15;
-                    } else if (onlinePlayersCount <= 30 && ClassicHC.worldBorder.getSize() > 1800) {
+                    } else if (onlinePlayersCount <= 30 && ClassicHC.worldBorder.getSize() > 2000) {
                       edgeClosePercent = 0.15;
-                    } else if (onlinePlayersCount <= 50 && ClassicHC.worldBorder.getSize() > 2000) {
+                    } else if (onlinePlayersCount <= 50 && ClassicHC.worldBorder.getSize() > 2300) {
                       edgeClosePercent = 0.15;
                     } else {
                       edgeClosePercent = 1;

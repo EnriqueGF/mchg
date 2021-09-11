@@ -46,6 +46,10 @@ public class ClassicHC extends JavaPlugin implements PluginMessageListener {
 
     registerEvents(gameSettings, scheduleTasks, gameCore);
 
+    if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+      new PlaceholdersExpansion().register();
+    }
+
     log.info(ChatColor.GREEN + "Carga finalizada");
   }
 
