@@ -8,16 +8,15 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 public class GiveKitItem implements ActionInterface {
 
-    @Override
-    public void executeAction(Event e) {
+  @Override
+  public void executeAction(Event e) {
 
-        PlayerJoinEvent event = (PlayerJoinEvent)e;
+    PlayerJoinEvent event = (PlayerJoinEvent) e;
 
-        ItemStack item = new ItemStack(Material.NETHER_STAR, 1);
-        ItemMeta meta = item.getItemMeta();
-        meta.setDisplayName("Kits");
-        item.setItemMeta(meta);
-        event.getPlayer().getInventory().addItem(item);
-
-    }
+    ItemStack item = new ItemStack(Material.NETHER_STAR, 1);
+    ItemMeta meta = item.getItemMeta();
+    meta.setDisplayName("Kits");
+    item.setItemMeta(meta);
+    event.getPlayer().getInventory().addItem(item);
+  }
 }

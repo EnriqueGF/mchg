@@ -15,55 +15,59 @@ import java.util.List;
 
 public class ArmerKit implements KitsInterface {
 
-    private String name;
-    private Player player;
+  private String name;
+  private Player player;
 
-    public ArmerKit() {
-        this.name = "Armorer";
-    }
+  public ArmerKit() {
+    this.name = "Armorer";
+  }
 
-    public ArrayList<ItemStack> getItems() {
+  public ArrayList<ItemStack> getItems() {
 
-        ArrayList<ItemStack> items = new ArrayList<ItemStack>();
+    ArrayList<ItemStack> items = new ArrayList<ItemStack>();
 
-        ItemStack ironSword = GameCore.addEnchantToItem(new ItemStack(Material.IRON_SWORD, 1), Enchantment.VANISHING_CURSE,1);
-        ItemStack shield = GameCore.addEnchantToItem(new ItemStack(Material.SHIELD, 1), Enchantment.VANISHING_CURSE,1);
+    ItemStack ironSword =
+        GameCore.addEnchantToItem(
+            new ItemStack(Material.IRON_SWORD, 1), Enchantment.VANISHING_CURSE, 1);
+    ItemStack shield =
+        GameCore.addEnchantToItem(
+            new ItemStack(Material.SHIELD, 1), Enchantment.VANISHING_CURSE, 1);
 
-        items.add(ironSword);
-        items.add(shield);
+    items.add(ironSword);
+    items.add(shield);
 
-        return items;
-    }
+    return items;
+  }
 
-    public String getName() {
-        return this.name;
-    }
+  public String getName() {
+    return this.name;
+  }
 
-    public ItemStack getDisplayMaterial() {
-        ItemStack displayIcon = new ItemStack(Material.IRON_SWORD, 1);
+  public ItemStack getDisplayMaterial() {
+    ItemStack displayIcon = new ItemStack(Material.IRON_SWORD, 1);
 
-        ItemMeta meta = displayIcon.getItemMeta();
-        meta.setDisplayName(this.name);
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        List<String> lore = Arrays.asList(
-                LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_ARMORER_1"),
-                LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_ARMORER_2"),
-                LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_ARMORER_3"),
-                "",
-                LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_ARMORER_4")
-        );
-        meta.setLore(lore);
+    ItemMeta meta = displayIcon.getItemMeta();
+    meta.setDisplayName(this.name);
+    meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+    List<String> lore =
+        Arrays.asList(
+            LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_ARMORER_1"),
+            LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_ARMORER_2"),
+            LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_ARMORER_3"),
+            "",
+            LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_ARMORER_4"));
+    meta.setLore(lore);
 
-        displayIcon.setItemMeta(meta);
+    displayIcon.setItemMeta(meta);
 
-        return displayIcon;
-    }
+    return displayIcon;
+  }
 
-    @Override
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
+  @Override
+  public void setPlayer(Player player) {
+    this.player = player;
+  }
 
-    @Override
-    public void executePlayerAction() {}
+  @Override
+  public void executePlayerAction() {}
 }

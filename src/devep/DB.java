@@ -28,8 +28,10 @@ public class DB {
     private void prepareStatements() {
         try {
 
-            // Sword Ability
-           this.addPlayerSwordExp = conn.prepareStatement("UPDATE players SET players.sword_ability_exp = players.sword_ability_exp + ? WHERE nombre_usuario = ?");
+      // Sword Ability
+      this.addPlayerSwordExp =
+          conn.prepareStatement(
+              "UPDATE players SET players.sword_ability_exp = players.sword_ability_exp + ? WHERE nombre_usuario = ?");
            this.getMobExp = conn.prepareStatement("SELECT exp FROM sword_ability_rewards WHERE entity_name = ?");
            this.getPlayerSwordLvl = conn.prepareStatement("SELECT sword_ability_levels.lvl FROM sword_ability_levels WHERE (SELECT sword_ability_exp FROM players WHERE players.nombre_usuario = ?) >= sword_ability_levels.exp_necesaria ORDER BY sword_ability_levels.lvl DESC LIMIT 0,1");
            this.getPlayerSwordExp = conn.prepareStatement("SELECT players.sword_ability_exp FROM players WHERE nombre_usuario = ?");

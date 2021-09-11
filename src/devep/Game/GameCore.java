@@ -106,20 +106,30 @@ public class GameCore {
             }
         }, 20 * gameSettings.invulnerabilityStageSeconds);
 
-        countPVPEnabledScheduleID = ClassicHC.plugin.getServer().getScheduler().scheduleSyncRepeatingTask(ClassicHC.plugin, new Runnable() {
-            public void run() {
-                for (Player p : Bukkit.getOnlinePlayers()){
-                    p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 10, 1);
-                }
+    countPVPEnabledScheduleID =
+        ClassicHC.plugin
+            .getServer()
+            .getScheduler()
+            .scheduleSyncRepeatingTask(
+                ClassicHC.plugin,
+                new Runnable() {
+                  public void run() {
+                    for (Player p : Bukkit.getOnlinePlayers()) {
+                      p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP, 10, 1);
+                    }
 
-                sendLocaleMessageToAllPlayers("PVP_SECONDS_LEFT_COUNT", Integer.toString(secondsCountPVPEnable), ChatColor.BLUE);
-                secondsCountPVPEnable = secondsCountPVPEnable - 1;
-                if (secondsCountPVPEnable <= 0) {
-                    Bukkit.getScheduler().cancelTask(countPVPEnabledScheduleID);
-                }
-            }
-        }, 20 * (gameSettings.invulnerabilityStageSeconds - 5), 20);
-
+                    sendLocaleMessageToAllPlayers(
+                        "PVP_SECONDS_LEFT_COUNT",
+                        Integer.toString(secondsCountPVPEnable),
+                        ChatColor.BLUE);
+                    secondsCountPVPEnable = secondsCountPVPEnable - 1;
+                    if (secondsCountPVPEnable <= 0) {
+                      Bukkit.getScheduler().cancelTask(countPVPEnabledScheduleID);
+                    }
+                  }
+                },
+                20 * (gameSettings.invulnerabilityStageSeconds - 5),
+                20);
     }
 
     private void applyPlayersKits() {

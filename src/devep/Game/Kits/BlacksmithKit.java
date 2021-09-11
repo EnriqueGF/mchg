@@ -15,54 +15,58 @@ import java.util.List;
 
 public class BlacksmithKit implements KitsInterface {
 
-    private String name;
-    private Player player;
+  private String name;
+  private Player player;
 
-    public BlacksmithKit() {
-        this.name = "Blacksmith";
-    }
+  public BlacksmithKit() {
+    this.name = "Blacksmith";
+  }
 
-    public ArrayList<ItemStack> getItems() {
+  public ArrayList<ItemStack> getItems() {
 
-        ArrayList<ItemStack> items = new ArrayList<ItemStack>();
-        ItemStack ironHelmet = GameCore.addEnchantToItem(new ItemStack(Material.IRON_LEGGINGS, 1), Enchantment.VANISHING_CURSE,1);
-        ItemStack ironBoots = GameCore.addEnchantToItem(new ItemStack(Material.IRON_BOOTS, 1), Enchantment.VANISHING_CURSE,1);
+    ArrayList<ItemStack> items = new ArrayList<ItemStack>();
+    ItemStack ironHelmet =
+        GameCore.addEnchantToItem(
+            new ItemStack(Material.IRON_LEGGINGS, 1), Enchantment.VANISHING_CURSE, 1);
+    ItemStack ironBoots =
+        GameCore.addEnchantToItem(
+            new ItemStack(Material.IRON_BOOTS, 1), Enchantment.VANISHING_CURSE, 1);
 
-        items.add(ironHelmet);
-        items.add(ironBoots);
+    items.add(ironHelmet);
+    items.add(ironBoots);
 
-        return items;
-    }
+    return items;
+  }
 
-    public String getName() {
-        return this.name;
-    }
+  public String getName() {
+    return this.name;
+  }
 
-    public ItemStack getDisplayMaterial() {
-        ItemStack displayIcon = new ItemStack(Material.ANVIL, 1);
+  public ItemStack getDisplayMaterial() {
+    ItemStack displayIcon = new ItemStack(Material.ANVIL, 1);
 
-        ItemMeta meta = displayIcon.getItemMeta();
-        meta.setDisplayName(this.name);
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        List<String> lore = Arrays.asList(
-                LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_BLACKSMITH_1"),
-                LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_BLACKSMITH_2"),
-                LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_BLACKSMITH_3"),
-                "",
-                LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_BLACKSMITH_4")
-        );
-        meta.setLore(lore);
+    ItemMeta meta = displayIcon.getItemMeta();
+    meta.setDisplayName(this.name);
+    meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+    List<String> lore =
+        Arrays.asList(
+            LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_BLACKSMITH_1"),
+            LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_BLACKSMITH_2"),
+            LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_BLACKSMITH_3"),
+            "",
+            LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_BLACKSMITH_4"));
+    meta.setLore(lore);
 
-        displayIcon.setItemMeta(meta);
+    displayIcon.setItemMeta(meta);
 
-        return displayIcon;
-    }
+    return displayIcon;
+  }
 
-    @Override
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
+  @Override
+  public void setPlayer(Player player) {
+    this.player = player;
+  }
 
-    @Override
-    public void executePlayerAction() {}
+  @Override
+  public void executePlayerAction() {}
 }

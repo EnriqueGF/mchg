@@ -10,7 +10,6 @@ import devep.Game.GameSettings;
 import devep.Game.Gui.KitGui;
 import devep.Locale.LocaleFactory;
 import devep.ScheduleTasks;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -104,11 +103,11 @@ public class EventHooks implements Listener {
             player.setCompassTarget(target.getLocation());
         }
 
-        // Nether Start kit item
-        if(player.getItemInHand() != null &&
-           player.getItemInHand().getItemMeta() != null &&
-           player.getItemInHand().getItemMeta().getDisplayName() != null
-            && player.getItemInHand().getItemMeta().getDisplayName().equals("Kits")) {
+    // Nether Start kit item
+    if (player.getItemInHand() != null
+        && player.getItemInHand().getItemMeta() != null
+        && player.getItemInHand().getItemMeta().getDisplayName() != null
+        && player.getItemInHand().getItemMeta().getDisplayName().equals("Kits")) {
 
             if (event.getHand() == EquipmentSlot.HAND && (event.getAction() == Action.RIGHT_CLICK_AIR ||event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
                 KitGui kitGui;
