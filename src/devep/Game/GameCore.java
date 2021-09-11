@@ -17,6 +17,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.time.Instant;
 import java.util.Map;
 
 public class GameCore {
@@ -27,6 +28,7 @@ public class GameCore {
     private int countPVPEnabledScheduleID;
     public static int secondsCountInvulnerabilityStart = 10;
     public static int secondsCountPVPEnable = 5;
+    public static long invulnerabilityStartTimestamp = 0;
 
     public GameCore(GameSettings gameSettings, ScheduleTasks scheduleTasks) {
         this.gameSettings = gameSettings;
@@ -101,11 +103,19 @@ public class GameCore {
             System.out.println("Excepcion en ApplyPlayersKit: " + ex);
         }
 
-        ClassicHC.plugin.getServer().getScheduler().scheduleSyncDelayedTask(ClassicHC.plugin, new Runnable() {
-            public void run() {
+        invulnerabilityStartTimestamp = Instant.now().getEpochSecond() + gameSettings.invulnerabilityStageSeconds;
+
+    ClassicHC.plugin
+        .getServer()
+        .getScheduler()
+        .scheduleSyncDelayedTask(
+            ClassicHC.plugin,
+            new Runnable() {
+              public void run() {
                 startMatchGame();
-            }
-        }, 20 * gameSettings.invulnerabilityStageSeconds);
+              }
+            },
+            20 * gameSettings.invulnerabilityStageSeconds);
 
     countPVPEnabledScheduleID =
         ClassicHC.plugin
