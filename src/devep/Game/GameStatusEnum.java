@@ -1,7 +1,7 @@
 package devep.Game;
 
 public enum GameStatusEnum {
-    BEFORE_START,
-    INVULNERABILITY,
-    STARTED
+  BEFORE_START,
+  INVULNERABILITY,
+  STARTED
 }

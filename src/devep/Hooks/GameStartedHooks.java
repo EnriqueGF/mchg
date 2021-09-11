@@ -32,8 +32,8 @@ public class GameStartedHooks implements Listener {
     @EventHandler
     public void onDeath(PlayerDeathEvent event) {
         if(gameSettings.gameStatus == GameStatusEnum.STARTED || gameSettings.gameStatus == GameStatusEnum.INVULNERABILITY) {
-            //event.getEntity().kickPlayer(LocaleFactory.getLocale(event.getEntity().getLocale()).getTranslatedText("YOU_DEAD_KILLED"));
-            ByteArrayDataOutput out = ByteStreams.newDataOutput();
+      // event.getEntity().kickPlayer(LocaleFactory.getLocale(event.getEntity().getLocale()).getTranslatedText("YOU_DEAD_KILLED"));
+      ByteArrayDataOutput out = ByteStreams.newDataOutput();
             out.writeUTF("Connect");
             out.writeUTF("lobby");
 

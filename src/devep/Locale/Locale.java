@@ -2,17 +2,16 @@ package devep.Locale;
 
 public abstract class Locale {
 
-    protected String[][] translationsArr;
+  protected String[][] translationsArr;
 
-    public String getTranslatedText(String key) {
+  public String getTranslatedText(String key) {
 
-        for(String[] arr: translationsArr)
-        {
-            if (arr[0].equals(key)) {
-                return arr[1];
-            }
-        }
-
-        return "KEY_" + key + "_NOT_FOUND";
+    for (String[] arr : translationsArr) {
+      if (arr[0].equals(key)) {
+        return arr[1];
+      }
     }
+
+    return "KEY_" + key + "_NOT_FOUND";
+  }
 }

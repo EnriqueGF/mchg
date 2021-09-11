@@ -18,71 +18,83 @@ import java.util.UUID;
 
 public class AquaticKit implements KitsInterface {
 
-    private String name;
-    private Player player;
+  private String name;
+  private Player player;
 
-    public AquaticKit() {
-        this.name = "Aquatic";
-    }
+  public AquaticKit() {
+    this.name = "Aquatic";
+  }
 
-    public ArrayList<ItemStack> getItems() {
+  public ArrayList<ItemStack> getItems() {
 
-        ArrayList<ItemStack> items = new ArrayList<ItemStack>();
-        ItemStack trident = new ItemStack(Material.TRIDENT, 1);
-        ItemMeta meta = trident.getItemMeta();
+    ArrayList<ItemStack> items = new ArrayList<ItemStack>();
+    ItemStack trident = new ItemStack(Material.TRIDENT, 1);
+    ItemMeta meta = trident.getItemMeta();
 
-        AttributeModifier attackSpeedModifier = new AttributeModifier(UUID.randomUUID(), "generic.attackSpeed", -3, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        AttributeModifier damageModifier = new AttributeModifier(UUID.randomUUID(), "generic.attackDamage", 4, AttributeModifier.Operation.ADD_NUMBER, EquipmentSlot.HAND);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, damageModifier);
-        meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackSpeedModifier);
-        meta.addEnchant(Enchantment.RIPTIDE, 1, false);
-        meta.addEnchant(Enchantment.VANISHING_CURSE, 1, false);
+    AttributeModifier attackSpeedModifier =
+        new AttributeModifier(
+            UUID.randomUUID(),
+            "generic.attackSpeed",
+            -3,
+            AttributeModifier.Operation.ADD_NUMBER,
+            EquipmentSlot.HAND);
+    AttributeModifier damageModifier =
+        new AttributeModifier(
+            UUID.randomUUID(),
+            "generic.attackDamage",
+            4,
+            AttributeModifier.Operation.ADD_NUMBER,
+            EquipmentSlot.HAND);
+    meta.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, damageModifier);
+    meta.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, attackSpeedModifier);
+    meta.addEnchant(Enchantment.RIPTIDE, 1, false);
+    meta.addEnchant(Enchantment.VANISHING_CURSE, 1, false);
 
-        trident.setItemMeta(meta);
+    trident.setItemMeta(meta);
 
-        ItemStack helmet = new ItemStack(Material.IRON_HELMET, 1);
-        ItemMeta helmetMeta = helmet.getItemMeta();
-        helmetMeta.addEnchant(Enchantment.OXYGEN, 1, false);
-        helmetMeta.addEnchant(Enchantment.VANISHING_CURSE, 1, false);
+    ItemStack helmet = new ItemStack(Material.IRON_HELMET, 1);
+    ItemMeta helmetMeta = helmet.getItemMeta();
+    helmetMeta.addEnchant(Enchantment.OXYGEN, 1, false);
+    helmetMeta.addEnchant(Enchantment.VANISHING_CURSE, 1, false);
 
-        helmet.setItemMeta(helmetMeta);
+    helmet.setItemMeta(helmetMeta);
 
-        items.add(trident);
-        items.add(helmet);
+    items.add(trident);
+    items.add(helmet);
 
-        return items;
-    }
+    return items;
+  }
 
-    public String getName() {
-        return this.name;
-    }
+  public String getName() {
+    return this.name;
+  }
 
-    public ItemStack getDisplayMaterial() {
-        ItemStack displayIcon = new ItemStack(Material.TRIDENT, 1);
+  public ItemStack getDisplayMaterial() {
+    ItemStack displayIcon = new ItemStack(Material.TRIDENT, 1);
 
-        ItemMeta meta = displayIcon.getItemMeta();
-        meta.setDisplayName(this.name);
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+    ItemMeta meta = displayIcon.getItemMeta();
+    meta.setDisplayName(this.name);
+    meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
 
-        List<String> lore = Arrays.asList(
-                LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_AQUATIC_1"),
-                LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_AQUATIC_2"),
-                LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_AQUATIC_3"),
-                "",
-                LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_AQUATIC_4")
-        );
-        meta.setLore(lore);
+    List<String> lore =
+        Arrays.asList(
+            LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_AQUATIC_1"),
+            LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_AQUATIC_2"),
+            LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_AQUATIC_3"),
+            "",
+            LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_AQUATIC_4"));
+    meta.setLore(lore);
 
-        displayIcon.setItemMeta(meta);
+    displayIcon.setItemMeta(meta);
 
-        return displayIcon;
-    }
+    return displayIcon;
+  }
 
-    @Override
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
+  @Override
+  public void setPlayer(Player player) {
+    this.player = player;
+  }
 
-    @Override
-    public void executePlayerAction() {}
+  @Override
+  public void executePlayerAction() {}
 }

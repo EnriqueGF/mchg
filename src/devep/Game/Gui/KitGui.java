@@ -9,7 +9,6 @@ import io.github.classgraph.ClassGraph;
 import io.github.classgraph.ScanResult;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -38,7 +37,7 @@ public class KitGui {
 
 
         int index = 0;
-        for (KitsInterface kit : getKits() ) {
+    for (KitsInterface kit : getKits()) {
 
             kit.setPlayer(this.player);
 

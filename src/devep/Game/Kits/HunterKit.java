@@ -17,57 +17,59 @@ import java.util.List;
 
 public class HunterKit implements KitsInterface {
 
-    private String name;
-    private Player player;
+  private String name;
+  private Player player;
 
-    public HunterKit() {
-        this.name = "Hunter";
-    }
+  public HunterKit() {
+    this.name = "Hunter";
+  }
 
-    public ArrayList<ItemStack> getItems() {
+  public ArrayList<ItemStack> getItems() {
 
-        ArrayList<ItemStack> items = new ArrayList<ItemStack>();
-        ItemStack ironSword = GameCore.addEnchantToItem(new ItemStack(Material.IRON_SWORD, 1), Enchantment.VANISHING_CURSE,1);
+    ArrayList<ItemStack> items = new ArrayList<ItemStack>();
+    ItemStack ironSword =
+        GameCore.addEnchantToItem(
+            new ItemStack(Material.IRON_SWORD, 1), Enchantment.VANISHING_CURSE, 1);
 
-        items.add(ironSword);
+    items.add(ironSword);
 
-        return items;
-    }
+    return items;
+  }
 
-    public String getName() {
-        return this.name;
-    }
+  public String getName() {
+    return this.name;
+  }
 
-    public ItemStack getDisplayMaterial() {
-        ItemStack displayIcon = new ItemStack(Material.BONE, 1);
+  public ItemStack getDisplayMaterial() {
+    ItemStack displayIcon = new ItemStack(Material.BONE, 1);
 
-        ItemMeta meta = displayIcon.getItemMeta();
-        List<String> lore = Arrays.asList(
-                LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_HUNTER_1"),
-                LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_HUNTER_2"),
-                LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_HUNTER_3"),
-                "",
-                LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_HUNTER_4")
-        );
+    ItemMeta meta = displayIcon.getItemMeta();
+    List<String> lore =
+        Arrays.asList(
+            LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_HUNTER_1"),
+            LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_HUNTER_2"),
+            LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_HUNTER_3"),
+            "",
+            LocaleFactory.getLocale(player.getLocale()).getTranslatedText("KIT_HUNTER_4"));
 
-        meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        meta.setLore(lore);
-        meta.setDisplayName(this.name);
+    meta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+    meta.setLore(lore);
+    meta.setDisplayName(this.name);
 
+    displayIcon.setItemMeta(meta);
 
-        displayIcon.setItemMeta(meta);
+    return displayIcon;
+  }
 
-        return displayIcon;
-    }
+  @Override
+  public void setPlayer(Player player) {
+    this.player = player;
+  }
 
-    @Override
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    @Override
-    public void executePlayerAction() {
-        Wolf wolf = (Wolf) this.player.getWorld().spawnEntity(this.player.getLocation(), EntityType.WOLF);
-        wolf.setOwner(player);
-    }
+  @Override
+  public void executePlayerAction() {
+    Wolf wolf =
+        (Wolf) this.player.getWorld().spawnEntity(this.player.getLocation(), EntityType.WOLF);
+    wolf.setOwner(player);
+  }
 }

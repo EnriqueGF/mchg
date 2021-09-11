@@ -11,7 +11,7 @@ public class SummonLightning implements ActionInterface {
 
     @Override
     public void executeAction(Event e) {
-        EntityDeathEvent event = (EntityDeathEvent)e;
+    EntityDeathEvent event = (EntityDeathEvent) e;
         Entity entity = event.getEntity();
 
         if (entity instanceof Player) {

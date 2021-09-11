@@ -4,20 +4,16 @@ import devep.Game.GameCore;
 import devep.Game.GameSettings;
 import devep.Game.GameStatusEnum;
 import devep.ScheduleTasks;
+import lombok.AllArgsConstructor;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.event.Event;
 
+@AllArgsConstructor
 public class BroadcastRequiredPlayers implements ActionInterface {
     private GameSettings gameSettings;
     private ScheduleTasks scheduleTasks;
     private GameCore gameCore;
-
-    public BroadcastRequiredPlayers(GameSettings gameSettings, ScheduleTasks scheduleTasks, GameCore gameCore) {
-        this.gameSettings = gameSettings;
-        this.scheduleTasks = scheduleTasks;
-        this.gameCore = gameCore;
-    }
 
     @Override
     public void executeAction(Event event) {
