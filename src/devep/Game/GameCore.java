@@ -21,21 +21,21 @@ import java.time.Instant;
 import java.util.HashMap;
 
 public class GameCore {
-    private GameSettings gameSettings;
-    private ScheduleTasks scheduleTasks;
-    private int checkForEnoughPlayersScheduleID;
-    private int countInvulnerabilityScheduleID;
-    private int countPVPEnabledScheduleID;
-    public static int secondsCountInvulnerabilityStart = 10;
-    public static int secondsCountPVPEnable = 5;
-    public static long invulnerabilityStartTimestamp = 0;
+  private GameSettings gameSettings;
+  private ScheduleTasks scheduleTasks;
+  private int checkForEnoughPlayersScheduleID;
+  private int countInvulnerabilityScheduleID;
+  private int countPVPEnabledScheduleID;
+  public static int secondsCountInvulnerabilityStart = 10;
+  public static int secondsCountPVPEnable = 5;
+  public static long invulnerabilityStartTimestamp = 0;
 
-    public GameCore(GameSettings gameSettings, ScheduleTasks scheduleTasks) {
-        this.gameSettings = gameSettings;
-        this.scheduleTasks = scheduleTasks;
+  public GameCore(GameSettings gameSettings, ScheduleTasks scheduleTasks) {
+    this.gameSettings = gameSettings;
+    this.scheduleTasks = scheduleTasks;
 
-        initCheckingForInvulnerabilityStage();
-    }
+    initCheckingForInvulnerabilityStage();
+  }
 
   private void initCheckingForInvulnerabilityStage() {
 
@@ -111,7 +111,6 @@ public class GameCore {
 
     try {
       for (Player player : Bukkit.getOnlinePlayers()) {
-        player.setCollidable(true);
         player.getInventory().clear();
         player.setHealth(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue());
         player.setFoodLevel(20);
@@ -128,8 +127,8 @@ public class GameCore {
       System.out.println("Excepcion en ApplyPlayersKit: " + ex);
     }
 
-
-   invulnerabilityStartTimestamp = Instant.now().getEpochSecond() + gameSettings.invulnerabilityStageSeconds;
+    invulnerabilityStartTimestamp =
+        Instant.now().getEpochSecond() + gameSettings.invulnerabilityStageSeconds;
 
     ClassicHC.plugin
         .getServer()
@@ -186,6 +185,14 @@ public class GameCore {
 
     sendLocaleMessageToAllPlayers("GAME_STARTS_MESSAGE", "", ChatColor.RED);
     gameSettings.gameStatus = GameStatusEnum.STARTED;
+
+    try {
+      for (Player player : Bukkit.getOnlinePlayers()) {
+        player.setCollidable(true);
+      }
+    } catch (Exception ex) {
+      System.out.println("Excepcion en startMatchGame(): " + ex);
+    }
 
     this.scheduleTasks.initWorldBorderClosingCheck();
   }

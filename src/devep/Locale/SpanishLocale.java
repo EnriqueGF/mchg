@@ -24,6 +24,15 @@ public class SpanishLocale extends Locale {
     {"BOSSBAR_BORDER_DANGER", "¡Cuidado! Estás cerca del límite del mundo"},
     {"COMPASS_LOCATED_PLAYER", "Jugador localizado:" + ChatColor.LIGHT_PURPLE + " %s"},
 
+    {"INFO_WAITING_FOR_START", "Esperando para empezar..."},
+    {"INFO_GAME_STATUS_BEFORE_START", "Esperando jugadores..."},
+    {"INFO_GAME_STATUS_INVULNERABILITY", "Invulnerabilidad"},
+    {"INFO_GAME_STATUS_STARTED", "PVP Activado"},
+    {"INFO_GAME_STATUS", "Estado"},
+    {"INFO_ALIVE_PLAYERS", "Jugadores Vivos"},
+    {"INFO_BORDER_SIZE", "Tamaño del borde del mapa"},
+    {"INFO_PVP", "PvP cuenta atrás"},
+
     // Kits
     {
       "KIT_SELECTED_MESSAGE",

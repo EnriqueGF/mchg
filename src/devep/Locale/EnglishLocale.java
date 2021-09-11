@@ -24,6 +24,15 @@ public class EnglishLocale extends Locale {
     {"BOSSBAR_BORDER_DANGER", "Take care! You are near the World Border!"},
     {"COMPASS_LOCATED_PLAYER", "Located player:" + ChatColor.LIGHT_PURPLE + " %s"},
 
+    {"INFO_WAITING_FOR_START", "Waiting for start..."},
+    {"INFO_GAME_STATUS_BEFORE_START", "Waiting for players..."},
+    {"INFO_GAME_STATUS_INVULNERABILITY", "Invulnerability"},
+    {"INFO_GAME_STATUS_STARTED", "PVP Activated"},
+    {"INFO_GAME_STATUS", "Game Status"},
+    {"INFO_ALIVE_PLAYERS", "Alive Players"},
+    {"INFO_BORDER_SIZE", "World-Border Size"},
+    {"INFO_PVP", "PvP Countdown"},
+
     // Kits
     {
       "KIT_SELECTED_MESSAGE",

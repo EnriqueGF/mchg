@@ -74,20 +74,6 @@ public class EventHooks implements Listener {
         this.broadcastRequiredPlayers.executeAction(playerJoinEvent);
         playerJoinEvent.getPlayer().setCollidable(false);
 
-        /*
-        Bukkit.getScheduler().scheduleSyncDelayedTask(ClassicHC.plugin, new Runnable() {
-            @Override
-            public void run() {
-                ClassicHC.titleManagerAPI.giveScoreboard(playerJoinEvent.getPlayer());
-                ClassicHC.titleManagerAPI.setScoreboardTitle(playerJoinEvent.getPlayer(), "Classic Hunger Games");
-                ClassicHC.titleManagerAPI.setScoreboardValueWithPlaceholders(playerJoinEvent.getPlayer(), 1, "%{player} %{online}");
-
-
-                //ClassicHC.titleManagerAPI.sendTitle(playerJoinEvent.getPlayer(), "TITLE 1");
-                //ClassicHC.titleManagerAPI.sendSubtitle(playerJoinEvent.getPlayer(), "TITLE 2");
-            }
-        }, 20*5);
-        */
     }
 
     @EventHandler
