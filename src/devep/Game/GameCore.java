@@ -18,7 +18,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import java.time.Instant;
-import java.util.Map;
+import java.util.HashMap;
 
 public class GameCore {
     private GameSettings gameSettings;
