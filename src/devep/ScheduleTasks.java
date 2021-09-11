@@ -202,7 +202,7 @@ public class ScheduleTasks {
                           }
 
                           double percentage =
-                                  (((Math.abs(result) * 100) / ClassicHC.worldBorder.getSize()) / 100);
+                                  (((Math.abs(result) * 100) / (ClassicHC.worldBorder.getSize() / 2)) / 100);
 
                           if (percentage >= 0.25) {
                             bossBarText = "You are safe from World Border";
