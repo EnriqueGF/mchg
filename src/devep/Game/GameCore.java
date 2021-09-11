@@ -88,6 +88,7 @@ public class GameCore {
                 player.getInventory().clear();
                 player.setHealth(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue());
                 player.setFoodLevel(20);
+                player.setSaturation(6.0f);
                 player.teleport(ClassicHC.spawnLocation);
             }
         } catch (Exception ex) {

@@ -7,3 +7,8 @@ depend:
   - WorldBorderAPI
 softdepend: [TitleManager]
 load: STARTUP
+commands:
+  forceStartGame:
+    description: Forzar el inicio de la partida
+    usage: /forceStartGame
+    permission: classichc.forcestartgame

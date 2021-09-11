@@ -1,8 +1,11 @@
 package devep;
 
+import com.google.common.io.ByteArrayDataOutput;
+import com.google.common.io.ByteStreams;
 import devep.Game.GameCore;
 import devep.Game.GameSettings;
 import devep.Game.GameStatusEnum;
+import devep.Locale.LocaleFactory;
 import lombok.extern.java.Log;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -145,6 +148,8 @@ public class ScheduleTasks {
                       }
 
                       if (Bukkit.getOnlinePlayers().size() == 1) {
+                        Bukkit.getScheduler().cancelTask(lookForGameFinishScheduleID);
+
                         Player winPlayer = Bukkit.getOnlinePlayers().iterator().next();
                         Bukkit.getServer()
                             .getWorld("world")
@@ -152,11 +157,38 @@ public class ScheduleTasks {
                         winPlayer.sendMessage(ChatColor.GOLD + "You win!!");
                         winPlayer.sendMessage(ChatColor.GREEN + "Congrats!!");
 
-                        Bukkit.getScheduler().cancelTask(lookForGameFinishScheduleID);
 
-                        ConsoleCommandSender console = Bukkit.getServer().getConsoleSender();
-                        String command = "restart";
-                        Bukkit.dispatchCommand(console, command);
+                        // Felicitar jugador, mandarlo al lobby y reiniciar el servidor
+                        Bukkit.getScheduler()
+                            .scheduleSyncDelayedTask(
+                                ClassicHC.plugin,
+                                new Runnable() {
+                                  @Override
+                                  public void run() {
+                                    ByteArrayDataOutput out = ByteStreams.newDataOutput();
+                                    out.writeUTF("Connect");
+                                    out.writeUTF("lobby");
+
+                                    winPlayer.sendPluginMessage(
+                                        ClassicHC.plugin, "BungeeCord", out.toByteArray());
+
+                                  }
+                                },
+                                20 * 6);
+
+                        Bukkit.getScheduler()
+                            .scheduleSyncDelayedTask(
+                                ClassicHC.plugin,
+                                new Runnable() {
+                                  @Override
+                                  public void run() {
+                                    ConsoleCommandSender console =
+                                        Bukkit.getServer().getConsoleSender();
+                                    String command = "restart";
+                                    Bukkit.dispatchCommand(console, command);
+                                  }
+                                },
+                                20 * 10);
                       }
 
                       if (Bukkit.getOnlinePlayers().size() == 0) {
@@ -177,52 +209,55 @@ public class ScheduleTasks {
 
   private void borderDistanceBossBarSchedule() {
     Bukkit.getScheduler()
-            .scheduleSyncRepeatingTask(
-                    ClassicHC.plugin,
-                    new Runnable() {
-                      @Override
-                      public void run() {
-                        for (Player player : Bukkit.getOnlinePlayers()) {
-                          double result;
-                          String bossBarText = "";
-                          BarColor barColor;
+        .scheduleSyncRepeatingTask(
+            ClassicHC.plugin,
+            new Runnable() {
+              @Override
+              public void run() {
+                for (Player player : Bukkit.getOnlinePlayers()) {
+                  double result;
+                  String bossBarText = "";
+                  BarColor barColor;
 
-                          Location playerLocation = player.getLocation();
-                          double borderSize = Bukkit.getWorld("world").getWorldBorder().getSize() / 2;
+                  Location playerLocation = player.getLocation();
+                  double borderSize = Bukkit.getWorld("world").getWorldBorder().getSize() / 2;
 
-                          if (Math.abs(playerLocation.getX()) > Math.abs(playerLocation.getZ())) {
-                            result = Math.abs(playerLocation.getX()) - borderSize;
-                          } else {
-                            result = Math.abs(playerLocation.getZ()) - borderSize;
-                          }
+                  if (Math.abs(playerLocation.getX()) > Math.abs(playerLocation.getZ())) {
+                    result = Math.abs(playerLocation.getX()) - borderSize;
+                  } else {
+                    result = Math.abs(playerLocation.getZ()) - borderSize;
+                  }
 
-                          if (bossBars.containsKey(player)) {
-                            bossBars.get(player).removeAll();
-                            bossBars.remove(player);
-                          }
+                  if (bossBars.containsKey(player)) {
+                    bossBars.get(player).removeAll();
+                    bossBars.remove(player);
+                  }
 
-                          double percentage =
-                                  (((Math.abs(result) * 100) / (ClassicHC.worldBorder.getSize() / 2)) / 100);
+                  double percentage =
+                      (((Math.abs(result) * 100) / (ClassicHC.worldBorder.getSize() / 2)) / 100);
 
-                          if (percentage >= 0.25) {
-                            bossBarText = "You are safe from World Border";
-                            barColor = BarColor.GREEN;
-                          } else {
-                            bossBarText = "Take care! You are near the World Border!";
-                            barColor = BarColor.RED;
-                          }
+                  if (percentage >= 0.25) {
+                    bossBarText =
+                        LocaleFactory.getLocale(player.getLocale())
+                            .getTranslatedText("BOSSBAR_BORDER_YOUARESAFE");
+                    barColor = BarColor.GREEN;
+                  } else {
+                    bossBarText =
+                        LocaleFactory.getLocale(player.getLocale())
+                            .getTranslatedText("BOSSBAR_BORDER_DANGER");
+                    barColor = BarColor.RED;
+                  }
 
-                          BossBar bossBar =
-                                  Bukkit.createBossBar(bossBarText, barColor, BarStyle.SOLID);
+                  BossBar bossBar = Bukkit.createBossBar(bossBarText, barColor, BarStyle.SOLID);
 
-                          bossBar.setProgress(percentage);
-                          bossBar.addPlayer(player);
+                  bossBar.setProgress(percentage);
+                  bossBar.addPlayer(player);
 
-                          bossBars.put(player, bossBar);
-                        }
-                      }
-                    },
-                    0L,
-                    20 * 1);
+                  bossBars.put(player, bossBar);
+                }
+              }
+            },
+            0L,
+            20 * 1);
   }
 }

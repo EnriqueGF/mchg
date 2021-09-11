@@ -1,5 +1,6 @@
 package devep;
 
+import devep.Command.StartGameCommand;
 import devep.Game.GameCore;
 import devep.Game.GameSettings;
 import devep.Hooks.EventHooks;
@@ -37,6 +38,8 @@ public class ClassicHC extends JavaPlugin implements PluginMessageListener {
     this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
 
     GameSettings gameSettings = new GameSettings();
+
+    this.getCommand("forceStartGame").setExecutor(new StartGameCommand(gameSettings));
 
     ScheduleTasks scheduleTasks = new ScheduleTasks(plugin);
     GameCore gameCore = new GameCore(gameSettings, scheduleTasks);

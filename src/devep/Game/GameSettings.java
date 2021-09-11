@@ -6,7 +6,7 @@ import java.time.Instant;
 
 public class GameSettings {
   // General
-  public Integer requiredPlayersToStart = 2;
+  public Integer requiredPlayersToStart = 70;
   public Integer invulnerabilityStageSeconds = 300;
   public static GameStatusEnum gameStatus = GameStatusEnum.BEFORE_START;
   public static String announcementsPrefix = ChatColor.GREEN + "[Classic HG] ";

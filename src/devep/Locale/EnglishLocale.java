@@ -20,6 +20,8 @@ public class EnglishLocale extends Locale {
     {"YOU_DEAD_KILLED", "You have died!"},
     {"CANT_DROP_KIT_ITEM", "You can't drop a kit item!"},
     {"BORDER_IS_CLOSING_ALERT", "The world border is closing!"},
+    {"BOSSBAR_BORDER_YOUARESAFE", "You are safe from World Border"},
+    {"BOSSBAR_BORDER_DANGER", "Take care! You are near the World Border!"},
     {"COMPASS_LOCATED_PLAYER", "Located player:" + ChatColor.LIGHT_PURPLE + " %s"},
 
     // Kits

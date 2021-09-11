@@ -20,6 +20,8 @@ public class SpanishLocale extends Locale {
     {"YOU_DEAD_KILLED", "¡Has muerto!"},
     {"CANT_DROP_KIT_ITEM", "¡No puedes soltar un item de tu kit!"},
     {"BORDER_IS_CLOSING_ALERT", "¡El borde del mundo se está cerrando!"},
+    {"BOSSBAR_BORDER_YOUARESAFE", "Estás lejos del límite del mundo"},
+    {"BOSSBAR_BORDER_DANGER", "¡Cuidado! Estás cerca del límite del mundo"},
     {"COMPASS_LOCATED_PLAYER", "Jugador localizado:" + ChatColor.LIGHT_PURPLE + " %s"},
 
     // Kits
