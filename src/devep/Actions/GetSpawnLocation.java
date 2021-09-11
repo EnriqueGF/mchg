@@ -17,6 +17,6 @@ public class GetSpawnLocation implements ActionInterface {
 
     World world = event.getWorld();
 
-    ClassicHC.spawnLocation = world.getSpawnLocation();
+    ClassicHC.spawnLocation = world.getHighestBlockAt(world.getSpawnLocation()).getLocation();
   }
 }
