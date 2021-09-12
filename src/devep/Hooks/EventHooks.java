@@ -23,7 +23,6 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.server.ServerListPingEvent;
-import org.bukkit.event.world.WorldInitEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
@@ -77,7 +76,10 @@ public class EventHooks implements Listener {
         // Compass functionality
         Player target = gameCore.getNearestPlayer(player, 300.0);
 
-        if((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) && player.getItemInHand().getType() == Material.COMPASS && target != null) {
+        if (target == null){
+            GameCore.sendPlayerMessage("COMPASS_NO_PLAYER_LOCATED","", ChatColor.YELLOW, player);
+
+        }else if((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) && player.getItemInHand().getType() == Material.COMPASS && target != null) {
             GameCore.sendPlayerMessage("COMPASS_LOCATED_PLAYER", target.getName(), ChatColor.YELLOW, player);
             player.setCompassTarget(target.getLocation());
         }

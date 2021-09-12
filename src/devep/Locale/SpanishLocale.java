@@ -23,6 +23,7 @@ public class SpanishLocale extends Locale {
     {"BOSSBAR_BORDER_YOUARESAFE", "Estás lejos del límite del mundo"},
     {"BOSSBAR_BORDER_DANGER", "¡Cuidado! Estás cerca del límite del mundo"},
     {"COMPASS_LOCATED_PLAYER", "Jugador localizado:" + ChatColor.LIGHT_PURPLE + " %s"},
+    {"COMPASS_NO_PLAYER_LOCATED", "No se ha localizado a ningún jugador"},
 
     {"INFO_WAITING_FOR_START", "Esperando para empezar..."},
     {"INFO_GAME_STATUS_BEFORE_START", "Esperando jugadores..."},
