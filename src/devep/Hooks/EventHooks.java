@@ -30,59 +30,64 @@ import java.util.Iterator;
 
 public class EventHooks implements Listener {
 
-    private GameSettings gameSettings;
-    private ScheduleTasks scheduleTasks;
-    private BroadcastRequiredPlayers broadcastRequiredPlayers;
-    private GameCore gameCore;
+  private GameSettings gameSettings;
+  private ScheduleTasks scheduleTasks;
+  private BroadcastRequiredPlayers broadcastRequiredPlayers;
+  private GameCore gameCore;
 
-    public EventHooks(GameSettings gameSettings, ScheduleTasks scheduleTasks, GameCore gameCore) {
-        this.gameSettings = gameSettings;
-        this.scheduleTasks = scheduleTasks;
-        this.gameCore = gameCore;
-        this.broadcastRequiredPlayers = new BroadcastRequiredPlayers(this.gameSettings, this.scheduleTasks, this.gameCore);
+  public EventHooks(GameSettings gameSettings, ScheduleTasks scheduleTasks, GameCore gameCore) {
+    this.gameSettings = gameSettings;
+    this.scheduleTasks = scheduleTasks;
+    this.gameCore = gameCore;
+    this.broadcastRequiredPlayers =
+        new BroadcastRequiredPlayers(this.gameSettings, this.scheduleTasks, this.gameCore);
+  }
+
+  @EventHandler
+  public void onEntityDeath(EntityDeathEvent event) {
+
+    SummonLightning sL = new SummonLightning();
+    sL.executeAction(event);
+  }
+
+  @EventHandler
+  public void onPlayerJoin(PlayerJoinEvent playerJoinEvent) {
+    Player player = playerJoinEvent.getPlayer();
+
+    ClassicHC.team.addEntry(player.getName());
+    player.setScoreboard(ClassicHC.scoreboard);
+
+    player.setCollidable(false);
+
+    ClassicHC.titleManagerAPI.giveScoreboard(player);
+
+    GiveKitItem gKI = new GiveKitItem();
+    gKI.executeAction(playerJoinEvent);
+
+    this.broadcastRequiredPlayers.executeAction(playerJoinEvent);
+  }
+
+  @EventHandler
+  public void onPlayerInteractItemClickEvent(PlayerInteractEvent event) {
+
+    Player player = event.getPlayer();
+
+    // Compass functionality
+
+    if ((event.getAction() == Action.RIGHT_CLICK_AIR
+            || event.getAction() == Action.RIGHT_CLICK_BLOCK)
+        && player.getItemInHand().getType() == Material.COMPASS) {
+
+      Player target = gameCore.getNearestPlayer(player, 300.0);
+
+      if (target == null) {
+        GameCore.sendPlayerMessage("COMPASS_NO_PLAYER_LOCATED", "", ChatColor.YELLOW, player);
+      } else {
+        GameCore.sendPlayerMessage(
+            "COMPASS_LOCATED_PLAYER", target.getName(), ChatColor.YELLOW, player);
+        player.setCompassTarget(target.getLocation());
+      }
     }
-
-    @EventHandler
-    public void onEntityDeath(EntityDeathEvent event) {
-
-        SummonLightning sL = new SummonLightning();
-        sL.executeAction(event);
-
-    }
-
-    @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent playerJoinEvent) {
-        Player player = playerJoinEvent.getPlayer();
-
-        ClassicHC.team.addEntry(player.getName());
-        player.setScoreboard(ClassicHC.scoreboard);
-
-        player.setCollidable(false);
-
-        ClassicHC.titleManagerAPI.giveScoreboard(player);
-
-        GiveKitItem gKI = new GiveKitItem();
-        gKI.executeAction(playerJoinEvent);
-
-        this.broadcastRequiredPlayers.executeAction(playerJoinEvent);
-
-    }
-
-    @EventHandler
-    public void onPlayerInteractItemClickEvent(PlayerInteractEvent event) {
-
-        Player player = event.getPlayer();
-
-        // Compass functionality
-        Player target = gameCore.getNearestPlayer(player, 300.0);
-
-        if (target == null){
-            GameCore.sendPlayerMessage("COMPASS_NO_PLAYER_LOCATED","", ChatColor.YELLOW, player);
-
-        }else if((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) && player.getItemInHand().getType() == Material.COMPASS && target != null) {
-            GameCore.sendPlayerMessage("COMPASS_LOCATED_PLAYER", target.getName(), ChatColor.YELLOW, player);
-            player.setCompassTarget(target.getLocation());
-        }
 
     // Nether Start kit item
     if (player.getItemInHand() != null
@@ -90,83 +95,87 @@ public class EventHooks implements Listener {
         && player.getItemInHand().getItemMeta().getDisplayName() != null
         && player.getItemInHand().getItemMeta().getDisplayName().equals("Kits")) {
 
-            if (event.getHand() == EquipmentSlot.HAND && (event.getAction() == Action.RIGHT_CLICK_AIR ||event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
-                KitGui kitGui;
+      if (event.getHand() == EquipmentSlot.HAND
+          && (event.getAction() == Action.RIGHT_CLICK_AIR
+              || event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
+        KitGui kitGui;
 
-                if (KitGui.playersGuis.containsKey(player)) {
-                    kitGui = KitGui.playersGuis.get(player);
-                } else {
-                    KitGui newKitGui = new KitGui(player);
-                    KitGui.playersGuis.put(player, newKitGui);
-                    kitGui = newKitGui;
-                }
-
-                kitGui.openGUIForPlayer(event.getPlayer());
-            }
+        if (KitGui.playersGuis.containsKey(player)) {
+          kitGui = KitGui.playersGuis.get(player);
+        } else {
+          KitGui newKitGui = new KitGui(player);
+          KitGui.playersGuis.put(player, newKitGui);
+          kitGui = newKitGui;
         }
+
+        kitGui.openGUIForPlayer(event.getPlayer());
+      }
+    }
+  }
+
+  @EventHandler
+  public void onPlayerQuit(PlayerQuitEvent playerQuitEvent) {
+
+    this.broadcastRequiredPlayers.executeAction(playerQuitEvent);
+  }
+
+  @EventHandler
+  public void onServerListPingEvent(ServerListPingEvent event) {
+    String motd = "";
+
+    switch (gameSettings.gameStatus) {
+      case BEFORE_START:
+        motd = "0";
+        break;
+      case INVULNERABILITY:
+        motd = "1";
+        break;
+
+      case STARTED:
+        motd = "2";
+        break;
+
+      default:
+    }
+    event.setMotd(motd);
+  }
+
+  @EventHandler
+  public void onPlayerDeathDrop(PlayerDeathEvent e) {
+
+    if (e.getDrops() == null) {
+      return;
     }
 
-    @EventHandler
-    public void onPlayerQuit(PlayerQuitEvent playerQuitEvent) {
+    Iterator<ItemStack> i = e.getDrops().iterator();
+    while (i.hasNext()) {
+      ItemStack item = i.next();
+      if (item.getEnchantments().containsKey(Enchantment.VANISHING_CURSE)) {
+        i.remove();
+      }
+    }
+  }
 
-        this.broadcastRequiredPlayers.executeAction(playerQuitEvent);
+  @EventHandler
+  public void onPlayerDropItem(PlayerDropItemEvent event) {
 
+    if (event.getItemDrop() == null
+        || event.getItemDrop().getItemStack() == null
+        || event.getItemDrop().getItemStack().getEnchantments() == null) {
+      return;
     }
 
-    @EventHandler
-    public void onServerListPingEvent(ServerListPingEvent event)
-    {
-        String motd = "";
-
-        switch(gameSettings.gameStatus) {
-            case BEFORE_START:
-                motd = "0";
-            break;
-            case INVULNERABILITY:
-                motd = "1";
-            break;
-
-            case STARTED:
-                motd = "2";
-            break;
-
-            default:
-        }
-        event.setMotd(motd);
+    if (event
+        .getItemDrop()
+        .getItemStack()
+        .getEnchantments()
+        .containsKey(Enchantment.VANISHING_CURSE)) {
+      event.setCancelled(true);
+      event
+          .getPlayer()
+          .sendMessage(
+              LocaleFactory.getLocale(event.getPlayer().getLocale())
+                  .getTranslatedText("CANT_DROP_KIT_ITEM"));
     }
-
-    @EventHandler
-    public void onPlayerDeathDrop(PlayerDeathEvent e) {
-
-        if (e.getDrops() == null) {
-            return;
-        }
-
-        Iterator<ItemStack> i = e.getDrops().iterator();
-        while (i.hasNext()) {
-            ItemStack item = i.next();
-            if (item.getEnchantments().containsKey(Enchantment.VANISHING_CURSE)) {
-                i.remove();
-            }
-        }
-
-    }
-
-    @EventHandler
-    public void onPlayerDropItem(PlayerDropItemEvent event){
-
-        if (event.getItemDrop() == null || event.getItemDrop().getItemStack() == null || event.getItemDrop().getItemStack().getEnchantments() == null) {
-            return;
-        }
-
-        if (event.getItemDrop().getItemStack().getEnchantments().containsKey(Enchantment.VANISHING_CURSE)) {
-            event.setCancelled(true);
-            event.getPlayer().sendMessage(
-                    LocaleFactory.getLocale(event.getPlayer().getLocale()).getTranslatedText("CANT_DROP_KIT_ITEM")
-            );
-        }
-    }
-
+  }
 }
-
-
