@@ -23,6 +23,7 @@ public class EnglishLocale extends Locale {
     {"BOSSBAR_BORDER_YOUARESAFE", "You are safe from World Border"},
     {"BOSSBAR_BORDER_DANGER", "Take care! You are near the World Border!"},
     {"COMPASS_LOCATED_PLAYER", "Located player:" + ChatColor.LIGHT_PURPLE + " %s"},
+    {"COMPASS_NO_PLAYER_LOCATED", "No player located"},
 
     {"INFO_WAITING_FOR_START", "Waiting for start..."},
     {"INFO_GAME_STATUS_BEFORE_START", "Waiting for players..."},
