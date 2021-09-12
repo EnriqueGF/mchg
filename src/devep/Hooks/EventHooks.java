@@ -1,7 +1,6 @@
 package devep.Hooks;
 
 import devep.Actions.BroadcastRequiredPlayers;
-import devep.Actions.GetSpawnLocation;
 import devep.Actions.GiveKitItem;
 import devep.Actions.SummonLightning;
 import devep.ClassicHC;
@@ -24,7 +23,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.server.ServerListPingEvent;
-import org.bukkit.event.world.WorldLoadEvent;
+import org.bukkit.event.world.WorldInitEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
@@ -53,26 +52,20 @@ public class EventHooks implements Listener {
     }
 
     @EventHandler
-    public void WorldLoadEvent(WorldLoadEvent event) {
-
-        ClassicHC.worldBorder = ClassicHC.plugin.getServer().getWorld("world").getWorldBorder();
-        ClassicHC.worldBorder.setSize(gameSettings.worldBorderSize);
-        ClassicHC.worldBorder.setDamageAmount(1);
-        ClassicHC.worldBorder.setWarningDistance(5);
-
-        GetSpawnLocation gSL = new GetSpawnLocation();
-        gSL.executeAction(event);
-
-    }
-
-    @EventHandler
     public void onPlayerJoin(PlayerJoinEvent playerJoinEvent) {
+        Player player = playerJoinEvent.getPlayer();
+
+        ClassicHC.team.addEntry(player.getName());
+        player.setScoreboard(ClassicHC.scoreboard);
+
+        player.setCollidable(false);
+
+        ClassicHC.titleManagerAPI.giveScoreboard(player);
 
         GiveKitItem gKI = new GiveKitItem();
         gKI.executeAction(playerJoinEvent);
 
         this.broadcastRequiredPlayers.executeAction(playerJoinEvent);
-        playerJoinEvent.getPlayer().setCollidable(false);
 
     }
 

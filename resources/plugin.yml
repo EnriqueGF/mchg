@@ -6,7 +6,6 @@ api-version: 1.16
 depend:
   - WorldBorderAPI
 softdepend: [TitleManager, PlaceholderAPI]
-load: STARTUP
 commands:
   forceStartGame:
     description: Forzar el inicio de la partida
