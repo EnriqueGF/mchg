@@ -78,8 +78,8 @@ public class EventHooks implements Listener {
 
         if (target == null){
             GameCore.sendPlayerMessage("COMPASS_NO_PLAYER_LOCATED","", ChatColor.YELLOW, player);
-        }
-        if((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) && player.getItemInHand().getType() == Material.COMPASS && target != null) {
+
+        }else if((event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) && player.getItemInHand().getType() == Material.COMPASS && target != null) {
             GameCore.sendPlayerMessage("COMPASS_LOCATED_PLAYER", target.getName(), ChatColor.YELLOW, player);
             player.setCompassTarget(target.getLocation());
         }
