@@ -35,9 +35,14 @@ public class HorseRiderKit implements KitsInterface {
         GameCore.addEnchantToItem(
             new ItemStack(Material.DIAMOND_HORSE_ARMOR, 1), Enchantment.VANISHING_CURSE, 1);
 
+    ItemStack lead =
+            GameCore.addEnchantToItem(
+                    new ItemStack(Material.LEAD, 1), Enchantment.VANISHING_CURSE, 1);
+
     items.add(horseSpawnEgg);
     items.add(saddle);
     items.add(diamondHorseArmor);
+    items.add(lead);
 
     return items;
   }
