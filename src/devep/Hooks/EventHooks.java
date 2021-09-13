@@ -72,9 +72,16 @@ public class EventHooks implements Listener {
 
     Player player = event.getPlayer();
 
+    if (player.getItemInHand() == null
+        || player.getItemInHand().getItemMeta() == null
+        || player.getItemInHand().getItemMeta().getDisplayName() == null) {
+      return;
+    }
+
     // Compass functionality
 
-    if ((event.getAction() == Action.RIGHT_CLICK_AIR
+    if (event.getHand() == EquipmentSlot.HAND
+        && (event.getAction() == Action.RIGHT_CLICK_AIR
             || event.getAction() == Action.RIGHT_CLICK_BLOCK)
         && player.getItemInHand().getType() == Material.COMPASS) {
 
@@ -90,10 +97,8 @@ public class EventHooks implements Listener {
     }
 
     // Nether Start kit item
-    if (player.getItemInHand() != null
-        && player.getItemInHand().getItemMeta() != null
-        && player.getItemInHand().getItemMeta().getDisplayName() != null
-        && player.getItemInHand().getItemMeta().getDisplayName().equals("Kits")) {
+
+    if (player.getItemInHand().getItemMeta().getDisplayName().equals("Kits")) {
 
       if (event.getHand() == EquipmentSlot.HAND
           && (event.getAction() == Action.RIGHT_CLICK_AIR
