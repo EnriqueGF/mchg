@@ -115,7 +115,10 @@ public class GameCore {
         player.setHealth(player.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue());
         player.setFoodLevel(20);
         player.setSaturation(6.0f);
+        player.setCollidable(true);
         ClassicHC.team.removeEntry(player.getName());
+        ClassicHC.titleManagerAPI.giveScoreboard(player);
+        scheduleTasks.borderDistanceBossBarSchedule();
         player.teleport(ClassicHC.spawnLocation);
       }
     } catch (Exception ex) {

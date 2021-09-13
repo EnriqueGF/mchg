@@ -6,7 +6,6 @@ import devep.Game.GameCore;
 import devep.Game.GameSettings;
 import devep.Game.GameStatusEnum;
 import devep.Locale.LocaleFactory;
-import lombok.extern.java.Log;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -35,7 +34,6 @@ public class ScheduleTasks {
 
   private void InitializeScheduling() {
     // checkPlayersOutsideBorders();
-    borderDistanceBossBarSchedule();
     lookForGameFinish();
   }
 
@@ -207,7 +205,7 @@ public class ScheduleTasks {
                 20 * 3); // 0 Tick initial delay, 20 Tick (1 Second) between repeats
   }
 
-  private void borderDistanceBossBarSchedule() {
+  public void borderDistanceBossBarSchedule() {
     Bukkit.getScheduler()
         .scheduleSyncRepeatingTask(
             ClassicHC.plugin,

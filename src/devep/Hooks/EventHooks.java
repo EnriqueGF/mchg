@@ -59,8 +59,6 @@ public class EventHooks implements Listener {
 
     player.setCollidable(false);
 
-    ClassicHC.titleManagerAPI.giveScoreboard(player);
-
     GiveKitItem gKI = new GiveKitItem();
     gKI.executeAction(playerJoinEvent);
 
