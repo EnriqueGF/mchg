@@ -55,8 +55,7 @@ As you can see when the game starts the kit applies to you and the Invulnerabili
 
 When the time pass, PvP will be enabled and the **Worldborder** will start to close.
 
-![enter image description here]([https://i.gyazo.com/100367626a8c67499bfb732378988fc0.png](https://i.gyazo.com/8bf4622db49c83a8c9dcb5b54e360523.png))
-
+![worldborder](https://i.gyazo.com/8bf4622db49c83a8c9dcb5b54e360523.png)
 
 **The fewer players that remain, the faster the edge of the world closes, like battle royale style.**
 
