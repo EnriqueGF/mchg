@@ -65,7 +65,7 @@ Have fun
 
 ## Multilanguage
 
-Currently the plugin detects the client language and it have available SPANISH and ENGLISH.
+Currently the plugin detects the client language and it has available SPANISH and ENGLISH.
 
 ## Dependencies
 
