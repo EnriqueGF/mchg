@@ -61,6 +61,10 @@ There are some other mechanics like in the top bar you can see the distance from
 
 Have fun
 
+## Multilanguage
+
+Currently the plugin detects the client language and it have available SPANISH and ENGLISH.
+
 ## Dependencies
 
 The plugin is currently built for Minecraft 1.18.2 version.
