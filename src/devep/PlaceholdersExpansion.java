@@ -70,17 +70,15 @@ public class PlaceholdersExpansion extends PlaceholderExpansion {
   private String getGameStatusText(OfflinePlayer player) {
     String text = "";
 
-    switch(GameSettings.gameStatus) {
-      case BEFORE_START:
-        text = LocaleFactory.getLocale(player.getPlayer().getLocale()).getTranslatedText("INFO_GAME_STATUS_BEFORE_START");
-        break;
-      case INVULNERABILITY:
-        text = LocaleFactory.getLocale(player.getPlayer().getLocale()).getTranslatedText("INFO_GAME_STATUS_INVULNERABILITY");
-        break;
-      case STARTED:
-        text = LocaleFactory.getLocale(player.getPlayer().getLocale()).getTranslatedText("INFO_GAME_STATUS_STARTED");
-        break;
-      default:
+    switch (GameSettings.gameStatus) {
+      case BEFORE_START ->
+              text = LocaleFactory.getLocale(player.getPlayer().getLocale()).getTranslatedText("INFO_GAME_STATUS_BEFORE_START");
+      case INVULNERABILITY ->
+              text = LocaleFactory.getLocale(player.getPlayer().getLocale()).getTranslatedText("INFO_GAME_STATUS_INVULNERABILITY");
+      case STARTED ->
+              text = LocaleFactory.getLocale(player.getPlayer().getLocale()).getTranslatedText("INFO_GAME_STATUS_STARTED");
+      default -> {
+      }
     }
 
     return text;

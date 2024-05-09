@@ -127,18 +127,11 @@ public class EventHooks implements Listener {
     String motd = "";
 
     switch (gameSettings.gameStatus) {
-      case BEFORE_START:
-        motd = "0";
-        break;
-      case INVULNERABILITY:
-        motd = "1";
-        break;
-
-      case STARTED:
-        motd = "2";
-        break;
-
-      default:
+      case BEFORE_START -> motd = "0";
+      case INVULNERABILITY -> motd = "1";
+      case STARTED -> motd = "2";
+      default -> {
+      }
     }
     event.setMotd(motd);
   }

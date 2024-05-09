@@ -10,7 +10,6 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Classic-HC" target="16" />
       <module name="SalvosMC-RPG" target="16" />
     </bytecodeTargetLevel>
   </component>
