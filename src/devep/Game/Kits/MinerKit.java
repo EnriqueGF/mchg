@@ -1,7 +1,9 @@
 package devep.Game.Kits;
 
-import devep.Game.GameCore;
-import devep.Locale.LocaleFactory;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -9,9 +11,8 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import devep.Game.GameCore;
+import devep.Locale.LocaleFactory;
 
 public class MinerKit implements KitsInterface {
 
@@ -29,12 +30,12 @@ public class MinerKit implements KitsInterface {
     ItemStack ironPickaxe =
         GameCore.addEnchantToItem(
             new ItemStack(Material.IRON_PICKAXE, 1), Enchantment.VANISHING_CURSE, 1);
-    ironPickaxe.addEnchantment(Enchantment.DIG_SPEED, 1);
+    ironPickaxe.addEnchantment(Enchantment.EFFICIENCY, 1);
 
     ItemStack ironShovel =
         GameCore.addEnchantToItem(
             new ItemStack(Material.IRON_SHOVEL, 1), Enchantment.VANISHING_CURSE, 1);
-    ironShovel.addEnchantment(Enchantment.DIG_SPEED, 1);
+    ironShovel.addEnchantment(Enchantment.EFFICIENCY, 1);
 
     ItemStack torches =
         GameCore.addEnchantToItem(

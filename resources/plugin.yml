@@ -5,7 +5,7 @@ main: devep.ClassicHC
 api-version: 1.16
 depend:
   - WorldBorderAPI
-softdepend: [TitleManager, PlaceholderAPI]
+softdepend: [PlaceholderAPI]
 commands:
   forceStartGame:
     description: Forzar el inicio de la partida

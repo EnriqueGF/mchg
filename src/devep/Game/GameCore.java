@@ -117,7 +117,7 @@ public class GameCore {
         player.setSaturation(6.0f);
         player.setCollidable(true);
         ClassicHC.team.removeEntry(player.getName());
-        ClassicHC.titleManagerAPI.giveScoreboard(player);
+        // ClassicHC.titleManagerAPI.giveScoreboard(player);
         scheduleTasks.borderDistanceBossBarSchedule();
         player.teleport(ClassicHC.spawnLocation);
       }

@@ -1,14 +1,10 @@
 package devep;
 
-import devep.Command.StartGameCommand;
-import devep.Game.GameCore;
-import devep.Game.GameSettings;
-import devep.Hooks.EventHooks;
-import devep.Hooks.GameStartedHooks;
-import devep.Hooks.InvulnerabilityHooks;
-import io.puharesource.mc.titlemanager.api.v2.TitleManagerAPI;
-import lombok.extern.slf4j.Slf4j;
-import org.bukkit.*;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.World;
+import org.bukkit.WorldBorder;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -17,12 +13,20 @@ import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
 import org.jetbrains.annotations.NotNull;
 
+import devep.Command.StartGameCommand;
+import devep.Game.GameCore;
+import devep.Game.GameSettings;
+import devep.Hooks.EventHooks;
+import devep.Hooks.GameStartedHooks;
+import devep.Hooks.InvulnerabilityHooks;
+import lombok.extern.slf4j.Slf4j;
+
 @Slf4j
 public class ClassicHC extends JavaPlugin implements PluginMessageListener {
 
   public static Plugin plugin;
   public static Location spawnLocation;
-  public static TitleManagerAPI titleManagerAPI;
+  // public static TitleManagerAPI titleManagerAPI;
   public static WorldBorder worldBorder;
   public static Scoreboard scoreboard;
   public static Team team;
@@ -36,8 +40,8 @@ public class ClassicHC extends JavaPlugin implements PluginMessageListener {
     team = scoreboard.registerNewTeam("default-team");
     team.setOption(Team.Option.COLLISION_RULE, Team.OptionStatus.NEVER);
 
-    titleManagerAPI =
-    (TitleManagerAPI) Bukkit.getServer().getPluginManager().getPlugin("TitleManager");
+    // titleManagerAPI =
+    // (TitleManagerAPI) Bukkit.getServer().getPluginManager().getPlugin("TitleManager");
 
     this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
     this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);

@@ -30,25 +30,13 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <release>16</release>
+                    <release>21</release>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.3.0</version>
-                <configuration>
-                    <relocations>
-                        <relocation>
-                            <pattern>dev.triumphteam.gui</pattern>
-                            <shadedPattern>devep.ClassicHC.gui</shadedPattern>
-                        </relocation>
-                        <relocation>
-                            <pattern>me.mattstudios.mfmsg</pattern>
-                            <shadedPattern>devep.ClassicHC.mfmsg</shadedPattern>
-                        </relocation>
-                    </relocations>
-                </configuration>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -66,23 +54,19 @@
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
         <repository>
-            <id>repo</id>
-            <url>https://repo.mattstudios.me/artifactory/public/</url>
-        </repository>
-        <repository>
             <id>sonatype-oss-snapshots</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
         </repository>
         <repository>
-            <id>placeholderapi</id>
-            <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
         </repository>
     </repositories>
     <dependencies>
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.18.2-R0.1-SNAPSHOT</version>
+            <version>1.21.1-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
@@ -93,13 +77,13 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.11.0</version>
+            <version>2.16.1</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>dev.triumphteam</groupId>
             <artifactId>triumph-gui</artifactId>
-            <version>3.1.2</version>
+            <version>3.1.10</version>
         </dependency>
         <dependency>
             <groupId>net.kyori</groupId>
@@ -111,35 +95,35 @@
             <artifactId>classgraph</artifactId>
             <version>4.8.115</version>
         </dependency>
-        <dependency>
+        <!-- <dependency>
             <groupId>io.puharesource.mc</groupId>
             <artifactId>TitleManager</artifactId>
             <version>2.3.6</version>
             <scope>system</scope>
-            <systemPath>${basedir}/lib/TitleManager-2.3.4-api.jar</systemPath>
-        </dependency>
+            <systemPath>${basedir}/lib/TitleManager-2.3.6-api.jar</systemPath>
+        </dependency> -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.20</version>
+            <version>1.18.34</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>2.0.0-alpha5</version>
+            <version>2.0.16</version>
         </dependency>
         <dependency>
-            <groupId>me.clip</groupId>
+            <groupId>com.github.placeholderapi</groupId>
             <artifactId>placeholderapi</artifactId>
-            <version>2.11.1</version>
+            <version>2.11.6</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>16</maven.compiler.source>
-        <maven.compiler.target>16</maven.compiler.target>
-        <java.version>16</java.version>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <java.version>21</java.version>
     </properties>
 </project>

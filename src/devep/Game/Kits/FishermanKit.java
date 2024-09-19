@@ -1,7 +1,9 @@
 package devep.Game.Kits;
 
-import devep.Game.GameCore;
-import devep.Locale.LocaleFactory;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -9,9 +11,8 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import devep.Game.GameCore;
+import devep.Locale.LocaleFactory;
 
 public class FishermanKit implements KitsInterface {
 
@@ -31,9 +32,9 @@ public class FishermanKit implements KitsInterface {
             new ItemStack(Material.FISHING_ROD, 1), Enchantment.VANISHING_CURSE, 1);
 
     ItemMeta meta = fishRoad.getItemMeta();
-    meta.addEnchant(Enchantment.LUCK, 3, false);
+    meta.addEnchant(Enchantment.LUCK_OF_THE_SEA, 3, false);
     meta.addEnchant(Enchantment.LURE, 3, false);
-    meta.addEnchant(Enchantment.DURABILITY, 3, false);
+    meta.addEnchant(Enchantment.UNBREAKING, 3, false);
 
     fishRoad.setItemMeta(meta);
 

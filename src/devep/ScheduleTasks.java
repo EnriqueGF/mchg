@@ -151,7 +151,7 @@ public class ScheduleTasks {
                         Player winPlayer = Bukkit.getOnlinePlayers().iterator().next();
                         Bukkit.getServer()
                             .getWorld("world")
-                            .spawnEntity(winPlayer.getLocation(), EntityType.FIREWORK);
+                            .spawnEntity(winPlayer.getLocation(), EntityType.FIREWORK_ROCKET);
                         winPlayer.sendMessage(ChatColor.GOLD + "You win!!");
                         winPlayer.sendMessage(ChatColor.GREEN + "Congrats!!");
 
