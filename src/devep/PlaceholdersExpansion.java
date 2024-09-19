@@ -1,13 +1,15 @@
 package devep;
 
+import java.time.Instant;
+
+import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
+import org.bukkit.entity.Player;
+
 import devep.Game.GameCore;
 import devep.Game.GameSettings;
 import devep.Locale.LocaleFactory;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
-import org.bukkit.OfflinePlayer;
-import org.bukkit.entity.Player;
-
-import java.time.Instant;
 
 public class PlaceholdersExpansion extends PlaceholderExpansion {
 
@@ -58,6 +60,12 @@ public class PlaceholdersExpansion extends PlaceholderExpansion {
     if (params.equalsIgnoreCase("text-pvp")) {
       return LocaleFactory.getLocale(player.getPlayer().getLocale()).getTranslatedText("INFO_PVP");
     }
+
+    if (params.equalsIgnoreCase("onlineplayers")) {
+      return String.valueOf(Bukkit.getOnlinePlayers().size());
+    }
+
+
     return null;
   }
 
