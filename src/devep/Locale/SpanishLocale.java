@@ -96,6 +96,23 @@ public class SpanishLocale extends Locale {
     {"KIT_MINER_3", ChatColor.GRAY + "Pala de Hierro con Eficiencia I"},
     {"KIT_MINER_4", ChatColor.GRAY + "10 antorchas"},
     {"KIT_MINER_5", ChatColor.YELLOW + "Para mineros locos"},
+
+    {"KIT_THUNDERHAMMER_1", ChatColor.BLUE + "Desata el poder del trueno sobre tus enemigos"},
+    {"KIT_THUNDERHAMMER_2", ChatColor.GRAY + "Martillo de trueno"},
+    {"KIT_THUNDERHAMMER_4", ChatColor.YELLOW + "Inflige daño en área"},
+    {"KIT_THUNDERHAMMER_5", ChatColor.YELLOW + "Para aquellos que empuñan la tormenta"},
+
+    {"KIT_STICKHARD_1", ChatColor.BLUE + "Un palo reforzado para combates implacables"},
+    {"KIT_STICKHARD_2", ChatColor.GRAY + "Palo Hardcore con Retroceso II"},
+    {"KIT_STICKHARD_3", ChatColor.GRAY + "Pechera de cuero con Irrompibilidad I"},
+    {"KIT_STICKHARD_4", ChatColor.YELLOW + "Mayor durabilidad y poder"},
+    {"KIT_STICKHARD_5", ChatColor.YELLOW + "Para los guerreros más duros"},
+
+    {"KIT_FENIX_1", ChatColor.BLUE + "Resurge de las cenizas"},
+    {"KIT_FENIX_2", ChatColor.GRAY + "Elytra"},
+    {"KIT_FENIX_3", ChatColor.GRAY + "5 Cohetes de Fuegos Artificiales"},
+    {"KIT_FENIX_4", ChatColor.YELLOW + "Concede vuelo mejorado"},
+    {"KIT_FENIX_5", ChatColor.YELLOW + "Para jugadores que vuelan"},
   };
 
     public SpanishLocale() {

@@ -96,6 +96,23 @@ public class EnglishLocale extends Locale {
     {"KIT_MINER_3", ChatColor.GRAY + "Iron Shovel with Efficiency I"},
     {"KIT_MINER_4", ChatColor.GRAY + "10 Torches"},
     {"KIT_MINER_5", ChatColor.YELLOW + "For crazy miners"},
+
+    {"KIT_THUNDERHAMMER_1", ChatColor.BLUE + "Unleash the power of thunder upon your enemies"},
+    {"KIT_THUNDERHAMMER_2", ChatColor.GRAY + "Thunder Hammer"},
+    {"KIT_THUNDERHAMMER_3", ChatColor.GRAY + "Chainmail Chestplate"},
+    {"KIT_THUNDERHAMMER_4", ChatColor.YELLOW + "Deals area damage"},
+
+    {"KIT_STICKHARD_1", ChatColor.BLUE + "A reinforced stick for relentless combat"},
+    {"KIT_STICKHARD_2", ChatColor.GRAY + "Hardcore Stick with Knockback II"},
+    {"KIT_STICKHARD_3", ChatColor.GRAY + "Leather Chestplate with Unbreaking I"},
+    {"KIT_STICKHARD_4", ChatColor.YELLOW + "Enhanced durability and power"},
+    {"KIT_STICKHARD_5", ChatColor.YELLOW + "For the toughest warriors"},
+
+    {"KIT_FENIX_1", ChatColor.BLUE + "Rise from the ashes"},
+    {"KIT_FENIX_2", ChatColor.GRAY + "Elytra"},
+    {"KIT_FENIX_3", ChatColor.GRAY + "5 Firework Rockets"},
+    {"KIT_FENIX_4", ChatColor.YELLOW + "Grants enhanced fligh"},
+    {"KIT_FENIX_5", ChatColor.YELLOW + "For players who soar"},
   };
 
   public EnglishLocale() {

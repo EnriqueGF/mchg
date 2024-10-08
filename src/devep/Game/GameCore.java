@@ -129,6 +129,7 @@ public class GameCore {
       applyPlayersKits();
     } catch (Exception ex) {
       System.out.println("Excepcion en ApplyPlayersKit: " + ex);
+      ClassicHC.plugin.getLogger().log(java.util.logging.Level.SEVERE, "Error en ApplyPlayersKit ", ex);
     }
 
     invulnerabilityStartTimestamp =
